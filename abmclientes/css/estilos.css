@@ -1,0 +1,30 @@
+i{
+	cursor: pointer;
+}
+.fa-plus{
+	border: 1px solid #007bff;
+    border-radius: 40px;
+    font-size: 25px;
+    background-color: #007bff;
+    color: white;
+    padding: 8px 10px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+.fa-edit{
+    border: 1px solid #17a2b8;
+    border-radius: 40px;
+    font-size: 16px;
+    background-color: #17a2b8;
+    color: white;
+    padding: 11px 10px;
+}
+.fa-trash-alt{
+	border: 1px solid #dc3545;
+    border-radius: 40px;
+    font-size: 16px;
+    background-color: #dc3545;
+    color: white;
+    padding: 11px 12px;
+}
