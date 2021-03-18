@@ -1,20 +1,11 @@
+
 <?php
 
-$miArray = array();
-$miArray[0] = "Hola";
-$miArray[37] = "Chau";
-$miArray[] = "Adios";
-$miArray[] = "Buenas tardes";
-$miArray[1] = "Hello";
-$miArray[] = "Hello";
+$num1 = 10;
+$num2 = 8;
 
-//echo $miArray[0];
-print_r($miArray);
-//var_dump($miArray);
+$resultado = $num1 + $num2;
 
-
-
-
-
-
+echo $resultado;
 ?>
+
