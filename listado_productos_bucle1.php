@@ -57,6 +57,7 @@ $aProductos[] = array("nombre" => "Impresora HP Laser",
                         <th>Acción</th>
                     </tr>
                     <?php 
+                    $subtotal = 0;
                     for($contador = 0; $contador < count($aProductos); $contador++){ 
                     ?>
                     <tr>
@@ -68,10 +69,11 @@ $aProductos[] = array("nombre" => "Impresora HP Laser",
                         <td><button class="btn btn-primary">Comprar</button></td>
                     </tr>
                     <?php 
-                    break;
+                        $subtotal += $aProductos[$contador]["precio"];
                         } 
                     ?>
                 </table>
+                <h2>El subtotal es: $<?php echo $subtotal; ?></h2>
             </div>
         </div>
     </div>

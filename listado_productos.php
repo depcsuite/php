@@ -23,6 +23,8 @@ $aProductos[] = array("nombre" => "Aire Acondicionado Split Inverter Frío/Calor
     "precio" => 45000,
 );
 
+print_r($aProductos);
+exit;
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -75,6 +75,7 @@ $aProductos[] = array("nombre" => "Taza blanca",
                         ?>
                     </tr>
                 </table>
+                <h2>El subtotal es: $0</h2>
             </div>
         </div>
     </div>
