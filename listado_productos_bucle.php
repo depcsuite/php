@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 
 $aProductos = array();
 $aProductos[] = array("nombre" => "Smart TV 55\" 4K UHD",
