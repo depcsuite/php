@@ -3,8 +3,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$hr = 23;
-$min = 10;
+echo "Fecha y hora actual " . date("d/m/Y H:i") . "<br><br>";
+
+$hr = date("H");
+$min = date("i");
 
 //Sumar 60 minutos e ir informando la hora y minutos en pantalla.
 for ($i=0; $i < 60; $i++) { 
