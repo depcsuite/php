@@ -1,90 +1,28 @@
 <?php
 
-ini_set('display_errors','1');
-ini_set('display_startup_errors','1');
-ini_set('error_reporting', E_ALL); 
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+ini_set('error_reporting', E_ALL);
 
-//Abrir el archivo.txt si existe
-if(file_exists("archivo.txt")){
-    //Leer archivo
-    $jsonClientes = file_get_contents("archivo.txt");
-    //Convertir el json en array
-    $aClientes = json_decode($jsonClientes, true);
-} else {
-    $aClientes = array();
-}
-
-$id = isset($_GET["id"])? $_GET["id"] : "";
-
-if(isset($_GET["accion"]) && $_GET["accion"]=="eliminar"){
-    //Elimina la imagen fisicamente
-    $imgBorrar = "archivos/" .  $aClientes[$id]["imagen"];
-    if(file_exists($imgBorrar)){
-        unlink($imgBorrar);
-    }
-
-    //Eliminamos el cliente del array
-    unset($aClientes[$id]);
-
-    //Actualizo el archivo con el nuevo array de clientes modificado
-    file_put_contents("archivo.txt", json_encode($aClientes));
-
-    header("location: index.php");
-}
-
-if($_POST){
+if ($_POST) {
     $dni = $_POST["txtDni"];
     $nombre = $_POST["txtNombre"];
     $telefono = $_POST["txtTelefono"];
     $correo = $_POST["txtCorreo"];
 
-    $nuevoNombre = "";
-    if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {
-        $nombreAleatorio = date("Ymdhmsi");
-        $archivo_tmp = $_FILES["archivo"]["tmp_name"];
-        $nombreArchivo = $_FILES["archivo"]["name"];
-        $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
-        $nuevoNombre = "$nombreAleatorio.$extension";
-        if($extension == "jpg" || $extension == "png" || $extension == "jpeg"){
-            move_uploaded_file($archivo_tmp, "archivos/".$nuevoNombre);
-        }
-    }
+    //Actualizo el cliente
+    $aClientes[] = array(
+        "dni" => $dni,
+        "nombre" => $nombre,
+        "telefono" => $telefono,
+        "correo" => $correo,
+    );
 
-    if($id >= 0){
-        if ($_FILES["archivo"]["error"] !== UPLOAD_ERR_OK) {
-            //Si no se subio la imagen, mantengo el nombre actual que ya existía de la imagen
-            $nuevoNombre = $aClientes[$id]["imagen"];
-        } else {
-            //Elimina la imagen anterior si existe
-            if (file_exists("archivos/".$aClientes[$id]["imagen"])) {
-                unlink("archivos/".$aClientes[$id]["imagen"]);
-            }
-        }
 
-        //Actualizo el cliente
-        $aClientes[$id] = array("dni" => $dni,
-                            "nombre" => $nombre,
-                            "telefono" => $telefono,
-                            "correo" => $correo,
-                            "imagen" => $nuevoNombre);
-        $msg = "Actualizado correctamente";
+    //Codificar el array en json
 
-    } else {
-        //Es un nuevo cliente
-        $aClientes[] = array("dni" => $dni,
-            "nombre" => $nombre,
-            "telefono" => $telefono,
-            "correo" => $correo,
-            "imagen" => $nuevoNombre);
-        $msg = "Insertado correctamente";
 
-    }
-
-   //Codificar el array en json
-    $jsonCliente = json_encode($aClientes);
-
-   //Guardar el json en un archivo.txt
-    file_put_contents("archivo.txt", $jsonCliente);
+    //Guardar el json (que es un string) en un archivo.txt
 
 }
 
@@ -111,14 +49,14 @@ if($_POST){
             <div class="col-6">
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="row">
-                        <?php if($msg != ""): ?>
+                        <?php if (isset($msg) && $msg != ""): ?>
                         <div class="alert alert-success" role="alert">
                             <?php echo $msg; ?>
                         </div>
-                        <?php endif; ?>
+                        <?php endif;?>
                         <div class="col-12 form-group">
                             <label for="txtDni">DNI: *</label>
-                            <input type="text" id="txtDni" name="txtDni" class="form-control" required value="<?php echo isset($aClientes[$id])? $aClientes[$id]["dni"] : ""?>">
+                            <input type="text" id="txtDni" name="txtDni" class="form-control" required value="<?php echo isset($aClientes[$id]) ? $aClientes[$id]["dni"] : "" ?>">
                         </div>
                         <div class="col-12 form-group">
                             <label for="txtNombre">Nombre: *</label>
@@ -128,7 +66,7 @@ if($_POST){
                         <div class="col-12 form-group">
                             <label for="txtTelefono">Teléfono:</label>
                             <input type="text" id="txtTelefono" name="txtTelefono" class="form-control" value="<?php echo isset($aClientes[$id]) ? $aClientes[$id]["telefono"] : "" ?>
-"> 
+">
                         </div>
                         <div class="col-12 form-group">
                             <label for="txtCorreo">Correo: *</label>
@@ -157,10 +95,9 @@ if($_POST){
                         <th>Correo</th>
                         <th>Acciones</th>
                     </tr>
-                    <?php 
-                    
-                  
-                    foreach($aClientes as $key => $cliente): ?>
+                    <?php
+
+foreach ($aClientes as $key => $cliente): ?>
                         <tr>
                             <td><img src="archivos/<?php echo $cliente['imagen']; ?>" class="img-thumbnail"></td>
                             <td><?php echo $cliente["dni"]; ?></td>
@@ -171,7 +108,7 @@ if($_POST){
                                 <a href="?id=<?php echo $key; ?>&accion=eliminar"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
-                    <?php endforeach; ?>
+                    <?php endforeach;?>
                 </table>
                 <a href="index.php"><i class="fas fa-plus"></i></a>
             </div>
