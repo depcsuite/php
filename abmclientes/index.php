@@ -4,6 +4,22 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 ini_set('error_reporting', E_ALL);
 
+
+//Abrir el archivo.txt si existe
+if (file_exists("archivo.txt")) {
+    //Leer contenido del archivo y guardarlo en $jsonClientes
+    $jsonClientes = file_get_contents("archivo.txt");
+
+    //Convertir el json en array y guardarlo en aClientes
+    $aClientes = json_decode($jsonClientes, true);
+
+} else {
+    //Si no existe el archivo creamos un array vació aClientes
+    $aClientes = array();
+}
+
+$id = isset($_GET["id"]) && $_GET["id"] > 0? $_GET["id"] : "";
+
 if ($_POST) {
     $dni = $_POST["txtDni"];
     $nombre = $_POST["txtNombre"];
@@ -18,12 +34,11 @@ if ($_POST) {
         "correo" => $correo,
     );
 
-
     //Codificar el array en json
-
+    $jsonClientes = json_encode($aClientes);
 
     //Guardar el json (que es un string) en un archivo.txt
-
+    file_put_contents("archivo.txt", $jsonClientes);
 }
 
 ?>
@@ -97,15 +112,15 @@ if ($_POST) {
                     </tr>
                     <?php
 
-foreach ($aClientes as $key => $cliente): ?>
+                    foreach ($aClientes as $key => $cliente): ?>
                         <tr>
-                            <td><img src="archivos/<?php echo $cliente['imagen']; ?>" class="img-thumbnail"></td>
+                            <td></td>
                             <td><?php echo $cliente["dni"]; ?></td>
                             <td><?php echo $cliente["nombre"]; ?></td>
                             <td><?php echo $cliente["correo"]; ?></td>
                             <td style="width: 110px;">
-                                <a href="?id=<?php echo $key; ?>"><i class="fas fa-edit"></i></a>
-                                <a href="?id=<?php echo $key; ?>&accion=eliminar"><i class="fas fa-trash-alt"></i></a>
+                                <a href="index.php?id=<?php echo $key; ?>"><i class="fas fa-edit"></i></a>
+                                <a href=""><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                     <?php endforeach;?>
