@@ -1,0 +1,8 @@
+Fecha;Cliente;Producto;Cantidad;Total
+"2020-04-15 22:00:00";Anabella;silla;1;3000.00
+"2020-04-14 20:18:00";santiago;"Taza sublimada";15;150.00
+"2020-04-10 14:00:00";"Ricardo Peralta";Membresia1;5;2500.00
+"2020-01-15 11:33:44";Bernabé;Abono1;;800.00
+"2020-01-10 11:33:13";Bernabé;Membresia1;;13000.00
+"2020-01-08 11:32:40";"Ezequiel Velazques";Soporte;;500.00
+"2019-12-20 09:20:47";"Ezequiel Velazques";Abono1;;3000.00

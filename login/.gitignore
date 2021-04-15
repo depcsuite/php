@@ -1,1 +1,10 @@
-node_modules
+entidades/producto.php
+entidades/venta.php
+entidades/tipoproducto.php
+config.php
+productos.php
+producto-formulario.php
+ventas.php
+venta-formulario.php
+tipoproductos.php
+tipoproducto-formulario.php

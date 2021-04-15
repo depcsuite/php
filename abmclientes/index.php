@@ -4,7 +4,6 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 ini_set('error_reporting', E_ALL);
 
-
 //Abrir el archivo.txt si existe
 if (file_exists("archivo.txt")) {
     //Leer contenido del archivo y guardarlo en $jsonClientes
@@ -18,7 +17,7 @@ if (file_exists("archivo.txt")) {
     $aClientes = array();
 }
 
-$id = isset($_GET["id"]) && $_GET["id"] > 0? $_GET["id"] : "";
+$id = isset($_GET["id"]) && $_GET["id"] != "" ? $_GET["id"] : "";
 
 if ($_POST) {
     $dni = $_POST["txtDni"];
@@ -26,19 +25,62 @@ if ($_POST) {
     $telefono = $_POST["txtTelefono"];
     $correo = $_POST["txtCorreo"];
 
-    //Actualizo el cliente
-    $aClientes[] = array(
-        "dni" => $dni,
-        "nombre" => $nombre,
-        "telefono" => $telefono,
-        "correo" => $correo,
-    );
+    if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {
+        $nombre = date("Ymdhmsi") . rand(1000, 5000);
+        $archivo_tmp = $_FILES["archivo"]["tmp_name"];
+        $nombreArchivo = $_FILES["archivo"]["name"];
+        $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+        $nuevoNombre = "$nombre.$extension";
+        move_uploaded_file($archivo_tmp, "imagenes/" . $nuevoNombre);
+    }
+
+    if ($id != "") {
+        //Si no se subio la imagen, mantengo el nombre actual que ya existía de la imagen
+        if ($_FILES["archivo"]["error"] !== UPLOAD_ERR_OK) {
+            $nuevoNombre = $aClientes[$id]["imagen"];
+        } else {
+            //Si viene una imagen elimino la imagen anterior y se tiene que guardar la nueva
+            if ($aClientes[$id]["imagen"] != "") {
+                unlink("imagenes/" . $aClientes[$id]["imagen"]);
+            }
+        }
+
+        //Estoy actualizando
+        $aClientes[$id] = array(
+            "dni" => $dni,
+            "nombre" => $nombre,
+            "telefono" => $telefono,
+            "correo" => $correo,
+            "imagen" => $nuevoNombre,
+        );
+    } else {
+        //Insertar el cliente nuevo
+        $aClientes[] = array(
+            "dni" => $dni,
+            "nombre" => $nombre,
+            "telefono" => $telefono,
+            "correo" => $correo,
+            "imagen" => $nuevoNombre,
+        );
+    }
 
     //Codificar el array en json
     $jsonClientes = json_encode($aClientes);
 
     //Guardar el json (que es un string) en un archivo.txt
     file_put_contents("archivo.txt", $jsonClientes);
+}
+
+if (isset($_GET["id"]) && $_GET["id"] != "" && isset($_GET["do"]) && $_GET["do"] == "eliminar") {
+    unset($aClientes[$id]);
+
+    //Codificar el array en json
+    $jsonClientes = json_encode($aClientes);
+
+    //Guardar el json (que es un string) en un archivo.txt
+    file_put_contents("archivo.txt", $jsonClientes);
+
+    header("Location: index.php");
 }
 
 ?>
@@ -112,15 +154,15 @@ if ($_POST) {
                     </tr>
                     <?php
 
-                    foreach ($aClientes as $key => $cliente): ?>
+foreach ($aClientes as $pos => $cliente): ?>
                         <tr>
-                            <td></td>
+                            <td><img class="img-thumbnail" src="imagenes/<?php echo $cliente["imagen"]; ?>" alt=""></td>
                             <td><?php echo $cliente["dni"]; ?></td>
                             <td><?php echo $cliente["nombre"]; ?></td>
                             <td><?php echo $cliente["correo"]; ?></td>
                             <td style="width: 110px;">
-                                <a href="index.php?id=<?php echo $key; ?>"><i class="fas fa-edit"></i></a>
-                                <a href=""><i class="fas fa-trash-alt"></i></a>
+                                <a href="index.php?id=<?php echo $pos; ?>"><i class="fas fa-edit"></i></a>
+                                <a href="index.php?id=<?php echo $pos; ?>&do=eliminar"><i class="fas fa-trash-alt"></i></a>
                             </td>
                         </tr>
                     <?php endforeach;?>
