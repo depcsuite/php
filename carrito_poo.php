@@ -6,11 +6,11 @@ error_reporting(E_ALL);
 
 class Cliente
 {
-    protected $dni;
-    protected $nombre;
-    protected $correo;
-    protected $telefono;
-    protected $descuento;
+    private $dni;
+    private $nombre;
+    private $correo;
+    private $telefono;
+    private $descuento;
 
     public function __construct() {
         $this->descuento = 0.0;
