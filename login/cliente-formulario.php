@@ -1,17 +1,12 @@
 
 <?php
-
 include_once "config.php";
 include_once "entidades/cliente.php";
-include_once "entidades/provincia.entidad.php";
-include_once "entidades/localidad.entidad.php";
-include_once "entidades/domicilio.entidad.php";
 
 $pg = "Edición de cliente";
 
 $cliente = new Cliente();
 $cliente->cargarFormulario($_REQUEST);
-
 
 if($_POST){
 
@@ -23,70 +18,11 @@ if($_POST){
             //Es nuevo
             $cliente->insertar();
         }
-        if(isset($_POST["txtTipo"])){
-            $domicilio = new Domicilio();
-            $domicilio->eliminarPorCliente($cliente->idcliente);
-            for($i=0; $i < count($_POST["txtTipo"]); $i++){
-                $domicilio->fk_idcliente = $cliente->idcliente; 
-                $domicilio->fk_tipo = $_POST["txtTipo"][$i];
-                $domicilio->fk_idlocalidad =  $_POST["txtLocalidad"][$i];
-                $domicilio->domicilio = $_POST["txtDomicilio"][$i];
-                $domicilio->insertar();
-            }
-        }
     } else if(isset($_POST["btnBorrar"])){
-        $domicilio = new Domicilio();
-        $domicilio->eliminarPorCliente($cliente->idcliente);
         $cliente->eliminar();
         header("Location: clientes.php");
     }
 } 
-
-if(isset($_GET["do"]) && $_GET["do"] == "buscarLocalidad" && $_GET["id"] && $_GET["id"] > 0){
-    $idProvincia = $_GET["id"];
-    $localidad = new Localidad();
-    $aLocalidad = $localidad->obtenerPorProvincia($idProvincia);
-    echo json_encode($aLocalidad);
-    exit;
-} else if(isset($_GET["id"]) && $_GET["id"] > 0){
-    $cliente->obtenerPorId();
-}
-
- if(isset($_GET["do"]) && $_GET["do"] == "cargarGrilla"){
-        $idCliente = $_GET['idCliente'];
-        $request = $_REQUEST;
-
-        $entidad = new Domicilio();
-        $aDomicilio = $entidad->obtenerFiltrado($idCliente);
-
-        $data = array();
-
-        if (count($aDomicilio) > 0)
-            $cont=0;
-            for ($i=0; $i < count($aDomicilio); $i++) {
-                $row = array();
-                $row[] = $aDomicilio[$i]->tipo;
-                $row[] = $aDomicilio[$i]->provincia;
-                $row[] = $aDomicilio[$i]->localidad;
-                $row[] = $aDomicilio[$i]->domicilio;
-                $cont++;
-                $data[] = $row;
-            }
-
-        $json_data = array(
-            "draw" => isset($request['draw'])?intval($request['draw']):0,
-            "recordsTotal" => count($aDomicilio), //cantidad total de registros sin paginar
-            "recordsFiltered" => count($aDomicilio),//cantidad total de registros en la paginacion
-            "data" => $data
-        );
-        echo json_encode($json_data);
-        exit;
-    }
-
-
-$provincia = new Provincia();
-$aProvincias = $provincia->obtenerTodos();
-
 
 include_once("header.php"); 
 ?>
@@ -154,30 +90,6 @@ include_once("header.php");
                     </select>
                 </div>
             </div>
-        <div class="row">
-        <div class="col-12">  
-        <div class="card mb-3">
-                <div class="card-header">
-                    <i class="fa fa-table"></i> Domicilios
-                    <div class="pull-right">
-                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalDomicilio">Agregar</button>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <table id="grilla" class="display" style="width:98%">
-                        <thead>
-                            <tr>
-                                <th>Tipo</th>
-                                <th>Provincia</th>
-                                <th>Localidad</th>
-                                <th>Dirección</th>
-                            </tr>
-                        </thead>
-                    </table> 
-                 </div>
-            </div>          
-        </div>
-    </div>
 
 
 <div class="modal fade" id="modalDomicilio" tabindex="-1" role="dialog" aria-labelledby="modalDomicilioLabel" aria-hidden="true">
