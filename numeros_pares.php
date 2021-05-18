@@ -6,7 +6,6 @@ error_reporting(E_ALL);
 //Imprimir un listado de números consecutivos del 1 a 100.
 for ($i = 1; $i <= 100; $i++) {
     echo $i . "<br>";
-
 }
 
 //Luego sobre el mismo listado, modificarlo para que sólo muestre los números pares.
@@ -21,3 +20,5 @@ for ($i = 2; $i <= 100; $i += 2) {
         break;
     }
 }
+
+?>

@@ -10,7 +10,7 @@ $min = date("i");
 
 //Sumar 60 minutos e ir informando la hora y minutos en pantalla.
 for ($i=0; $i < 60; $i++) { 
-    echo "La hora es $hr:$min <br>";
+    echo "La hora es " . (($hr >= 0 && $hr <= 9) ? "0$hr" : $hr) . ":" . (($min >= 0 && $min <= 9) ? "0$min" : $min) . "<br>";
     $min++;
     if($min == 60){
         $min = 0;
@@ -20,6 +20,7 @@ for ($i=0; $i < 60; $i++) {
         $hr=0;
     }
 }
-echo "La hora es $hr:$min <br>";
+
+echo "La hora es ". (($hr >= 0 && $hr <= 9)? "0$hr" : $hr)  .":" . (($min >= 0 && $min <= 9)? "0$min" : $min) . "<br>";
 
 ?>

@@ -24,6 +24,10 @@ if($_POST){
     }
 } 
 
+if(isset($_GET["id"]) && $_GET["id"] > 0){
+    $cliente->obtenerPorId(); 
+}
+
 include_once("header.php"); 
 ?>
         <!-- Begin Page Content -->
