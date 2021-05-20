@@ -20,7 +20,7 @@ if($_POST){
         }
     } else if(isset($_POST["btnBorrar"])){
         $cliente->eliminar();
-        header("Location: clientes.php");
+        header("Location: clientes-listado.php");
     }
 } 
 
