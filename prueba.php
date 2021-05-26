@@ -1,22 +1,16 @@
+<?php
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <select name="lstTipoProducto" id="lstTipoProducto">
-        <option value="" disabled selected>Seleccionar</option>
-        <?php foreach($aTipoProductos as $tipo): ?>
-            <?php if($producto->fk_idtipoproducto == $tipo->idtipoproducto): ?>
-                <option value="<?php echo $tipo->idtipoproducto; ?>" selected><?php echo $tipo->nombre; ?></option>
-            <?php else: ?>
-                <option value="<?php echo $tipo->idtipoproducto; ?>" ><?php echo $tipo->nombre; ?></option>
-           <?php endif; ?>
-        <?php endforeach; ?>
-    </select>
-</body>
-</html>
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$strFecha = "2020-03-16";
+
+
+echo "La fecha es 2020-03-16" . date_format(date_create($strFecha), 'd/m/Y'); 
+
+
+
+
+
+?>
