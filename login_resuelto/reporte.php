@@ -14,8 +14,8 @@ $aVentas = $ventaEntidad->cargarGrilla();
 
 $fp = fopen('php://output', 'w');
 fputs($fp, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
-$aTitulo = array("Fecha", "Cliente", "Producto", "Cantidad", "Total");
-fputcsv($fp, $aTitulo, ";");
+$aTitulos = array("Fecha", "Cliente", "Producto", "Cantidad", "Total");
+fputcsv($fp, $aTitulos, ";");
 
 foreach ($aVentas as $venta) {
 	$aFila = array(
