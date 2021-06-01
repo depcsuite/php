@@ -3,7 +3,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
 if($_POST){ /* es postback ? */
 
     $usuario = $_REQUEST["txtUsuario"];
@@ -12,8 +11,7 @@ if($_POST){ /* es postback ? */
     if($usuario != "" && $clave != ""){
         header("Location: acceso-confirmado.php");
     } else {
-        echo "Válido para usuarios registrados";
-        exit;
+        $mensaje = "Válido para usuarios registrados";
     }
 }
 ?>
@@ -35,6 +33,10 @@ if($_POST){ /* es postback ? */
         </div>
         <div class="row">
             <div class="col-12">
+                <?php if (isset($mensaje) && $mensaje != ""): ?>
+                    <div class="alert alert-danger" role="alert"><?php echo $mensaje; ?></div>
+                <?php endif; ?>
+                ?>
                 <form method="POST" action="">
                     <div class="my-3">
                         <label for="">Usuario: <input type="text" id="txtUsuario" name="txtUsuario" class="form-control"></label>
