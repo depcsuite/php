@@ -63,10 +63,9 @@ class Usuario {
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE);
         $sql = "UPDATE usuarios SET
                 usuario = '".$this->usuario."',
-                usuario = '".$this->clave."',
-                nombre = ".$this->nombre.",
-                apellido = ".$this->apellido.",
-                correo = ".$this->correo."
+                nombre = '".$this->nombre."',
+                apellido = '".$this->apellido."',
+                correo = '".$this->correo."'
                 WHERE idusuario = " . $this->idusuario;
           
         if (!$mysqli->query($sql)) {
@@ -148,7 +147,7 @@ class Usuario {
         if($resultado){
             //Convierte el resultado en un array asociativo
             while($fila = $resultado->fetch_assoc()){
-                $entidadAux = new Producto();
+                $entidadAux = new Usuario();
                 $entidadAux->idusuario = $fila["idusuario"];
                 $entidadAux->usuario = $fila["usuario"];
                 $entidadAux->clave = $fila["clave"];
