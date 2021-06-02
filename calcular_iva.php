@@ -9,6 +9,7 @@ $resPrecioConIva = 0;
 $resIvaCantidad = 0;
 
 if($_POST){
+    //Recupero los datos del formulario
     $iva = $_REQUEST["lstIva"];
     $precioSinIva = $_REQUEST["txtImporteSinIva"];
     $precioConIva = $_REQUEST["txtImporteConIva"];
