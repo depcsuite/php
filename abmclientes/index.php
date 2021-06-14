@@ -22,17 +22,16 @@ if($_POST){
     $telefono = $_REQUEST["txtTelefono"];
     $correo = $_REQUEST["txtCorreo"];
 
+    if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) { //este if nos dice si se subio o no una imagen
+        $nombreAleatorio = date("Ymdhmsi") . rand(1000, 5000);
+        $archivo_tmp = $_FILES["archivo"]["tmp_name"];
+        $nombreArchivo = $_FILES["archivo"]["name"];
+        $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+        $nuevoNombre = "$nombreAleatorio.$extension";
+        move_uploaded_file($archivo_tmp, "imagenes/$nuevoNombre");
+    }
+
     if($id != ""){ //Estoy editando un cliente
-
-        if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) { //este if nos dice si se subio o no una imagen
-            $nombreAleatorio = date("Ymdhmsi") . rand(1000, 5000);
-            $archivo_tmp = $_FILES["archivo"]["tmp_name"];
-            $nombreArchivo = $_FILES["archivo"]["name"];
-            $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
-            $nuevoNombre = "$nombreAleatorio.$extension";
-            move_uploaded_file($archivo_tmp, "imagenes/$nuevoNombre");
-        }
-
         //Si no se subio la imagen, mantengo el nombre actual que ya existía de la imagen
          if ($_FILES["archivo"]["error"] !== UPLOAD_ERR_OK) {
             $nuevoNombre = $aClientes[$id]["imagen"];
@@ -50,16 +49,6 @@ if($_POST){
             "imagen" => $nuevoNombre
         );
     } else { //Es un nuevo cliente
-        //print_r($_FILES["archivo"]); exit;
-        if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {
-            $nombreAleatorio = date("Ymdhmsi") . rand(1000, 5000);
-            $archivo_tmp = $_FILES["archivo"]["tmp_name"];
-            $nombreArchivo = $_FILES["archivo"]["name"];
-            $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
-            $nuevoNombre = "$nombreAleatorio.$extension";
-            move_uploaded_file($archivo_tmp, "imagenes/$nuevoNombre");
-        }
-
         //Inserta un nuevo cliente
         $aClientes[] = array(
             "dni" => $dni,
