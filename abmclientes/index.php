@@ -79,6 +79,7 @@ if($_POST){
 }
 
 if ($id != "" && isset($_REQUEST["do"]) && $_REQUEST["do"] == "eliminar") {
+    unlink("imagenes/".$aClientes[$id]["imagen"]);
     //Elimina el cliente del array
     unset($aClientes[$id]);
     //Actualizar el archivo con el nuevo array de aClientes
