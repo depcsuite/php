@@ -34,11 +34,13 @@ if($_POST){
         }
 
         //Si no se subio la imagen, mantengo el nombre actual que ya existía de la imagen
+         if ($_FILES["archivo"]["error"] !== UPLOAD_ERR_OK) {
+            $nuevoNombre = $aClientes[$id]["imagen"];
+         } else {
+            //Si viene la imagen, elimino la imagen anterior y guardo el nombre de la nueva imagen
 
-
-        //Si viene la imagen, elimino la imagen anterior y guardo el nombre de la nueva imagen
-
-
+            //unlink() elimina un archivo
+         }
 
         //Actualiza un cliente existente
         $aClientes[$id] = array(
