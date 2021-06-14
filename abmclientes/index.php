@@ -38,8 +38,7 @@ if($_POST){
             $nuevoNombre = $aClientes[$id]["imagen"];
          } else {
             //Si viene la imagen, elimino la imagen anterior y guardo el nombre de la nueva imagen
-
-            //unlink() elimina un archivo
+            unlink("imagenes/".$aClientes[$id]["imagen"]); //elimina un archivo
          }
 
         //Actualiza un cliente existente
