@@ -22,9 +22,9 @@ if($_POST){
     $telefono = $_REQUEST["txtTelefono"];
     $correo = $_REQUEST["txtCorreo"];
 
-    if($id != ""){
+    if($id != ""){ //Estoy editando un cliente
 
-        if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {
+        if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) { //este if nos dice si se subio o no una imagen
             $nombreAleatorio = date("Ymdhmsi") . rand(1000, 5000);
             $archivo_tmp = $_FILES["archivo"]["tmp_name"];
             $nombreArchivo = $_FILES["archivo"]["name"];
@@ -48,7 +48,8 @@ if($_POST){
             "correo" => $correo,
             "imagen" => $nuevoNombre
         );
-    } else {
+    } else { //Es un nuevo cliente
+        //print_r($_FILES["archivo"]); exit;
         if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {
             $nombreAleatorio = date("Ymdhmsi") . rand(1000, 5000);
             $archivo_tmp = $_FILES["archivo"]["tmp_name"];
