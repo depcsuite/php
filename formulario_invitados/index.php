@@ -59,21 +59,31 @@ if ($_POST) {
         <div class="col-12">
             <p>Complete el siguiente formulario:</p>
         </div>
-        <div class="col-12">
-            <form method="POST" action="">
+        <div class="col-6">
+            <form method="POST" action="" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-12">
-                        <p>Nombre:<p><input type="text" name="txtNombre"><br><br>
+                        <p>Nombre:<p><input type="text" name="txtNombre" class="form-control">
+                          <input type="file" name="archivo" class="form-control">
                         <input type="submit" name="btnProcesar" value="Procesar invitado" class="btn-primary">
                     </div>
                 </div>
                 <div class="row">
                     <div class="12-col bm-3">
-                        <p>Ingresa el código secreto para el pase VIP:<p><input type="text" name="txtPregunta"><br><br>
-                        <input type="submit" name="btnVip" value="Procesar VIP" class="btn-primary">
+                        <p>Ingresa el código secreto para el pase VIP:<p>
+                        <input type="text" name="txtPregunta" class="form-control">
+                        <input type="submit" name="btnVip" value="Procesar código" class="btn-primary">
                     </div>
                 </div>
             </form>
+        </div>
+        <div class="col-6">
+            <table class="table table-hover border">
+                <tr>
+                    <th>Imagen</th>
+                </tr>
+                
+            </table>
         </div>
     </div>
 	</main>
