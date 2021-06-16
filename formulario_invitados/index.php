@@ -4,12 +4,23 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 ini_set('error_reporting', E_ALL);
 
+//Lista de invitados admitidos
 $aInvitados = array("pepe", "ana", "maca", "juan");
 
 if ($_POST) {
     if (isset($_REQUEST['btnProcesar'])) {
         $nombre = $_REQUEST['txtNombre'];
         if (in_array($nombre, $aInvitados)) {
+
+            //Si viene la imagen la almacenamos en la carpeta imagenes
+            if($_FILES["archivo"]["error"] === UPLOAD_ERR_OK){
+                $nombreAleatorio = date("Ymdhmsi") . rand(1000, 5000); //2021010420453710
+                $archivo_tmp = $_FILES["archivo"]["tmp_name"];
+                $extension = pathinfo($_FILES["archivo"]["name"], PATHINFO_EXTENSION);
+                $nuevoNombre = "$nombreAleatorio.$extension";
+                move_uploaded_file($archivo_tmp, "imagenes/".$nuevoNombre);
+            }
+
             $aMensaje = array("texto" => "¡Bienvenid@ $nombre a la fiesta!", 
                               "estado" => "success");
         } else {
@@ -26,6 +37,12 @@ if ($_POST) {
         }
     }
 }
+
+//Carga la variable con las imagenes de la carpeta
+$aImagenes = scandir("imagenes");
+unset($aImagenes[0]);
+unset($aImagenes[1]);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -77,12 +94,16 @@ if ($_POST) {
                 </div>
             </form>
         </div>
-        <div class="col-6">
+        <div class="col-2">
             <table class="table table-hover border">
                 <tr>
-                    <th>Imagen</th>
+                    <th>Imágenes</th>
                 </tr>
-                
+                <?php foreach ($aImagenes as $imagen): ?>
+                    <tr>
+                        <td><img src="imagenes/<?php echo $imagen; ?>" class="img-thumbnail"></td>
+                    </tr>
+                <?php endforeach; ?>
             </table>
         </div>
     </div>
