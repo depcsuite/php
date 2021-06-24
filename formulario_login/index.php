@@ -36,7 +36,6 @@ if($_POST){ /* es postback ? */
                 <?php if (isset($mensaje) && $mensaje != ""): ?>
                     <div class="alert alert-danger" role="alert"><?php echo $mensaje; ?></div>
                 <?php endif; ?>
-                ?>
                 <form method="POST" action="">
                     <div class="my-3">
                         <label for="">Usuario: <input type="text" id="txtUsuario" name="txtUsuario" class="form-control"></label>
