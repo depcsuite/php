@@ -150,7 +150,7 @@ $producto2->cod = "JBGH678";
 $producto2->nombre = "TV Samsung 42\"";
 $producto2->descripcion = "Televisor HD";
 $producto2->precio = 60800;
-$producto2->iva = 21;
+$producto2->iva = 10.5;
 //$producto2->imprimir();
 
 $carrito = new Carrito();
