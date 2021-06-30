@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="funciones.js"></script>
+</head>
+<script>
+    var aNumeros = [];
+
+    for(i=1; i<=20; i++){
+        aNumeros.push(i);
+    }
+
+    aNumeros.forEach(function(valor, indice){
+        if(valor % 7 == 0){
+            console.log(valor);
+        }
+    });
+
+    arrayResultado = aNumeros.map(function(valor){
+        return Math.sqrt(valor);
+    });
+
+    console.log(arrayResultado);
+
+
+</script>
+<body>
+    Se ejecutó código javascript.
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio</title>
+</head>
+<script>
+    window.onload = function () {
+        document.getElementById("btnIngresarDatos").onclick = function () {
+            do{
+                var num1 = prompt("Ingrese el número 1");
+                var num2 = prompt("Ingrese el número 2");
+                var confirmacion = confirm("¿Desea confirmar los números ingresados?");
+            } while(!confirmacion);      
+            document.write("Los números ingresados son: " + num1 + " y " + num2);
+        };
+    };
+</script>
+<body>
+    <button id="btnIngresarDatos">Ingresar datos</button>
+</body>
+</html>

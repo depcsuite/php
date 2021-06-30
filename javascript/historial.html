@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio</title>
+</head>
+<body>
+    <button id="btnAtras"> Atrás </button>
+    <button id="btnAdelante"> Adelante </button>
+</body>
+<script>
+    var boton = document.getElementById("btnAtras");
+    boton.onclick = function () {
+        history.back();
+    };
+
+    var boton = document.getElementById("btnAdelante");
+    boton.onclick = function () {
+        history.forward();
+    };
+</script>
+</html>

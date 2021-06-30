@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<script>
+    nombre = prompt("Ingrese un nombre");
+    num1 = prompt("Ingrese el número 1");
+    num2 = prompt("Ingrese el número 2");
+
+    window.onload = function () { // Carga la página y luego ejecuta:
+        $("#txtNombre").val(nombre);
+        $("#txtNum1").val(num1);
+        $("#txtNum2").val(num2);
+    }
+
+</script>
+<body>
+    <form action="">
+        Nombre: <input type="text" id="txtNombre" name="txtNombre">
+        Número 1:<input type="text" id="txtNum1" name="txtNum1">
+        Número 2:<input type="text" id="txtNum2" name="txtNum2">
+    </form>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermercado</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+</head>
+<script>
+    let aProductos = new Array(
+        ["Yerba", 200],
+        ["Azúcar", 50],
+        ["Tallarines", 80],
+        ["Leche", 40]
+    );
+
+    function actualizarPrecios(aValores, porcentaje) {
+        return aValores.map(function (item) {
+            return new Array(item[0], item[1] + (item[1] * porcentaje) / 100);
+        });
+    }
+
+    function imprimirPoductos(aValores){
+        document.write(`
+        <div class="container">
+            <h1 class="my-5 text-center">Lista actualiza de precios</h1>
+            <table class="table table-hover border">
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                </tr>`);
+        aValores.forEach(function (value, index) {
+            document.write(`<tr>
+                                <td>${value[0]}</td>
+                                <td>$${value[1]}</td>
+                            </tr>`);
+        });
+        document.write(`
+            </table>
+        </div>`);
+    }
+
+    aProductos = actualizarPrecios(aProductos, 10);
+    imprimirPoductos(aProductos);
+
+</script>
+
+<body>
+
+</body>
+
+</html>
