@@ -66,15 +66,14 @@ class Producto{
 }
 
 class Carrito{
-    private $cliente;
-    private $aProductos;
+    private $cliente; //objeto
+    private $aProductos; //array de objetos
     private $subTotal;
     private $total;
 
     public function __construct(){
         $this->aProductos = array();
         $this->subTotal = 0.0;
-        $this->subTotalIva = 0.0;
         $this->total = 0.0;
     }
 
@@ -114,8 +113,9 @@ class Carrito{
                             <td>$ " . number_format($producto->precio, 2, ",", ".") . "</td>
                         </tr>";
                 $this->subTotal += $producto->precio;
+                $this->total += $producto->precio * (($producto->iva / 100)+1);
               }
-              $this->total = $this->subTotal * 1.21;
+             
         echo "<tr>
                 <th>Subtotal s/IVA:</th>
                 <td>$ " . number_format($this->subTotal, 2, ",", ".") . "</td>
