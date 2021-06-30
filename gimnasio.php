@@ -30,8 +30,8 @@ class Entrenador extends Persona{
     
     private $aClases;
 
-    public function __construct($dni, $nombre, $correo, $celular) {
-        parent::__construct($dni, $nombre, $correo, $celular);
+     public function __construct($dni, $nombre, $correo, $celular) {
+        parent::__construct($dni, $nombre, $correo, $celular);//este es el constructor de la clase persona
         $this->aClases = array();
     }
 
@@ -79,9 +79,9 @@ class Alumno extends Persona {
 }
 
 class Clase{
-    private $nombre;
-    private $entrenador;
-    private $aAlumnos;
+    private $nombre;//string
+    private $entrenador;//objeto
+    private $aAlumnos;//array de objetos
 
     public function __construct() {
         $this->aAlumnos = array();
