@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 //Definición de clases
 
-class Persona {
+abstract class Persona {
     protected $dni;
     protected $nombre;
     protected $edad;
@@ -23,6 +23,7 @@ class Persona {
     public function setNacionalidad($nacionalidad){ $this->nacionalidad = $nacionalidad; }
     public function getNacionalidad(){ return $this->nacionalidad; }
 
+    abstract public function imprimir();
 }
 
 class Alumno extends Persona {
@@ -56,7 +57,7 @@ class Alumno extends Persona {
         echo "Promedio = " . $this->calcularPromedio() . "<br><br>";
     }
 
-    public function calcularPromedio(){
+    public function calcularPromedio($num1){
         $promedio = ($this->notaPortfolio + $this->notaPhp + $this->notaProyecto)/3;
         return $promedio;
     }
@@ -102,7 +103,6 @@ $alumno1->legajo = "123";
 echo "El alumno " . $alumno1->getNombre() . " tiene " . $alumno1->getEdad() . " años y su legajo es $alumno1->legajo";
 $alumno1->imprimir();
 
-exit;
 $docente = new Docente();
 $docente->nombre = "Miguel Paz";
 $docente->dni = "30987123";

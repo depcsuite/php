@@ -100,5 +100,31 @@ include_once("header.php");
 
       </div>
       <!-- End of Main Content -->
+<script>
 
+window.onload = function () {
+
+    $("#txtCantidad").change(function() {
+        let total = $("#txtPrecioUni").val() * $("#txtCantidad").val()
+        $("#txtTotal").val(total);
+    });
+
+    $("#lstProducto").change(function(){
+        idProducto = $("#lstProducto option:selected").val();
+         $.ajax({
+            type: "GET",
+            url: "venta-formulario.php?do=buscarProducto",
+            data: { id:idProducto },
+            async: true,
+            dataType: "json",
+            success: function (respuesta) {
+                strResultado = Intl.NumberFormat("es-AR", {style: 'currency', currency: 'ARS'}).format(respuesta.precio);
+                $("#txtPrecioUniCurrency").val(strResultado);
+                $("#txtPrecioUni").val(respuesta.precio);
+            }
+        });
+    });
+};
+
+</script>
 <?php include_once("footer.php"); ?>
