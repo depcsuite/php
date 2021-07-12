@@ -8,27 +8,27 @@ $pg = "Edición de cliente";
 $cliente = new Cliente();
 $cliente->cargarFormulario($_REQUEST);
 
-if($_POST){
+if ($_POST) {
 
-    if(isset($_POST["btnGuardar"])){
-        if(isset($_GET["id"]) && $_GET["id"] > 0){
-              //Actualizo un cliente existente
-              $cliente->actualizar();
+    if (isset($_POST["btnGuardar"])) {
+        if (isset($_GET["id"]) && $_GET["id"] > 0) {
+            //Actualizo un cliente existente
+            $cliente->actualizar();
         } else {
             //Es nuevo
             $cliente->insertar();
         }
-    } else if(isset($_POST["btnBorrar"])){
+    } else if (isset($_POST["btnBorrar"])) {
         $cliente->eliminar();
         header("Location: clientes-listado.php");
     }
-} 
-
-if(isset($_GET["id"]) && $_GET["id"] > 0){
-    $cliente->obtenerPorId(); 
 }
 
-include_once("header.php"); 
+if (isset($_GET["id"]) && $_GET["id"] > 0) {
+    $cliente->obtenerPorId();
+}
+
+include_once "header.php";
 ?>
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -64,34 +64,55 @@ include_once("header.php");
                     <label for="txtFechaNac" class="d-block">Fecha de nacimiento:</label>
                     <select class="form-control d-inline"  name="txtDiaNac" id="txtDiaNac" style="width: 80px">
                         <option selected="" disabled="">DD</option>
-                        <?php for($i=1; $i <= 31; $i++): ?>
-                            <?php if($cliente->fecha_nac != "" && $i == date_format(date_create($cliente->fecha_nac), "d")): ?>
+                        <?php for ($i = 1; $i <= 31; $i++): ?>
+                            <?php if ($cliente->fecha_nac != "" && $i == date_format(date_create($cliente->fecha_nac), "d")): ?>
                             <option selected><?php echo $i; ?></option>
                             <?php else: ?>
                             <option><?php echo $i; ?></option>
-                            <?php endif; ?>
-                        <?php endfor; ?>
+                            <?php endif;?>
+                        <?php endfor;?>
                     </select>
                     <select class="form-control d-inline"  name="txtMesNac" id="txtMesNac" style="width: 80px">
                         <option selected="" disabled="">MM</option>
-                        <?php for($i=1; $i <= 12; $i++): ?>
-                            <?php if($cliente->fecha_nac != "" && $i == date_format(date_create($cliente->fecha_nac), "m")): ?>
+                        <?php for ($i = 1; $i <= 12; $i++): ?>
+                            <?php if ($cliente->fecha_nac != "" && $i == date_format(date_create($cliente->fecha_nac), "m")): ?>
                             <option selected><?php echo $i; ?></option>
                             <?php else: ?>
                             <option><?php echo $i; ?></option>
-                            <?php endif; ?>
-                        <?php endfor; ?>
+                            <?php endif;?>
+                        <?php endfor;?>
                     </select>
                     <select class="form-control d-inline"  name="txtAnioNac" id="txtAnioNac" style="width: 100px">
                         <option selected="" disabled="">YYYY</option>
-                        <?php for($i=1900; $i <= date("Y"); $i++): ?>
-                         <?php if($cliente->fecha_nac != "" && $i == date_format(date_create($cliente->fecha_nac), "Y")): ?>
+                        <?php for ($i = 1900; $i <= date("Y"); $i++): ?>
+                         <?php if ($cliente->fecha_nac != "" && $i == date_format(date_create($cliente->fecha_nac), "Y")): ?>
                             <option selected><?php echo $i; ?></option>
                             <?php else: ?>
                             <option><?php echo $i; ?></option>
-                            <?php endif; ?>
-                        <?php endfor; ?> ?>
+                            <?php endif;?>
+                        <?php endfor;?> ?>
                     </select>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Domicilios
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-6 form-group">
+                            <label for="txtTelefono">Provincia:</label>
+                            <select class="form-control" name="lstProvincia" id="lstProvincia">
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="txtTelefono">Localidad:</label>
+                            <select class="form-control" name="lstLocalidad" id="lstLocalidad">
+                        </div>
+                        <div class="col-12 form-group">
+                            <label for="txtTelefono">Dirección:</label>
+                            <input type="text" class="form-control" name="txtDireccion" id="txtDireccion" value="<?php echo $cliente->direccion ?>">
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -127,4 +148,4 @@ window.onload = function () {
 };
 
 </script>
-<?php include_once("footer.php"); ?>
+<?php include_once "footer.php";?>
