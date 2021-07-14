@@ -30,7 +30,7 @@ class Tipoproducto {
         $sql = "INSERT INTO tipo_productos (
                     nombre
                 ) VALUES (
-                    '" . $this->nombre ."'
+                    '$this->nombre'
                 );";
         //Ejecuta la query
         if (!$mysqli->query($sql)) {
@@ -46,7 +46,7 @@ class Tipoproducto {
 
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE);
         $sql = "UPDATE tipo_productos SET
-                nombre = '".$this->nombre."'
+                nombre = '$this->nombre'
                 WHERE idtipoproducto = " . $this->idtipoproducto;
           
         if (!$mysqli->query($sql)) {
@@ -85,7 +85,10 @@ class Tipoproducto {
 
     public function obtenerTodos(){
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE);
-        $sql = "SELECT idtipoproducto, nombre FROM tipo_productos";
+        $sql = "SELECT 
+                    idtipoproducto, 
+                    nombre 
+                FROM tipo_productos";
         if (!$resultado = $mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
         }

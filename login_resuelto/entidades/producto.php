@@ -45,12 +45,12 @@ class Producto {
                     descripcion, 
                     imagen
                 ) VALUES (
-                    '" . $this->nombre ."', 
-                    " . $this->fk_idtipoproducto .",
-                    " . $this->cantidad .",
-                    " . $this->precio .", 
-                    '" . $this->descripcion ."',
-                    '" . $this->imagen ."'
+                    '$this->nombre', 
+                    $this->fk_idtipoproducto,
+                    $this->cantidad,
+                    $this->precio, 
+                    '$this->descripcion',
+                    '$this->imagen'
                 );";
         //Ejecuta la query
         if (!$mysqli->query($sql)) {
@@ -66,13 +66,13 @@ class Producto {
 
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE);
         $sql = "UPDATE productos SET
-                nombre = '".$this->nombre."',
-                fk_idtipoproducto = ".$this->fk_idtipoproducto.",
-                cantidad = ".$this->cantidad.",
-                precio = ".$this->precio.",
-                descripcion = '".$this->descripcion."',
-                imagen = '".$this->imagen."'
-                WHERE idproducto = " . $this->idproducto;
+                nombre = '$this->nombre',
+                fk_idtipoproducto = $this->fk_idtipoproducto,
+                cantidad = $this->cantidad,
+                precio = $this->precio,
+                descripcion = '$this->descripcion,
+                imagen = '$this->imagen'
+                WHERE idproducto = $this->idproducto";
           
         if (!$mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
@@ -116,7 +116,7 @@ class Producto {
             $this->imagen = $fila["imagen"];
         }
         $mysqli->close();
-
+        return $this;
     }
 
     public function obtenerTodos(){
@@ -129,7 +129,7 @@ class Producto {
                     precio, 
                     descripcion, 
                     imagen 
-                FROM productos";
+                FROM productos ORDER BY idproducto DESC";
         if (!$resultado = $mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
         }
@@ -149,6 +149,7 @@ class Producto {
                 $aResultado[] = $entidadAux;
             }
         }
+        $mysqli->close();
         return $aResultado;
     }
 

@@ -6,6 +6,10 @@ class Localidad{
     private $fk_idprovincia;
     private $cod_postal;
 
+    public function __construct(){
+
+    }
+
     public function __get($atributo) {
         return $this->$atributo;
     }
@@ -15,6 +19,18 @@ class Localidad{
         return $this;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+    
     public function obtenerPorProvincia($idProvincia){
         $aLocalidades = null;
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE);

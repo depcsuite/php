@@ -51,12 +51,12 @@ class Venta {
                     preciounitario,
                     total
                 ) VALUES (
-                    " . $this->fk_idcliente .", 
-                    " . $this->fk_idproducto .",
-                    '" . $this->fecha ."', 
-                    " . $this->cantidad .",
-                    " . $this->preciounitario .",
-                    " . $this->total ."
+                    $this->fk_idcliente, 
+                    $this->fk_idproducto,
+                    '$this->fecha', 
+                    $this->cantidad,
+                    $this->preciounitario,
+                    $this->total
                 );";
         //Ejecuta la query
         if (!$mysqli->query($sql)) {
