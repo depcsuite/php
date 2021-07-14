@@ -25,7 +25,7 @@ class TipoProducto {
 
     public function insertar(){
         //Instancia la clase mysqli con el constructor parametrizado
-        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE);
+        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
         //Arma la query
         $sql = "INSERT INTO tipo_productos (
                     nombre
@@ -44,7 +44,7 @@ class TipoProducto {
 
     public function actualizar(){
 
-        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE);
+        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
         $sql = "UPDATE tipo_productos SET
                 nombre = '$this->nombre'
                 WHERE idtipoproducto = " . $this->idtipoproducto;
@@ -56,7 +56,7 @@ class TipoProducto {
     }
 
     public function eliminar(){
-        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE);
+        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
         $sql = "DELETE FROM tipo_productos WHERE idtipoproducto = " . $this->idtipoproducto;
         //Ejecuta la query
         if (!$mysqli->query($sql)) {
@@ -66,7 +66,7 @@ class TipoProducto {
     }
 
     public function obtenerPorId(){
-        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE);
+        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
         $sql = "SELECT idtipoproducto, 
                         nombre
                 FROM tipo_productos 
@@ -84,7 +84,7 @@ class TipoProducto {
     }
 
     public function obtenerTodos(){
-        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE);
+        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
         $sql = "SELECT 
                     idtipoproducto, 
                     nombre 
