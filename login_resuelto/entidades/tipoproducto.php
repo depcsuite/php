@@ -1,6 +1,6 @@
 <?php
 
-class Tipoproducto {
+class TipoProducto {
     private $idtipoproducto;
     private $nombre;
 
@@ -97,7 +97,7 @@ class Tipoproducto {
         if($resultado){
             //Convierte el resultado en un array asociativo
             while($fila = $resultado->fetch_assoc()){
-                $entidadAux = new Tipoproducto();
+                $entidadAux = new TipoProducto();
                 $entidadAux->idtipoproducto = $fila["idtipoproducto"];
                 $entidadAux->nombre = $fila["nombre"];
                 $aResultado[] = $entidadAux;

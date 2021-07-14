@@ -3,8 +3,8 @@
 
 include_once "config.php";
 include_once "entidades/cliente.php";
-include_once "entidades/provincia.entidad.php";
-include_once "entidades/localidad.entidad.php";
+include_once "entidades/provincia.php";
+include_once "entidades/localidad.php";
 
 $pg = "Edición de cliente";
 
