@@ -8,6 +8,7 @@ class Venta {
     private $cantidad;
     private $preciounitario;
     private $total;
+
     private $nombre_cliente;
     private $nombre_producto;
 
@@ -72,13 +73,13 @@ class Venta {
 
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE);
         $sql = "UPDATE ventas SET
-                    fk_idcliente = ".$this->fk_idcliente.",
-                    fk_idproducto = ".$this->fk_idproducto.",
-                    fecha = '".$this->fecha."',
-                    cantidad = ".$this->cantidad.",
-                    preciounitario = ".$this->preciounitario.",
-                    total = ".$this->total."
-                WHERE idventa = " . $this->idventa;
+                    fk_idcliente = $this->fk_idcliente,
+                    fk_idproducto = $this->fk_idproducto,
+                    fecha = '$this->fecha',
+                    cantidad = $this->cantidad,
+                    preciounitario = $this->preciounitario,
+                    total = $this->total
+                WHERE idventa = $this->idventa";
 
         if (!$mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
