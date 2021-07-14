@@ -50,8 +50,8 @@
         <div id="collapseProductos" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="producto-formulario.php">Nuevo producto</a>
-            <a class="collapse-item" href="productos.php">Listado de productos</a>
-            <a class="collapse-item" href="tipoproductos.php">Tipo de productos</a>
+            <a class="collapse-item" href="producto-listado.php">Listado de productos</a>
+            <a class="collapse-item" href="tipoproducto-listado.php">Tipo de productos</a>
           </div>
         </div>
       </li>
@@ -68,7 +68,7 @@
         <div id="collapseVentas" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="venta-formulario.php">Nueva venta</a>
-            <a class="collapse-item" href="ventas.php">Listado de ventas</a>
+            <a class="collapse-item" href="venta-listado.php">Listado de ventas</a>
           </div>
         </div>
       </li>
@@ -83,7 +83,7 @@
         <div id="collapseUsuario" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="usuario-formulario.php">Nuevo usuario</a>
-            <a class="collapse-item" href="usuarios.php">Listado de usuarios</a>
+            <a class="collapse-item" href="usuario-listado.php">Listado de usuarios</a>
           </div>
         </div>
       </li>
