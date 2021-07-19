@@ -2,28 +2,6 @@
 
 include_once "config.php";
 include_once "entidades/tipoproducto.php";
-$pg = "Edición de tipo de productos";
-
-$tipoproducto = new Tipoproducto();
-$tipoproducto->cargarFormulario($_REQUEST);
-
-if($_POST){
-    if(isset($_POST["btnGuardar"])){
-        if(isset($_GET["id"]) && $_GET["id"] > 0){
-              //Actualizo un cliente existente
-              $tipoproducto->actualizar();
-        } else {
-            //Es nuevo
-            $tipoproducto->insertar();
-        }
-    } else if(isset($_POST["btnBorrar"])){
-        $tipoproducto->eliminar();
-    }
-} 
-if(isset($_GET["id"]) && $_GET["id"] > 0){
-    $tipoproducto->obtenerPorId();
- 
-}
 
 include_once("header.php"); 
 ?>
