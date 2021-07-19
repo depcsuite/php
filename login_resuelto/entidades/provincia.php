@@ -36,7 +36,7 @@ class Provincia
                 $entidad = new Provincia();
                 $entidad->idprovincia = $fila["idprovincia"];
                 $entidad->nombre = $fila["nombre"];
-                $aProvincias[] = $entidad;
+                $aResultado[] = $entidad;
 
             }
         }

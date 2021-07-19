@@ -21,20 +21,8 @@ if($_POST){
             //Es nuevo
             $cliente->insertar();
         }
-        if(isset($_POST["txtTipo"])){
-            $domicilio = new Domicilio();
-            $domicilio->eliminarPorCliente($cliente->idcliente);
-            for($i=0; $i < count($_POST["txtTipo"]); $i++){
-                $domicilio->fk_idcliente = $cliente->idcliente; 
-                $domicilio->fk_tipo = $_POST["txtTipo"][$i];
-                $domicilio->fk_idlocalidad =  $_POST["txtLocalidad"][$i];
-                $domicilio->domicilio = $_POST["txtDomicilio"][$i];
-                $domicilio->insertar();
-            }
-        }
+
     } else if(isset($_POST["btnBorrar"])){
-        $domicilio = new Domicilio();
-        $domicilio->eliminarPorCliente($cliente->idcliente);
         $cliente->eliminar();
         header("Location: clientes.php");
     }
@@ -51,41 +39,8 @@ if(isset($_GET["do"]) && $_GET["do"] == "buscarLocalidad" && $_GET["id"] && $_GE
 
 }
 
- if(isset($_GET["do"]) && $_GET["do"] == "cargarGrilla"){
-        $idCliente = $_GET['idCliente'];
-        $request = $_REQUEST;
-
-        $entidad = new Domicilio();
-        $aDomicilio = $entidad->obtenerFiltrado($idCliente);
-
-        $data = array();
-
-        if (count($aDomicilio) > 0)
-            $cont=0;
-            for ($i=0; $i < count($aDomicilio); $i++) {
-                $row = array();
-                $row[] = $aDomicilio[$i]->tipo;
-                $row[] = $aDomicilio[$i]->provincia;
-                $row[] = $aDomicilio[$i]->localidad;
-                $row[] = $aDomicilio[$i]->domicilio;
-                $cont++;
-                $data[] = $row;
-            }
-
-        $json_data = array(
-            "draw" => isset($request['draw'])?intval($request['draw']):0,
-            "recordsTotal" => count($aDomicilio), //cantidad total de registros sin paginar
-            "recordsFiltered" => count($aDomicilio),//cantidad total de registros en la paginacion
-            "data" => $data
-        );
-        echo json_encode($json_data);
-        exit;
-    }
-
-
 $provincia = new Provincia();
 $aProvincias = $provincia->obtenerTodos();
-
 
 include_once("header.php"); 
 ?>
@@ -153,26 +108,35 @@ include_once("header.php");
                     </select>
                 </div>
             </div>
+            <div class="row">
             <div class="col-12">
                 <div class="card mb-3">
                     <div class="card-header">
                         <i class="fa fa-table"></i> Domicilios
                     </div>
-                    <div class="panel-body">
+                    <div class="row panel-body p-3">
                         <div class="col-6 form-group">
                             <label for="txtTelefono">Provincia:</label>
                             <select class="form-control" name="lstProvincia" id="lstProvincia">
+                                <option value="" disabled selected>Seleccionar</option>
+                                <?php foreach($aProvincias as $provincia): ?>
+                                    <option id="<?php echo $provincia->idprovincia; ?>"><?php echo $provincia->nombre; ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                         <div class="col-6 form-group">
                             <label for="txtTelefono">Localidad:</label>
                             <select class="form-control" name="lstLocalidad" id="lstLocalidad">
+                                <option value="" disabled selected>Seleccionar</option>
+                            </select>
                         </div>
                         <div class="col-12 form-group">
                             <label for="txtTelefono">Dirección:</label>
-                            <input type="text" class="form-control" name="txtDireccion" id="txtDireccion" value="<?php echo $cliente->direccion ?>">
+                            <input type="text" class="form-control" name="txtDomicilio" id="txtDomicilio" value="<?php echo $cliente->domicilio ?>">
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
 
         </div>
@@ -184,17 +148,6 @@ include_once("header.php");
 $(document).ready( function () {
     var idCliente = '<?php echo isset($cliente) && $cliente->idcliente > 0? $cliente->idcliente : 0 ?>';
 
-   var dataTable = $('#grilla').DataTable({
-        "processing": true,
-        "serverSide": false,
-        "bFilter": false,
-        "bInfo": true,
-        "bSearchable": false,
-        "paging": false,
-        "pageLength": 25,
-        "order": [[ 0, "asc" ]],
-        "ajax": "cliente-formulario.php?do=cargarGrilla&idCliente=" + idCliente
-    });
 } );
 
  function fBuscarLocalidad(){
