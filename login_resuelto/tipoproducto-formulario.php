@@ -10,7 +10,7 @@ $tipoproducto->cargarFormulario($_REQUEST);
 if($_POST){
     if(isset($_POST["btnGuardar"])){
         if(isset($_GET["id"]) && $_GET["id"] > 0){
-              //Actualizo un cliente existente
+              //Actualizo un  registro existente
               $tipoproducto->actualizar();
         } else {
             //Es nuevo
@@ -20,10 +20,7 @@ if($_POST){
         $tipoproducto->eliminar();
     }
 } 
-if(isset($_GET["id"]) && $_GET["id"] > 0){
-    $tipoproducto->obtenerPorId();
- 
-}
+
 
 include_once("header.php"); 
 ?>

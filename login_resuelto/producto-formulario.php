@@ -1,37 +1,64 @@
 <?php
 
-include_once("config.php");
-include_once("entidades/tipoproducto.php");
-include_once("entidades/producto.php");
+include_once "config.php";
+include_once "entidades/producto.php";
+include_once "entidades/tipoproducto.php";
 
-$tipoProducto = new TipoProducto();
-$aTipoProductos = $tipoProducto->obtenerTodos();
+$pg = "Edición de producto";
 
 $producto = new Producto();
 $producto->cargarFormulario($_REQUEST);
 
-$pg = "Listado de productos";
-
 if ($_POST) {
     if (isset($_POST["btnGuardar"])) {
+        $nombreImagen = "";
+        if ($_FILES["imagen"]["error"] === UPLOAD_ERR_OK) {
+            $nombreRandom = date("Ymdhmsi");
+            $archivoTmp = $_FILES["imagen"]["tmp_name"];
+            $nombreArchivo = $_FILES["imagen"]["name"];
+            $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+            $nombreImagen = "$nombreRandom.$extension";
+            move_uploaded_file($archivoTmp, "files/$nombreImagen");
+        }
+
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
-            //Actualizo un producto existente
+            $productoAnt = new Producto();
+            $productoAnt->idproducto = $_GET["id"];
+            $productoAnt->obtenerPorId();
+            $imagenAnterior = $productoAnt->imagen;
+
+            //Si es una actualizacion y se sube una imagen, elimina la anterior
+            if ($_FILES["imagen"]["error"] === UPLOAD_ERR_OK) {
+                if (!$imagenAnterior != "") {
+                    unlink($imagenAnterior);
+                }
+            } else {
+                //Si no viene ninguna imagen, setea como imagen la que habia previamente
+                $nombreImagen = $imagenAnterior;
+            }
+
+            $producto->imagen = $nombreImagen;
+            //Actualizo un cliente existente
             $producto->actualizar();
         } else {
             //Es nuevo
+            $producto->imagen = $nombreImagen;
             $producto->insertar();
         }
-
     } else if (isset($_POST["btnBorrar"])) {
         $producto->eliminar();
         header("Location: producto-listado.php");
     }
 }
+if (isset($_GET["id"]) && $_GET["id"] > 0) {
+    $producto->obtenerPorId();
+    header("Location: producto-listado.php");
+}
 
-
+$tipoProducto = new Tipoproducto();
+$aTipoProductos = $tipoProducto->obtenerTodos();
 
 include_once "header.php";
-
 ?>
 
         <!-- Begin Page Content -->
@@ -54,14 +81,18 @@ include_once "header.php";
                 </div>
                 <div class="col-6 form-group">
                     <label for="txtNombre">Tipo de producto:</label>
-                    <select name="lstTipoProducto" id="lstTipoProducto" class="form-control selectpicker" data-live-search="true">
+                    <select name="lstTipoProducto" id="lstTipoProducto" class="form-control selectpicker" data-live-search="true" required>
                         <option value="" disabled selected>Seleccionar</option>
-                        <?php foreach($aTipoProductos as $tipo): ?>
-                            <option value="<?php echo $tipo->idtipoproducto; ?>"><?php echo $tipo->nombre; ?></option>
-                        <?php endforeach; ?>
+                        <?php foreach ($aTipoProductos as $tipo): ?>
+                            <?php if ($tipo->idtipoproducto == $producto->fk_idtipoproducto): ?>
+                                <option selected value="<?php echo $tipo->idtipoproducto; ?>"><?php echo $tipo->nombre; ?></option>
+                            <?php else: ?>
+                                <option value="<?php echo $tipo->idtipoproducto; ?>"><?php echo $tipo->nombre; ?></option>
+                            <?php endif;?>
+                        <?php endforeach;?>
                     </select>
                 </div>
-         
+
                 <div class="col-6 form-group">
                     <label for="txtCantidad">Cantidad:</label>
                     <input type="number" required="" class="form-control" name="txtCantidad" id="txtCantidad" value="<?php echo $producto->cantidad; ?>">
@@ -93,4 +124,4 @@ include_once "header.php";
             console.error( error );
             } );
         </script>
-<?php include_once("footer.php"); ?>
+<?php include_once "footer.php";?>
