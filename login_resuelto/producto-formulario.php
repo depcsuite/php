@@ -57,11 +57,7 @@ include_once "header.php";
                     <select name="lstTipoProducto" id="lstTipoProducto" class="form-control selectpicker" data-live-search="true">
                         <option value="" disabled selected>Seleccionar</option>
                         <?php foreach($aTipoProductos as $tipo): ?>
-                            <?php if($tipo->idtipoproducto == $producto->fk_idtipoproducto): ?>
-                                <option selected value="<?php echo $tipo->idtipoproducto; ?>"><?php echo $tipo->nombre; ?></option>
-                            <?php else: ?>
-                                <option value="<?php echo $tipo->idtipoproducto; ?>"><?php echo $tipo->nombre; ?></option>
-                            <?php endif; ?>
+                            <option value="<?php echo $tipo->idtipoproducto; ?>"><?php echo $tipo->nombre; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
