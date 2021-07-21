@@ -6,13 +6,10 @@ include_once "entidades/cliente.php";
 include_once "entidades/provincia.php";
 include_once "entidades/localidad.php";
 
-$pg = "Edición de cliente";
-
 $cliente = new Cliente();
 $cliente->cargarFormulario($_REQUEST);
 
 if($_POST){
-
     if(isset($_POST["btnGuardar"])){
         if(isset($_GET["id"]) && $_GET["id"] > 0){
               //Actualizo un cliente existente
@@ -51,7 +48,7 @@ include_once("header.php");
           <h1 class="h3 mb-4 text-gray-800">Cliente</h1>
             <div class="row">
                 <div class="col-12 mb-3">
-                    <a href="clientes.php" class="btn btn-primary mr-2">Listado</a>
+                    <a href="cliente-listado.php" class="btn btn-primary mr-2">Listado</a>
                     <a href="cliente-formulario.php" class="btn btn-primary mr-2">Nuevo</a>
                     <button type="submit" class="btn btn-success mr-2" id="btnGuardar" name="btnGuardar">Guardar</button>
                     <button type="submit" class="btn btn-danger" id="btnBorrar" name="btnBorrar">Borrar</button>
@@ -120,7 +117,7 @@ include_once("header.php");
                             <select class="form-control" name="lstProvincia" id="lstProvincia">
                                 <option value="" disabled selected>Seleccionar</option>
                                 <?php foreach($aProvincias as $provincia): ?>
-                                    <option id="<?php echo $provincia->idprovincia; ?>"><?php echo $provincia->nombre; ?></option>
+                                    <option value="<?php echo $provincia->idprovincia; ?>"><?php echo $provincia->nombre; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -128,6 +125,7 @@ include_once("header.php");
                             <label for="txtTelefono">Localidad:</label>
                             <select class="form-control" name="lstLocalidad" id="lstLocalidad">
                                 <option value="" disabled selected>Seleccionar</option>
+                                <option value="1">CABA</option>
                             </select>
                         </div>
                         <div class="col-12 form-group">
