@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="css/fontawesome/css/fontawesome.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Contacto</h1>
+        <form action="" method="POST">
+            <div>
+                <label for="txtNombre">Nombre: *</label>
+                <input type="text" name="txtNombre" id="txtNombre" required" class="form-control">
+            </div>
+            <div>
+                <label for="txtCorreo">Correo: *</label>
+                <input type="email" name="txtCorreo" id="txtCorreo" required class="form-control">
+            </div>
+            <div>
+                <label for="txtTelefono">Teléfono:</label>
+                <input type="tel" name="txtTelefono" id="txtTelefono" placeholder="(011) 9999-9999" class="form-control">
+            </div>
+            <div>
+                <label for="txtFechaNac">Fecha de nacimiento:</label>
+                <input type="date" name="txtFechaNac" id="txtFechaNac" class="form-control">
+            </div>
+            <div>
+                <label for="lstPais">País de origen:</label>
+                <select name="lstPais" id="lstPais" class="form-control">
+                    <optgroup label="Sudamerica">
+                        <option value="54">Argentina</option>
+                        <option value="55">Brasil</option>
+                        <option value="57">Colombia</option>
+                    </optgroup>
+                    <optgroup label="Europa">
+                        <option value="34">España</option>
+                        <option value="33">Francia</option>
+                        <option value="49">Alemania</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div>
+                <label for="lstAsunto">Asunto: *</label>
+                <select name="lstAsunto" id="lstAsunto" required class="form-control">
+                    <option value="" disabled selected>Seleccionar</option>
+                    <option value="ventas">Ventas</option>
+                    <option value="soporte">Soporte</option>
+                    <option value="webmaster">Webmaster</option>
+                </select>
+            </div>
+            <div>
+                <label for="txtMensaje">Mensaje: *</label>
+                <textarea name="txtMensaje" id="txtMensaje" cols="30" rows="10" required class="form-control"></textarea>
+            </div>
+            <div>
+                <input type="checkbox" name="chkNewsletter" id="chkNewsletter" checked>
+                <label for="chkNewsletter">Deseo recibir mensajes sobre novedades</label>
+            </div>
+            <div>
+                <input type="checkbox" name="chkCondiciones" id="chkCondiciones">
+                <label for="chkCondiciones">Acepto términos y condiciones</label>
+            </div>
+            <div>
+                <label>¿Sos mayor de edad?</label>
+
+                <label for="optMayorSi">Sí </label>
+                <input type="radio" name="optMayorEdad" id="optMayorSi">
+
+                <label for="optMayorNo">No </label>
+                <input type="radio" name="optMayorEdad" id="optMayorNo">
+            </div>
+            <div>
+                <button type="submit" name="btnEnviar" id="btnEnviar">ENVIAR</button>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <div class="redes mx-auto">
+            <a href="https://api.whatsapp.com/send?phone=541162423341" target="_blank"
+                title="Enviar mensaje directo Whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" title="Youtube"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+</body>
+
+</html>
