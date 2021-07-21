@@ -18,22 +18,10 @@ class Localidad{
         $this->$atributo = $valor;
         return $this;
     }
-
-
-
-
-
-
-
-
-
-
-
-
     
     public function obtenerPorProvincia($idProvincia){
         $aLocalidades = null;
-        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE);
+        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
         $sql = "SELECT 
             idlocalidad,
             nombre, 
