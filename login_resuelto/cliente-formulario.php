@@ -9,6 +9,8 @@ include_once "entidades/localidad.php";
 $cliente = new Cliente();
 $cliente->cargarFormulario($_REQUEST);
 
+$pg = "Listado de clientes";
+
 if($_POST){
     if(isset($_POST["btnGuardar"])){
         if(isset($_GET["id"]) && $_GET["id"] > 0){
@@ -114,7 +116,7 @@ include_once("header.php");
                     <div class="row panel-body p-3">
                         <div class="col-6 form-group">
                             <label for="txtTelefono">Provincia:</label>
-                            <select class="form-control" name="lstProvincia" id="lstProvincia">
+                            <select class="form-control" name="lstProvincia" id="lstProvincia" onchange="fBuscarLocalidad()">
                                 <option value="" disabled selected>Seleccionar</option>
                                 <?php foreach($aProvincias as $provincia): ?>
                                     <option value="<?php echo $provincia->idprovincia; ?>"><?php echo $provincia->nombre; ?></option>
