@@ -33,10 +33,11 @@ if(isset($_GET["do"]) && $_GET["do"] == "buscarLocalidad" && $_GET["id"] && $_GE
     $aLocalidad = $localidad->obtenerPorProvincia($idProvincia);
     echo json_encode($aLocalidad);
     exit;
-} else if(isset($_GET["id"]) && $_GET["id"] > 0){
+} 
+if(isset($_GET["id"]) && $_GET["id"] > 0){
     $cliente->obtenerPorId();
-
 }
+
 
 $provincia = new Provincia();
 $aProvincias = $provincia->obtenerTodos();
@@ -119,7 +120,11 @@ include_once("header.php");
                             <select class="form-control" name="lstProvincia" id="lstProvincia" onchange="fBuscarLocalidad()" required>
                                 <option value="" disabled selected>Seleccionar</option>
                                 <?php foreach($aProvincias as $provincia): ?>
-                                    <option value="<?php echo $provincia->idprovincia; ?>"><?php echo $provincia->nombre; ?></option>
+                                    <?php if($cliente->fk_idprovincia == $provincia->idprovincia): ?>
+                                        <option selected value="<?php echo $provincia->idprovincia; ?>"><?php echo $provincia->nombre; ?></option>
+                                    <?php else: ?>
+                                        <option value="<?php echo $provincia->idprovincia; ?>"><?php echo $provincia->nombre; ?></option>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             </select>
                         </div>

@@ -47,12 +47,12 @@ if ($_POST) {
         }
     } else if (isset($_POST["btnBorrar"])) {
         $producto->eliminar();
-        header("Location: producto-listado.php");
+        header("Location: productos.php");
     }
 }
 if (isset($_GET["id"]) && $_GET["id"] > 0) {
     $producto->obtenerPorId();
-    header("Location: producto-listado.php");
+
 }
 
 $tipoProducto = new Tipoproducto();
@@ -84,9 +84,11 @@ include_once "header.php";
                     <select name="lstTipoProducto" id="lstTipoProducto" class="form-control selectpicker" data-live-search="true" required>
                         <option value="" disabled selected>Seleccionar</option>
                         <?php foreach ($aTipoProductos as $tipo): ?>
-                  
+                            <?php if ($tipo->idtipoproducto == $producto->fk_idtipoproducto): ?>
+                                <option selected value="<?php echo $tipo->idtipoproducto; ?>"><?php echo $tipo->nombre; ?></option>
+                            <?php else: ?>
                                 <option value="<?php echo $tipo->idtipoproducto; ?>"><?php echo $tipo->nombre; ?></option>
-                      
+                            <?php endif;?>
                         <?php endforeach;?>
                     </select>
                 </div>
