@@ -8,5 +8,7 @@ sistema_ventas/tipoproducto-listado.php
 sistema_ventas/tipoproducto-formulario.php
 sistema_ventas/venta-listado.php
 sistema_ventas/venta-formulario.php
+sistema_ventas/usuario-listado.php
+sistema_ventas/usuario-formulario.php
 sistema_ventas/reporte.php
 sistema_ventas/reporte.xls
