@@ -1,0 +1,12 @@
+sistema_ventas/entidades/producto.php
+sistema_ventas/entidades/tipoproducto.php
+sistema_ventas/entidades/venta.php
+sistema_ventas/files/*
+sistema_ventas/producto-listado.php
+sistema_ventas/producto-formulario.php
+sistema_ventas/tipoproducto-listado.php
+sistema_ventas/tipoproducto-formulario.php
+sistema_ventas/venta-listado.php
+sistema_ventas/venta-formulario.php
+sistema_ventas/reporte.php
+sistema_ventas/reporte.xls
