@@ -21,7 +21,7 @@ if ($_POST) {
         }
     } else if (isset($_POST["btnBorrar"])) {
         $usuario->eliminar();
-        header("Location: usuarios.php");
+        header("Location: usuario-listado.php");
     }
 }
 
@@ -39,7 +39,7 @@ include_once "header.php";
           <h1 class="h3 mb-4 text-gray-800">Usuario</h1>
             <div class="row">
                 <div class="col-12 mb-3">
-                    <a href="usuarios.php" class="btn btn-primary mr-2">Listado</a>
+                    <a href="usuario-listado.php" class="btn btn-primary mr-2">Listado</a>
                     <a href="usuario-formulario.php" class="btn btn-primary mr-2">Nuevo</a>
                     <button type="submit" class="btn btn-success mr-2" id="btnGuardar" name="btnGuardar">Guardar</button>
                     <button type="submit" class="btn btn-danger" id="btnBorrar" name="btnBorrar">Borrar</button>
@@ -64,7 +64,7 @@ include_once "header.php";
                 </div>
                 <div class="col-6 form-group">
                     <label for="txtCorreo">Clave:</label>
-                    <input type="password" class="form-control" name="txtClave" id="txtClave" required value="">
+                    <input type="password" class="form-control" name="txtClave" id="txtClave" value="">
                     <small>Completar únicamente para cambiar la clave</small>
                 </div>
             </div>
