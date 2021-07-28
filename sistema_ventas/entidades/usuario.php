@@ -25,7 +25,7 @@ class Usuario {
     public function cargarFormulario($request){
         $this->idusuario = isset($request["id"])? $request["id"] : "";
         $this->usuario = isset($request["txtUsuario"])? $request["txtUsuario"] : "";
-        $this->clave = isset($request["txtClave"])? $request["txtClave"] : "";
+        $this->clave = isset($request["txtClave"])? $this->encriptarClave($request["txtClave"]) : "";
         $this->nombre = isset($request["txtNombre"])? $request["txtNombre"] : "";
         $this->apellido = isset($request["txtApellido"])? $request["txtApellido"]: "";
         $this->correo = isset($request["txtCorreo"])? $request["txtCorreo"]: "";

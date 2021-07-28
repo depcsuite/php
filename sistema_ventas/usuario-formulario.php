@@ -60,7 +60,12 @@ include_once "header.php";
                 </div>
                 <div class="col-6 form-group">
                     <label for="txtCorreo">Correo:</label>
-                    <input type="" class="form-control" name="txtCorreo" id="txtCorreo" required value="<?php echo $usuario->correo ?>">
+                    <input type="email" class="form-control" name="txtCorreo" id="txtCorreo" required value="<?php echo $usuario->correo ?>">
+                </div>
+                <div class="col-6 form-group">
+                    <label for="txtCorreo">Clave:</label>
+                    <input type="password" class="form-control" name="txtClave" id="txtClave" required value="">
+                    <small>Completar únicamente para cambiar la clave</small>
                 </div>
             </div>
         </div>
