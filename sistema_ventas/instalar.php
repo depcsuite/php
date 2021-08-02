@@ -4,11 +4,12 @@ include_once "config.php";
 include_once "entidades/usuario.php";
 
 $usuario = new Usuario();
-$usuario->usuario = "ntarche";
+$usuario->usuario = "admin";
 $usuario->clave = $usuario->encriptarClave("admin123");
-$usuario->nombre = "Nelson Daniel";
-$usuario->apellido = "Tarche";
-$usuario->correo = "nelson.tarche@gmail.com";
+$usuario->nombre = "Administrador";
+$usuario->apellido = "";
+$usuario->correo = "admin@correo.com";
 $usuario->insertar();
+
 echo "Usuario insertado.";
 ?>
