@@ -58,9 +58,9 @@ $aProductos[] = array("nombre" => "Taza blanca",
                         <th>Precio</th>
                         <th>Acción</th>
                     </tr>
-                    <tr>
+            
                       <?php
-                        $subtotal = 0;
+             
                         for($i = 0; $i < count($aProductos); $i++){
                             echo "<tr>";
                             echo "<td>" . $aProductos[$i]["nombre"] . "</td>";
@@ -68,16 +68,15 @@ $aProductos[] = array("nombre" => "Taza blanca",
                             echo "<td>" . $aProductos[$i]["modelo"] . "</td>";
                             echo "<td>" . $aProductos[$i]["stock"] . "</td>";
                             echo "<td> $" . $aProductos[$i]["precio"] . "</td>";
-                            echo "<td><button class='btn btn-primary'>Comprar</button></td>";
+                            echo "<td><button class=\"btn btn-primary\">Comprar</button></td>";
                             echo "</tr>";
-                            $subtotal += $aProductos[$i]["precio"]; //$subtotal = $subtotal + $aProductos[$i]["precio"];
-
+                     
                         }
 
                         ?>
-                    </tr>
+           
                 </table>
-                <h2>El subtotal es: $ <?php echo $subtotal; ?></h2>
+          
             </div>
         </div>
     </div>

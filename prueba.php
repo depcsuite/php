@@ -1,55 +1,79 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$aProductos = array();
+$aProductos[] = array("nombre" => "Smart TV 55\" 4K UHD",
+    "marca" => "Hitachi",
+    "modelo" => "554KS20",
+    "stock" => 60,
+    "precio" => 58000,
+);
+$aProductos[] = array("nombre" => "Samsung Galaxy A30 Blanco",
+    "marca" => "Samsung",
+    "modelo" => "Galaxy A30",
+    "stock" => 0,
+    "precio" => 22000,
+);
+$aProductos[] = array("nombre" => "Aire Acondicionado Split Inverter Frío/Calor Surrey 2900F",
+    "marca" => "Surrey",
+    "modelo" => "553AIQ1201E",
+    "stock" => 5,
+    "precio" => 45000,
+);
+
+$aProductos[] = array("nombre" => "Taza blanca",
+    "marca" => "Circa",
+    "modelo" => "3486",
+    "stock" => 50,
+    "precio" => 100,
+);
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artículos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Listado de productos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
-<script>
-    let aProductos = new Array(
-        ["Yerba", 200],
-        ["Azúcar", 50],
-        ["Tallarines", 80],
-        ["Leche", 40]
-    );
-
-    function actualizarPrecios(aValores, porcentaje){
-        return aValores.map(function(numero) {
-            return new Array(numero[0], numero[1] * ((porcentaje/100)+1));
-        });
-
-    }
-
-    function imprimirPoductos(aArticulos) {
-        document.write(`<main class="container">
+<body>
+    <div class="container">
         <div class="row">
-            <div class="col-12 py-5">
-                <h1>Lista actualizada de precios</h1>
+            <div class="col-12 text-center p-5">
+                <h1>Listado de productos</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <table class="table table-hover border">
-                    <tr><th>Producto</th><th>Precio</th></tr>`);
-                aArticulos.forEach(function(value, index) {
-                    document.write(`<tr><td>${value[0]}</td><td>${value[1].toFixed(2)}</td></tr>`);
-                });
-   
-           document.write(`
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Stock</th>
+                        <th>Precio</th>
+                        <th>Acción</th>
+                    </tr>
+
+                      <?php
+
+                        for ($i = 0; $i < count($aProductos); $i++) { ?>
+                            <tr>
+                            <td><?php echo $aProductos[$i]["nombre"] ; ?></td>
+                            <td><?php echo $aProductos[$i]["precio"] ; ?></td>
+                            <td><?php echo $aProductos[$i]["modelo"] ; ?></td>
+                            <td><?php echo $aProductos[$i]["marca"] ; ?></td>
+                            </tr>
+
+                       <?php } ?>
+
                 </table>
+
             </div>
         </div>
-    </main>`);
-    }
-
-    //Programa
-     aProductos = actualizarPrecios(aProductos, 10);
-    imprimirPoductos(aProductos);
-
-</script>
-<body>
-    
+    </div>
 </body>
 </html>
