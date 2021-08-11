@@ -70,7 +70,8 @@ $aProductos[] = array("nombre" => "Taza blanca",
                             echo "<td> $" . $aProductos[$i]["precio"] . "</td>";
                             echo "<td><button class=\"btn btn-primary\">Comprar</button></td>";
                             echo "</tr>";
-                     
+                            $subtotal += $aProductos[$contador]["precio"];
+
                         }
 
                         ?>
