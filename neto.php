@@ -12,6 +12,4 @@ function calcularNeto($bruto){
 echo "El sueldo neto es " . calcularNeto(50000);
 
 
-
-
 ?>

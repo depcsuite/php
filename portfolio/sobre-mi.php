@@ -22,7 +22,7 @@ $pg = "sobre-mi";
 </head>
 
 <body id="sobre-mi">
-    <?php include_once("header.php"); ?>
+<?php include_once("header.php"); ?>
     <main>
         <div class="container">
             <div class="row">

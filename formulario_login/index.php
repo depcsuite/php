@@ -8,6 +8,7 @@ if($_POST){ /* es postback ? */
     $usuario = $_REQUEST["txtUsuario"];
     $clave = $_REQUEST["txtClave"];
 
+    //Si usuario es distinto de vacio Y clave es distinto de vacio, entonces:
     if($usuario != "" && $clave != ""){
         header("Location: acceso-confirmado.php");
     } else {
@@ -32,7 +33,7 @@ if($_POST){ /* es postback ? */
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12"> 
                 <?php if (isset($mensaje) && $mensaje != ""): ?>
                     <div class="alert alert-danger" role="alert"><?php echo $mensaje; ?></div>
                 <?php endif; ?>

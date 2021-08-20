@@ -3,12 +3,17 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$aClientes = array(
-    array("dni" => "33300012", "nombre" => "Ana Valle"), //Posición 0
-    array("dni" => "33300013", "nombre" => "Bernabe"), //Posición 1
-);
-
-foreach ($aClientes as $pos => $cliente) {
-    echo "El cliente $pos es ". $cliente["nombre"];
-
-}
+header("Location: https://google.com.ar");
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    HOLA
+</body>
+</html>

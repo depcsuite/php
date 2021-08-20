@@ -16,12 +16,14 @@ if($_POST){
 
     //Si viene el precio SIN iva
     if($precioSinIva > 0 && $precioConIva == ""){
+       //Precio con IVA = importe * (21/100+1)
        $resPrecioConIva  = $precioSinIva * ($iva/100+1);
        $resPrecioSinIva = $precioSinIva;
        $resIvaCantidad =  $resPrecioConIva - $resPrecioSinIva;
     }
     //Si viene el precio CON iva
     if($precioConIva > 0 && $precioSinIva == ""){
+        //Precio sin IVA = importe / (21/100+1)
         $resPrecioSinIva = $precioConIva / ($iva/100+1);
         $resPrecioConIva = $precioConIva;
         $resIvaCantidad = $resPrecioConIva - $resPrecioSinIva;
