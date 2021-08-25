@@ -3,17 +3,23 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-header("Location: https://google.com.ar");
+
+function maximo($aVector){
+    $maximo = 0;
+    foreach ($aVector as $item) {
+        if ($item > $maximo) {
+            $maximo = $item;
+        }
+    }
+    return $maximo;
+}
+
+
+$aNotas = array(8, 4, 5, 3, 9, 1);
+$aSueldo = array(800.30, 400.87, 500.45, 300, 900.70, 100, 900, 1800);
+
+echo "El maximo es: " . $maximo($aNotas) . "<br>";
+echo "El maximo es: " . maximo($aSueldo) . "<br>";
+
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    HOLA
-</body>
-</html>

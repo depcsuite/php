@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 
 //Definición
 function print_f($variable){
@@ -18,5 +22,7 @@ $aNotas = array(8, 5, 7, 9, 10, 9);
 $msg = "Este es un mensaje";
 
 print_f($aNotas);
+
+echo "Archivo generado";
 
 ?>
