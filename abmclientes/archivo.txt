@@ -1,1 +1,1 @@
-[{"dni":"33300012","nombre":"NELSON DANIEL TARCHE","telefono":"01162423341","correo":"nelson.tarche@gmail.com"}]
+[{"dni":"33300012","nombre":"Nelson Daniel Tarche","telefono":"01162423341","correo":"nelson.tarche@gmail.com","imagen":"2021090112094937.png"}]

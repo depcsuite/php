@@ -4,7 +4,7 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 ini_set('error_reporting', E_ALL);
 
-if(file_exists("archivo.txt")){
+if (file_exists("archivo.txt")) {
     //Leer el archivo y almacenar su contenido json en  $jSonClientes
     $jsonClientes = file_get_contents("archivo.txt");
 
@@ -14,25 +14,61 @@ if(file_exists("archivo.txt")){
     $aClientes = array();
 }
 
-$id = isset($_REQUEST["id"])? $_REQUEST["id"] : "";
+$id = isset($_REQUEST["id"]) ? $_REQUEST["id"] : "";
 
-if($_POST){
+if ($_POST) {
     $dni = trim($_REQUEST["txtDni"]);
     $nombre = trim($_REQUEST["txtNombre"]);
     $telefono = trim($_REQUEST["txtTelefono"]);
     $correo = trim($_REQUEST["txtCorreo"]);
+    $imagen = "";
 
-    $aClientes[] = array("dni" => $dni, 
-                        "nombre" => $nombre,
-                        "telefono" => $telefono,
-                        "correo" => $correo
-                    );
+    if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {
+        $nombreAleatorio = date("Ymdhmsi"); //2021010420453710
+        $archivo_tmp = $_FILES["archivo"]["tmp_name"];
+        $nombreArchivo = $_FILES["archivo"]["name"];
+        $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+        $imagen = "$nombreAleatorio.$extension";
+        move_uploaded_file($archivo_tmp, "imagenes/$imagen");
+    }
+
+    if ($id != "") {
+        //Actualizar cliente
+        if ($_FILES["archivo"]["error"] !== UPLOAD_ERR_OK) {
+            $imagen = $aClientes[$id]["imagen"];
+        } else {
+            //Si está subiendo una nueva imagen, debe eliminar la imagen anterior
+            unlink("imagenes/". $aClientes[$id]["imagen"]);
+        }
+
+        $aClientes[$id] = array("dni" => $dni,
+            "nombre" => $nombre,
+            "telefono" => $telefono,
+            "correo" => $correo,
+            "imagen" => $imagen
+        );
+    } else {
+        //Insertar nuevo cliente
+        $aClientes[] = array("dni" => $dni,
+            "nombre" => $nombre,
+            "telefono" => $telefono,
+            "correo" => $correo,
+            "imagen" => $imagen
+        );
+    }
     //Convertir el array a json y almacenarlo en una variable $jSonClientes
     $jsonClientes = json_encode($aClientes);
 
     //Almacenar el contenido de la variable json en el archivo.txt
     file_put_contents("archivo.txt", $jsonClientes);
+    header("Location: index.php");
+}
 
+if($id != "" && isset($_REQUEST["do"]) && $_REQUEST["do"] == "eliminar"){
+    unset($aClientes[$id]);
+    $jsonClientes = json_encode($aClientes);
+    file_put_contents("archivo.txt", $jsonClientes);
+    header("Location: index.php");
 }
 
 ?>
@@ -65,7 +101,7 @@ if($_POST){
                         <?php endif;?>
                         <div class="col-12 form-group">
                             <label for="txtDni">DNI: *</label>
-                            <input type="text" id="txtDni" name="txtDni" class="form-control" required value="<?php echo isset($aClientes[$id]["dni"])?$aClientes[$id]["dni"] : ""; ?>">
+                            <input type="text" id="txtDni" name="txtDni" class="form-control" required value="<?php echo isset($aClientes[$id]["dni"]) ? $aClientes[$id]["dni"] : ""; ?>">
                         </div>
                         <div class="col-12 form-group">
                             <label for="txtNombre">Nombre: *</label>
@@ -105,18 +141,18 @@ if($_POST){
                         <th>Acciones</th>
                     </tr>
 
-                    <?php foreach ($aClientes as $pos => $cliente): ?>   
+                    <?php foreach ($aClientes as $pos => $cliente): ?>
                     <tr>
-                        <td><img src=""></td>
+                        <td><img src="imagenes/<?php echo $cliente["imagen"]; ?>" class="img-thumbnail"></td>
                         <td><?php echo $cliente["dni"]; ?></td>
                         <td><?php echo $cliente["nombre"]; ?></td>
                         <td><?php echo $cliente["correo"]; ?></td>
                         <td style="width: 110px;">
                             <a href="<?php echo "?id=$pos"; ?>"><i class="fas fa-edit"></i></a>
-                            <a href=""><i class="fas fa-trash-alt"></i></a>
+                            <a href="<?php echo "?id=$pos&do=eliminar"; ?>"><i class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>
-                    <?php endforeach; ?>
+                    <?php endforeach;?>
                 </table>
                 <a href="index.php"><i class="fas fa-plus"></i></a>
             </div>
