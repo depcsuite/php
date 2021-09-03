@@ -129,7 +129,7 @@ $alumno2->setNombre("Matías Diaz");
 $alumno2->setNacionalidad("Colombiano");
 $alumno2->notaPortfolio = 9;
 $alumno2->notaPhp = 9;
-$alumno1->notaProyecto = 8;
+$alumno2->notaProyecto = 8;
 $alumno2->imprimir();
 
 $docente1 = new Docente();

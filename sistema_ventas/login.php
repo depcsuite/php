@@ -1,27 +1,18 @@
 <?php
-include_once "config.php";
-include_once "entidades/usuario.php";
 
 if($_POST){
-	//Comprobamos que el usuario sea admin y la clave sea admin123
-	$usuario = trim($_POST["txtUsuario"]); //trim elimina espacios de los laterales
-	$clave = trim($_POST["txtClave"]);
+  $usuario = trim($_REQUEST["txtUsuario"]);
+  $clave = trim($_REQUEST["txtClave"]);
 
-  $entidadUsuario = new Usuario();
-  $entidadUsuario->obtenerPorUsuario($usuario); //a desarrollar
-  
+  //Si el usuario es admin y la clave es admin123
+    //redireccionar a index.php
+  //sino
+    //$msg = "Usuario o clave incorrecto";
 
-	//Si es correcto creamos una variable de session llamada nombre y tenga el valor "Ana Valle"
-	if($entidadUsuario->verificarClave($clave, $entidadUsuario->clave)){
-		$_SESSION["nombre"] = $entidadUsuario->nombre;
 
-		//Redireccionamos a la home
-		header("location:index.php");
-	} else {
-		//Si no es correcto la clave o el usuario mostrar en pantalla "Usuario o clave incorrecto"
-		$msg = "Usuario o clave incorrecto";
-	}
 }
+
+
 
 ?>
 <!DOCTYPE html>
@@ -72,10 +63,10 @@ if($_POST){
 					</div>
 				  <?php endif; ?>
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="txtUsuario" name="txtUsuario" aria-describedby="emailHelp" placeholder="Usuario" value="ntarche">
+                      <input type="text" class="form-control form-control-user" id="txtUsuario" name="txtUsuario" aria-describedby="emailHelp" placeholder="Usuario">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="txtClave" name="txtClave" placeholder="Clave" value="admin123">
+                      <input type="password" class="form-control form-control-user" id="txtClave" name="txtClave" placeholder="Clave">
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
