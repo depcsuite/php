@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumatoria</title>
+</head>
+<script>
+
+    const aValores = ["150.00", "200.30", 500, 99.80];
+
+    //Opción 1
+    function acumular1(aValores) {
+        let resultado = 0;
+        aValores.forEach(function (valor, indice) {
+            resultado += Number(valor);
+        });
+        return resultado.toFixed(2);
+    }
+
+    //Opción 2
+    function acumular2(aArr) {
+        let sum = 0;
+        for (let i = 0; i < aArr.length; i++) {
+            sum += parseFloat(aArr[i]);
+        }
+        return sum.toFixed(2);
+    }
+
+    console.log(acumular(aValores));
+
+</script>
+<body>
+    
+</body>
+</html>
