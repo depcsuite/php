@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-class Persona {
+abstract class Persona {
     protected $dni;
     protected $nombre;
     protected $correo;
@@ -152,6 +152,7 @@ $clase2->inscribirAlumno($alumno1);
 $clase2->inscribirAlumno($alumno2);
 $clase2->inscribirAlumno($alumno3);
 $clase2->imprimirListado();
+
 
 
 ?>

@@ -11,7 +11,7 @@
     const aValores = ["150.00", "200.30", 500, 99.80];
 
     //Opción 1
-    function acumular1(aValores) {
+    function sumatoria1(aValores) {
         let resultado = 0;
         aValores.forEach(function (valor, indice) {
             resultado += Number(valor);
@@ -20,7 +20,7 @@
     }
 
     //Opción 2
-    function acumular2(aArr) {
+    function sumatoria2(aArr) {
         let sum = 0;
         for (let i = 0; i < aArr.length; i++) {
             sum += parseFloat(aArr[i]);
@@ -28,7 +28,7 @@
         return sum.toFixed(2);
     }
 
-    console.log(acumular(aValores));
+    console.log(sumatoria(aValores));
 
 </script>
 <body>
