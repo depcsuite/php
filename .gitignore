@@ -1,6 +1,7 @@
 sistema_ventas/entidades/producto.php
 sistema_ventas/entidades/tipoproducto.php
 sistema_ventas/entidades/venta.php
+sistema_ventas/entidades/usuario.php
 sistema_ventas/files/*
 sistema_ventas/producto-listado.php
 sistema_ventas/producto-formulario.php

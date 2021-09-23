@@ -43,7 +43,7 @@ if(isset($_GET["id"]) && $_GET["id"] > 0){
 
 if(isset($_GET["do"]) && $_GET["do"] == "buscarProducto"){
     $aResultado = array();
-    $idProducto = $_GET["id"];
+    $idProducto = $_REQUEST["id"];
     $producto = new Producto();
     $producto->idproducto = $idProducto;
     $producto->obtenerPorId();
@@ -176,12 +176,9 @@ function fBuscarPrecio(){
             async: true,
             dataType: "json",
             success: function (respuesta) {
-                strResultado = Intl.NumberFormat("es-AR", {style: 'currency', currency: 'ARS'}).format(respuesta.precio);
-                $("#txtPrecioUniCurrency").val(strResultado);
-                $("#txtPrecioUni").val(respuesta.precio);
+            
             }
         });
-
 }
 
 function fCalcularTotal(){
@@ -207,7 +204,7 @@ function fCalcularTotal(){
             $("#txtTotal").val(strResultado);
         }
     });   
-} 
+}
 
 
 </script>

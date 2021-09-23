@@ -49,7 +49,6 @@ if(isset($_GET["do"]) && $_GET["do"] == "buscarProducto"){
     $producto->obtenerPorId();
     $aResultado["precio"] = $producto->precio;
     $aResultado["cantidad"] = $producto->cantidad;
-
     echo json_encode($aResultado);
     exit;
 }
@@ -207,7 +206,7 @@ function fCalcularTotal(){
             $("#txtTotal").val(strResultado);
         }
     });   
-} 
+}
 
 
 </script>
