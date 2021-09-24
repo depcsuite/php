@@ -109,7 +109,7 @@ include_once("header.php");
                     </select>
                     <select class="form-control d-inline"  name="txtAnioNac" id="txtAnioNac" style="width: 100px">
                         <option selected="" disabled="">YYYY</option>
-                        <?php for($i=1900; $i <= date("Y"); $i++): ?>
+                        <?php for($i=1910; $i <= date("Y"); $i++): ?>
                          <?php if($cliente->fecha_nac != "" && $i == date_format(date_create($cliente->fecha_nac), "Y")): ?>
                             <option selected><?php echo $i; ?></option>
                             <?php else: ?>
