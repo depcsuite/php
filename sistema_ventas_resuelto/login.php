@@ -12,7 +12,7 @@ if($_POST){
   
 
 	//Si es correcto creamos una variable de session llamada nombre y tenga el valor "Ana Valle"
-	if($entidadUsuario->verificarClave($clave, $entidadUsuario->clave)){
+	if($entidadUsuario->nombre != "" && $entidadUsuario->verificarClave($clave, $entidadUsuario->clave)){
 		$_SESSION["nombre"] = $entidadUsuario->nombre;
 
 		//Redireccionamos a la home

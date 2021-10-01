@@ -61,18 +61,24 @@ class Usuario {
     public function actualizar(){
 
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
+        $sql = "";
+
+        if($this->clave != ""){
         $sql = "UPDATE usuarios SET
                 usuario = '$this->usuario',
                 nombre = '$this->nombre',
-                apellido = '$this->apellido',";
-
-        if($this->clave != ""){
-            $sql .= "clave = '$this->clave',";
-        }
-
-        $sql .= "correo = '$this->correo'
+                apellido = '$this->apellido',
+                clave = '$this->clave',
+                correo = '$this->correo'
                 WHERE idusuario = " . $this->idusuario;
-          
+        } else {
+        $sql = "UPDATE usuarios SET
+                usuario = '$this->usuario',
+                nombre = '$this->nombre',
+                apellido = '$this->apellido',
+                correo = '$this->correo'
+                WHERE idusuario = " . $this->idusuario;
+        }
         if (!$mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
         }
