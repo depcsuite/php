@@ -1,7 +1,7 @@
 <?php
 $dia = date("d");
 $mes = date("m");
-$anio = date("y");
+$anio = date("Y");
 header("Content-Type: text/csv; charset=utf-8");
 header("Content-Disposition: attachment; filename=reporte-$anio-$mes-$dia.csv");
 
