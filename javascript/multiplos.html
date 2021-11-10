@@ -8,8 +8,7 @@
     <title>Ejercicio</title>
 </head>
 <script>
-  
-
+    //PASO A
     aNumeros = new Array(10, 14, 21, 42, 7, 35, 42, 100);
 
     document.write("<br><strong>Función forEach:</strong><br>");
@@ -18,7 +17,27 @@
             document.write(value + "<br>");
         }
     });
-    
+
+    //PASO B
+    function imprimirListado(aValores) {
+        aValores.forEach(function (value, index) {
+            document.write(value + "<br>");
+        });
+    }
+
+    //PASO C
+    document.write("<br><strong>Función filter:</strong><br>");
+    aMultiplos = aNumeros.filter(function (value) {
+        return (value % 7 == 0);
+    });
+    imprimirListado(aMultiplos);
+
+    //PASO D
+    document.write("<br><strong>Función map:</strong><br>");
+    aRaiz = aNumeros.map(function (value) {
+        return Math.sqrt(value);
+    });
+    imprimirListado(aRaiz);
 
 </script>
 
