@@ -167,25 +167,22 @@ $(document).ready( function () {
 } );
 
  function fBuscarLocalidad(){
-    idProvincia = $("#lstProvincia option:selected").val();
-    $.ajax({
-        type: "GET",
-        url: "cliente-formulario.php?do=buscarLocalidad",
-        data: { id:idProvincia },
-        async: true,
-        dataType: "json",
-        success: function (respuesta) {
-            let opciones = "<option value='0' disabled selected>Seleccionar</option>";
-            const resultado = respuesta.reduce(function(acumulador, valor){
-                //const {nombre,idlocalidad} = valor;
-                let nombre = valor.nombre;
-                let idlocalidad = valor.idlocalidad;
-                return acumulador + `<option value="${idlocalidad}">${nombre}</option>`;
-            }, opciones);
-            $("#lstLocalidad").empty().append(resultado);
+            idProvincia = $("#lstProvincia option:selected").val();
+            $.ajax({
+                type: "GET",
+                url: "cliente-formulario.php?do=buscarLocalidad",
+                data: { id:idProvincia },
+                async: true,
+                dataType: "json",
+                success: function (respuesta) {
+                    let resultado = "<option value='0' disabled selected>Seleccionar</option>";
+                    respuesta.forEach(function(valor, indice){
+                        resultado += `<option value="${valor.idlocalidad}">${valor.nombre}</option>`;
+                    });
+                  $("#lstLocalidad").empty().append(resultado);
+                }
+            });
         }
-    });
-}
 
 </script>
 <?php include_once("footer.php"); ?>

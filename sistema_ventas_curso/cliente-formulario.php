@@ -176,11 +176,10 @@ $(document).ready( function () {
                 async: true,
                 dataType: "json",
                 success: function (respuesta) {
-                  let opciones = "<option value='0' disabled selected>Seleccionar</option>";
-                  const resultado = respuesta.reduce(function(acumulador, valor){
-                        const {nombre,idlocalidad} = valor;
-                        return acumulador + `<option value="${idlocalidad}">${nombre}</option>`;
-                  }, opciones);
+                    let resultado = "<option value='0' disabled selected>Seleccionar</option>";
+                    respuesta.forEach(function(valor, indice){
+                        resultado += `<option value="${valor.idlocalidad}">${valor.nombre}</option>`;
+                    });
                   $("#lstLocalidad").empty().append(resultado);
                 }
             });
