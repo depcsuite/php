@@ -18,7 +18,7 @@ function Formulario() {
         return (
             <div>
                 <h1>Formulario de contacto</h1>
-                <form method="POST" action="http://192.168.64.4/api/guardarFormulario.php">
+                <form method="POST" action="http://192.168.64.4/api/formulario_envio/guardarFormulario.php">
                     <InputText id="txtNombre" titulo="Nombre" tipo="text" />
                     <InputText id="txtTelefono" titulo="Telefono" tipo="text" />
                     <InputText id="txtCorreo" titulo="Correo" tipo="email" />
