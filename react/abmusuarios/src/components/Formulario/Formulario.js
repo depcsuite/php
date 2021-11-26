@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import Title from '../Card/Card';
 import { setUserData } from '../../services/services';
-import Estilos from '../SignUp/style.module.css';
+import Estilos from './style.module.css';
 
-function SignUp(props) {
+function Formulario(props) {
 
     const [nombre, setNombre] = useState('');
     const [usuario, setUsuario] = useState('');
@@ -82,4 +82,4 @@ const styles = {
     }
 };
 
-export default SignUp;
+export default Formulario;

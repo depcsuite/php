@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import SignUp from './components/SignUp/SignUp';
+import Formulario from './components/Formulario/Formulario';
 import TablaUsuarios from './components/Table/Table';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <SignUp />
+    <Formulario />
     <TablaUsuarios />
   </React.StrictMode>,
   document.getElementById('root')

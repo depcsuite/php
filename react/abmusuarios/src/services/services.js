@@ -1,5 +1,5 @@
 export const setUserData = async (nombre, usuario, pass) => {
-    const response = await fetch(`http://192.168.64.4/api/abmusuarios/insertUser.php`, {
+    const response = await fetch(`http://192.168.64.4/php/api/abmusuarios/insertUser.php`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json; charset=utf-8'
@@ -15,7 +15,7 @@ export const setUserData = async (nombre, usuario, pass) => {
 }
 
 export const getUsuarios = async () => {
-    const response = await fetch(`http://192.168.64.4/api/abmusuarios/getUsers.php`, {
+    const response = await fetch(`http://192.168.64.4/php/api/abmusuarios/getUsers.php`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json; charset=utf-8'
@@ -26,7 +26,7 @@ export const getUsuarios = async () => {
 }
 
 export const deleteUser = async (usuario) => {
-    const response = await fetch(`http://192.168.64.4/api/abmusuarios/deleteUser.php`, {
+    const response = await fetch(`http://192.168.64.4/php/api/abmusuarios/deleteUser.php`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json; charset=utf-8'

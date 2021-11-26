@@ -67,12 +67,12 @@ export default function TablaUsuarios() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {usuarios.map((value) => (
-                            <TableRow key={value.usuario}>
+                        {usuarios.map((item) => (
+                            <TableRow key={item.usuario}>
                                 <TableCell align="left"><FontAwesomeIcon icon={faEdit} /></TableCell>
-                                <TableCell align="left"><FontAwesomeIcon icon={faTrashAlt} onClick={() => { eliminarUsuario(value.usuario) }} /></TableCell>
-                                <TableCell align="left">{value.usuario}</TableCell>
-                                <TableCell align="left">{value.nombre}</TableCell>
+                                <TableCell align="left"><FontAwesomeIcon icon={faTrashAlt} onClick={() => { eliminarUsuario(item.usuario) }} /></TableCell>
+                                <TableCell align="left">{item.usuario}</TableCell>
+                                <TableCell align="left">{item.nombre}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
