@@ -2,7 +2,7 @@
 $fecha = date("d/m/Y");
 $nombre = "Nelson Daniel Tarche";
 $edad = 33;
-$aPeliculas = array("Volver al futuro", "Titanic", "El día después de mañana");
+$aPeliculas = array("Volver al futuro", "Titanic", "El despues de mañana");
 
 ?>
 <!DOCTYPE html>
