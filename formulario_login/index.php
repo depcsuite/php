@@ -12,7 +12,7 @@ if($_POST){ /* es postback ? */
     if($usuario != "" && $clave != ""){
         header("Location: acceso-confirmado.php");
     } else {
-        $mensaje = "Válido para usuarios registrados";
+        $mensaje = "Válido para usuarios registrados.";
     }
 }
 ?>
@@ -34,9 +34,11 @@ if($_POST){ /* es postback ? */
         </div>
         <div class="row">
             <div class="col-12"> 
-                <?php if (isset($mensaje) && $mensaje != ""): ?>
-                    <div class="alert alert-danger" role="alert"><?php echo $mensaje; ?></div>
-                <?php endif; ?>
+                <?php if (isset($mensaje)){ ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php echo $mensaje; ?>
+                    </div>
+                <?php } ?>
                 <form method="POST" action="">
                     <div class="my-3">
                         <label for="">Usuario: <input type="text" id="txtUsuario" name="txtUsuario" class="form-control"></label>
