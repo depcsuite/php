@@ -56,6 +56,7 @@ if($_POST){
                         <select name="lstIva" class="form-control">
                             <option value="21">21</option>
                             <option value="10.5">10.5</option>
+                            <option value="27">27</option>
                         </select>
                         </label>
                     </div>
