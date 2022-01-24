@@ -5,9 +5,18 @@ error_reporting(E_ALL);
 
 //Definición de array de alumnos
 $aAlumnos = array();
-$aAlumnos[] = array("nombre" => "Juan Perez", "nota1" => 9, "nota2" => 8);
-$aAlumnos[] = array("nombre" => "Ana Valle", "nota1" => 4, "nota2" => 9);
-$aAlumnos[] = array("nombre" => "Gonzalo Roldán", "nota1" => 7, "nota2" => 6);
+$aAlumnos[] = array("nombre" => "Juan Perez", "aNotas" => array(9, 8));
+$aAlumnos[] = array("nombre" => "Ana Valle", "aNotas" => array(4, 9));
+$aAlumnos[] = array("nombre" => "Gonzalo Roldán", "aNotas" => array(7, 6));
+
+function promediar($aNumeros){
+    $suma = 0;
+    $resultado = 0;
+    foreach($aNumeros as $numero){
+        $suma += $numero;
+    }
+    return $suma / count($aNumeros);
+}
 
 ?>
 
@@ -45,14 +54,14 @@ $aAlumnos[] = array("nombre" => "Gonzalo Roldán", "nota1" => 7, "nota2" => 6);
                     $sumPromedios = 0;
                     foreach ($aAlumnos as $alumno): 
                         $pos++;
-                        $promedio = ($alumno["nota1"] + $alumno["nota2"]) / 2;
+                        $promedio = promediar($alumno["aNotas"]);
                         $sumPromedios += $promedio;
                     ?>
                         <tr>
                             <td><?php echo $pos; ?></td>
                             <td><?php echo $alumno["nombre"]; ?></td>
-                            <td><?php echo $alumno["nota1"]; ?></td>
-                            <td><?php echo $alumno["nota2"]; ?></td>
+                            <td><?php echo $alumno["aNotas"][0]; ?></td>
+                            <td><?php echo $alumno["aNotas"][1]; ?></td>
                             <td><?php echo number_format($promedio, 2, ",", "."); ?></td>
                         </tr>
                         <?php endforeach; ?>
@@ -62,7 +71,7 @@ $aAlumnos[] = array("nombre" => "Gonzalo Roldán", "nota1" => 7, "nota2" => 6);
         </div>
         <div class="row">
             <div class="col-12 my-3">
-                <h5>Promedio de la cursada: <?php echo number_format($sumPromedios / $pos, 2, ",", "."); ?></h5>
+                <h5>Promedio de la cursada: <?php echo number_format($sumPromedios / count($aAlumnos), 2, ",", "."); ?></h5>
             </div>
         </div>
     </main>
