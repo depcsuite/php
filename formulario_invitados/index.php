@@ -5,21 +5,16 @@ ini_set('display_startup_errors', '1');
 ini_set('error_reporting', E_ALL);
 
 //Lista de invitados admitidos
-$aInvitados = array("pepe", "ana", "maca", "juan");
+if(file_exists("invitados.txt")){
+    $aInvitados = explode(",",file_get_contents("invitados.txt"));
+} else {
+    $aInvitados = array();
+}
 
 if ($_POST) {
     if (isset($_REQUEST['btnProcesar'])) {
-        $nombre = $_REQUEST['txtNombre'];
+        $nombre = trim($_REQUEST['txtNombre']);
         if (in_array($nombre, $aInvitados)) {
-
-            //Si viene la imagen la almacenamos en la carpeta imagenes
-            if($_FILES["archivo"]["error"] === UPLOAD_ERR_OK){
-                $nombreAleatorio = date("Ymdhmsi") . rand(1000, 5000); //2021010420453710
-                $archivo_tmp = $_FILES["archivo"]["tmp_name"];
-                $extension = pathinfo($_FILES["archivo"]["name"], PATHINFO_EXTENSION);
-                $nuevoNombre = "$nombreAleatorio.$extension";
-                move_uploaded_file($archivo_tmp, "imagenes/".$nuevoNombre);
-            }
 
             $aMensaje = array("texto" => "¡Bienvenid@ $nombre a la fiesta!", 
                               "estado" => "success");
@@ -28,20 +23,15 @@ if ($_POST) {
                               "estado" => "danger");
         }
     } else if (isset($_REQUEST['btnVip'])) {
-        $respuesta = $_REQUEST['txtPregunta'];
+        $respuesta = trim($_REQUEST['txtPregunta']);
         if ($respuesta == "verde") {
-            $aMensaje = array("texto" => "Aquí tiene su pulsera", "estado" => "success");
+            $aMensaje = array("texto" => "Su código de acceso es " . rand(1000,9999), "estado" => "success");
 
         } else {
             $aMensaje = array("texto" => "Ud. no tiene pase VIP", "estado" => "danger");
         }
     }
 }
-
-//Carga la variable con las imagenes de la carpeta
-$aImagenes = scandir("imagenes");
-unset($aImagenes[0]);
-unset($aImagenes[1]);
 
 ?>
 <!DOCTYPE html>
@@ -64,7 +54,7 @@ unset($aImagenes[1]);
 	<main class="container">
     <div class="row">
         <div class="col-12 py-3">
-            <h1>Listado de ingreso</h1>
+            <h1>Lista de invitados</h1>
         </div>
         <?php if(isset($aMensaje)): ?>
         <div class="col-12">
@@ -77,34 +67,21 @@ unset($aImagenes[1]);
             <p>Complete el siguiente formulario:</p>
         </div>
         <div class="col-6">
-            <form method="POST" action="" enctype="multipart/form-data">
+            <form method="POST" action="">
                 <div class="row">
                     <div class="col-12">
-                        <p>Nombre:<p><input type="text" name="txtNombre" class="form-control">
-                          <input type="file" name="archivo" class="form-control">
-                        <input type="submit" name="btnProcesar" value="Procesar invitado" class="btn-primary">
+                        <p>Ingrese el DNI:<p><input type="text" name="txtNombre" class="form-control">
+                        <input type="submit" name="btnProcesar" value="Verificar invitado" class="btn-primary">
                     </div>
                 </div>
                 <div class="row">
                     <div class="12-col bm-3">
                         <p>Ingresa el código secreto para el pase VIP:<p>
                         <input type="text" name="txtPregunta" class="form-control">
-                        <input type="submit" name="btnVip" value="Procesar código" class="btn-primary">
+                        <input type="submit" name="btnVip" value="Verificar código" class="btn-primary">
                     </div>
                 </div>
             </form>
-        </div>
-        <div class="col-2">
-            <table class="table table-hover border">
-                <tr>
-                    <th>Imágenes</th>
-                </tr>
-                <?php foreach ($aImagenes as $imagen): ?>
-                    <tr>
-                        <td><img src="imagenes/<?php echo $imagen; ?>" class="img-thumbnail"></td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
         </div>
     </div>
 	</main>
