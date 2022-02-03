@@ -1,18 +1,21 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
 
 if($_POST){
-  $usuario = trim($_REQUEST["txtUsuario"]);
-  $clave = trim($_REQUEST["txtClave"]);
+    $usuario = trim($_REQUEST["txtUsuario"]);
+    $clave = trim($_REQUEST["txtClave"]);
 
-  //Si el usuario es admin y la clave es admin123
-    //redireccionar a index.php
-  //sino
-    //$msg = "Usuario o clave incorrecto";
-
-
+    if($usuario == "admin" && $clave == "admin123"){
+        $_SESSION["nombre"] = "Nelson";
+        header("Location: index.php");
+    } else {
+        $msg = "Usuario o clave incorrecto";
+    }
 }
-
-
 
 ?>
 <!DOCTYPE html>
