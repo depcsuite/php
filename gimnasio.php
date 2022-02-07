@@ -16,13 +16,7 @@ abstract class Persona {
         $this->celular = $celular;
     }
 
-    public function __get($propiedad) {
-        return $this->$propiedad;
-    }
-
-    public function __set($propiedad, $valor) {
-        $this->$propiedad = $valor;
-    }
+    abstract public function imprimir();
 
 }
 
@@ -42,6 +36,10 @@ class Entrenador extends Persona{
     public function __set($propiedad, $valor) {
         $this->$propiedad = $valor;
     }
+
+     public function imprimir(){
+
+     }
 
 }
 
@@ -75,6 +73,10 @@ class Alumno extends Persona {
         $this->altura = $altura;
         $this->bAptoFisico = $bAptoFisico;
     }
+
+    public function imprimir(){
+
+     }
 
 }
 
