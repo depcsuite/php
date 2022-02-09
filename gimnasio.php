@@ -37,10 +37,11 @@ class Entrenador extends Persona{
         $this->$propiedad = $valor;
     }
 
+  
+
      public function imprimir(){
 
      }
-
 }
 
 class Alumno extends Persona {
