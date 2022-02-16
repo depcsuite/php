@@ -20,7 +20,9 @@ if($_POST){
         $tipoproducto->eliminar();
         header("Location: tipoproducto-listado.php");
     }
-} 
+} else if(isset($_REQUEST["id"])){
+    $tipoProducto->obtenerPorId();
+}
 
 
 include_once("header.php"); 

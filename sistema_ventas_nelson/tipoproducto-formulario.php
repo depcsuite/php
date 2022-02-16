@@ -20,7 +20,6 @@ if($_POST){
     }
 } else if(isset($_REQUEST["id"])){
     $tipoProducto->obtenerPorId();
-
 }
 
 include_once("header.php"); 
