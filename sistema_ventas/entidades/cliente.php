@@ -88,8 +88,8 @@ class Cliente
                 telefono = '" . $this->telefono . "',
                 correo = '" . $this->correo . "',
                 fecha_nac =  '" . $this->fecha_nac . "',
-                fk_idprovincia =  '" . $this->fk_idprovincia . "',
-                fk_idlocalidad =  '" . $this->fk_idlocalidad . "',
+                fk_idprovincia =  " . $this->fk_idprovincia . ",
+                fk_idlocalidad =  " . $this->fk_idlocalidad . ",
                 domicilio =  '" . $this->domicilio . "'
                 WHERE idcliente = " . $this->idcliente;
 
