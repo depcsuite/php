@@ -18,6 +18,7 @@ if($_POST){
         }
     } else if(isset($_POST["btnBorrar"])){
         $tipoproducto->eliminar();
+        header("Location: tipoproducto-listado.php");
     }
 } 
 

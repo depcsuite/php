@@ -47,7 +47,7 @@ if ($_POST) {
         }
     } else if (isset($_POST["btnBorrar"])) {
         $producto->eliminar();
-        header("Location: productos.php");
+        header("Location: producto-listado.php");
     }
 }
 if (isset($_GET["id"]) && $_GET["id"] > 0) {

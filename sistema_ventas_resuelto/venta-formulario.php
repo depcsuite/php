@@ -33,7 +33,7 @@ if($_POST){
         }
     } else if(isset($_POST["btnBorrar"])){
         $venta->eliminar();
-        header("Location: ventas.php");
+        header("Location: venta-listado.php");
     }
 } 
 
