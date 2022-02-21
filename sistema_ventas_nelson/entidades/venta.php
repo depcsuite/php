@@ -167,11 +167,11 @@ class Venta {
                 A.fecha,
                 A.cantidad,
                 A.fk_idcliente,
-                B.nombre as nombre_cliente,
+                B.nombre AS nombre_cliente,
                 A.fk_idproducto,
                 A.total,
                 A.preciounitario,
-                C.nombre as nombre_producto
+                C.nombre AS nombre_producto
             FROM ventas A
             INNER JOIN clientes B ON A.fk_idcliente = B.idcliente
             INNER JOIN productos C ON A.fk_idproducto = C.idproducto
