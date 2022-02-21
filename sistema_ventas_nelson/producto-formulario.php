@@ -12,6 +12,7 @@ $producto->cargarFormulario($_REQUEST);
 if ($_POST) {
     if (isset($_POST["btnGuardar"])) {
         $nombreImagen = "";
+        //Almacenamos la imagen en el servidor
         if ($_FILES["imagen"]["error"] === UPLOAD_ERR_OK) {
             $nombreRandom = date("Ymdhmsi");
             $archivoTmp = $_FILES["imagen"]["tmp_name"];
@@ -30,7 +31,8 @@ if ($_POST) {
             //Si es una actualizacion y se sube una imagen, elimina la anterior
             if ($_FILES["imagen"]["error"] === UPLOAD_ERR_OK) {
                 if (!$imagenAnterior != "") {
-                    unlink($imagenAnterior);
+                    if(file_exists("files/$imagenAnterior"))
+                        unlink("files/$imagenAnterior");
                 }
             } else {
                 //Si no viene ninguna imagen, setea como imagen la que habia previamente
@@ -47,7 +49,7 @@ if ($_POST) {
         }
     } else if (isset($_POST["btnBorrar"])) {
         $producto->eliminar();
-        header("Location: productos.php");
+        header("Location: producto-listado.php");
     }
 }
 if (isset($_GET["id"]) && $_GET["id"] > 0) {
