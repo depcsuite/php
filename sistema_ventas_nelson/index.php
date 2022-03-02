@@ -1,6 +1,12 @@
 <?php
 
 include_once("header.php"); 
+include_once("entidades/venta.php");
+
+$venta = new Venta();
+$facturacionMensual = $venta->obtenerFacturacionMensual(date('m'));
+$facturacionAnual = $venta->obtenerFacturacionAnual(date('Y'));
+
 
 ?>
 
@@ -23,7 +29,7 @@ include_once("header.php");
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Facturación (mensual)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">$ <?php echo number_format($facturacionMensual, 2, ",", "."); ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -40,7 +46,7 @@ include_once("header.php");
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Facturación (anual)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">$ </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">$ <?php echo number_format($facturacionAnual, 2, ",", "."); ?></div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
