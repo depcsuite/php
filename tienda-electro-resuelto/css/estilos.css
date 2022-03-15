@@ -120,6 +120,10 @@ form div{
     border-radius: 8px;
     padding: 5px 20px 20px 20px;
 }
+.video-promocional iframe{
+    width: 100%;
+    height: 600px;
+}
 footer{ /* Centramos los elementos dentro del footer*/
     width: max-content;
     margin: auto;
@@ -135,8 +139,21 @@ footer i{
     margin: 0 15px;
     color: red;
 }
-@media (max-width: 460px){
+@media (max-width: 460px){ /*aplica cuando el ancho del dispositivo es hasta 460px*/
     h1{
-        font-size: 10px;
+        font-size: 16px;
+    }
+    h2{
+        font-size: 14px;
+    }
+    p{
+        font-size: 12px;
+    }
+    main{
+        margin: 10px 2%;
+    }
+    .video-promocional iframe{
+    width: 100%;
+    height: 300px;
     }
 }
