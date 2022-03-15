@@ -98,6 +98,11 @@ form div{
     border-radius: 8px;
     margin: 10px;
 }
+.producto:hover{
+    background-color: white;
+    border: #eee solid 1px;
+    cursor: pointer;
+}
 .producto h3{
     text-align: center;
 }
@@ -110,7 +115,7 @@ form div{
     margin: auto;
     display: block;
 }
-#video-promocional{
+.video-promocional{
     background-color: #eee;
     border-radius: 8px;
     padding: 5px 20px 20px 20px;

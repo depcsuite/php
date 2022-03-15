@@ -1,0 +1,68 @@
+/* Esto es codigo CSS */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+html {
+  scroll-behavior: smooth;
+}
+body{
+    font-family: 'Montserrat', sans-serif;
+    margin: 0px;
+}
+h1{
+    color: red;
+    text-align: center;
+    font-size: 36px;
+}
+h2{
+    font-size: 24px;
+    color: gray;
+}
+h3{
+    color: red;
+    text-decoration: underline;
+}
+p{
+    font-style: italic;
+    font-size: 16px;
+}
+input:focus, textarea:focus, select:focus {
+    background-color: #eee;
+}
+.producto {
+    background-color: #eee;
+    width: 350px;
+    text-align: center;
+}
+.producto img {
+    height: 130px;
+}
+.producto ul{
+    text-align: left;
+}
+.producto span{
+    color: green;
+    font-weight: bold;
+}
+.negrita{
+    font-weight: 600;
+}
+.video-promocional{
+    background-color: #eee;
+}
+nav{
+    background-color: red;
+    display: block;
+    text-align: center;
+}
+nav ul{
+    list-style-type: none;
+    margin: 0px;
+}
+nav li{
+    display: inline;
+
+}
+nav a{
+    text-decoration: none;
+    color: white;
+    padding: 20px 0;
+}
