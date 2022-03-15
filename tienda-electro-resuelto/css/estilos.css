@@ -92,6 +92,7 @@ form div{
 }
 .producto{
     background-color: #eee;
+    border: #eee solid 1px;
     width: 300px;
     display: inline-block;
     padding: 15px;
@@ -100,7 +101,6 @@ form div{
 }
 .producto:hover{
     background-color: white;
-    border: #eee solid 1px;
     cursor: pointer;
 }
 .producto h3{
