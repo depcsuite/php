@@ -14,7 +14,7 @@
 </head>
 
 <body id="contacto">
-    <header>
+    <header class="container">
         <nav class="navbar navbar-expand-md  mb-4">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -37,7 +37,7 @@
                         </li>
                     </ul>
                     <div class="d-flex">
-                        <a class="btn btn-outline-success" type="submit">Descargar mi CV</a>
+                        <a class="btn btn-rojo"><i class="fa-solid fa-file-arrow-down"></i> Descargar mi CV</a>
                     </div>
                 </div>
             </div>
@@ -68,16 +68,28 @@
                         <textarea name="txtMensaje" id="txtMensaje" placeholder="Escribe aquí tu mensaje" class="form-control"></textarea>
                     </div>
                     <div class="mb-3">
-                        <button type="submit" id="btnEnviar" name="btnEnviar" class="btn">ENVIAR</button>
+                        <button type="submit" id="btnEnviar" name="btnEnviar" class="btn btn-blanco px-4">ENVIAR</button>
                     </div>
                 </form>
             </div>
         </div>
 
     </main>
-    <footer>
-
+    <footer class="container mt-5">
+        <div class="row">
+            <div class="col-3">
+                <i class="fa-brands fa-github"></i>
+                <i class="fa-brands fa-linkedin-in"></i>
+            </div>
+            <div class="col-3">Sponsor <a href="https://depcsuite.com">DePC Suite</a></div>
+            <div class="col-3"><a href="mailto:contacto@nelsontarche.com.ar>">contacto@nelsontarche.com.ar</a></div>
+           
+        </div>
     </footer>
+    <div class="whatsapp pt-3 pb-4 px-3">
+        <a href="https://api.whatsapp.com/send?phone=541162423341">
+        <i class="fa-brands fa-whatsapp"></i></a>
+    </div>
 </body>
 
 </html>

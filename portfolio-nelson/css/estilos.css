@@ -2,6 +2,7 @@
 body{
     font-family: 'Montserrat', sans-serif;
 }
+
 #contacto{
     background-image: url('../images/fondo-contacto.png');
     background-repeat: no-repeat;
@@ -15,6 +16,45 @@ p{
     color: #6a6a6a;
     font-size: 16px;
 }
+textarea{
+    height: 150px;
+}
 .form-control{
     border-radius: 14px;
+}
+.btn-blanco{
+    background-color: white;
+    color: #370a6d;
+}
+.btn-blanco:hover{
+    color: white;
+    background-color: #370a6d;
+}
+.btn-rojo{
+    background-color: #E20000;
+    color: white;
+    font-weight: 100;
+}
+.btn-rojo:hover{
+    color: white;
+    background-color: #370a6d;
+}
+.btn{
+    border-radius: 14px;
+}
+footer, footer a{
+    color:white;
+    font-weight: 100;
+}
+.whatsapp{
+    position: fixed;
+    right:70px;
+    bottom: 0px;
+    background-color: #370a6d;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.fa-whatsapp{
+    font-size: 32px;
+    color: white;
 }
