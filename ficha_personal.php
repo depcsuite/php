@@ -1,8 +1,14 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
 $fecha = date("d/m/Y");
 $nombre = "Nelson Daniel Tarche";
 $edad = 33;
 $aPeliculas = array("Volver al futuro", "Titanic", "El despues de mañana");
+
 
 ?>
 <!DOCTYPE html>
