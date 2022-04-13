@@ -3,10 +3,12 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$stock = 10;
+$aClientes = array(
+    array("dni" => "33300012", "nombre" => "Ana Valle"), //Posición 0
+    array("dni" => "33300013", "nombre" => "Bernabe"), //Posición 1
+);
 
-while ($stock > 0) {
-    echo "El stock es $stock <br>";
-    $stock--;
+
+foreach ($aClientes as $pos => $cliente) {
+    echo "En la posición $pos se encuentra " . $cliente["nombre"] . "<br>";
 }
-echo "Stock agotado";

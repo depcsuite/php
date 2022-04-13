@@ -56,7 +56,10 @@ $aProductos[] = array("nombre" => "Impresora HP 1102w",
                         <th>Precio</th>
                         <th>Acción</th>
                     </tr>
-                    <?php $contador = 0; 
+                    <?php 
+                    $contador = 0; 
+                    $sumatoria = 0;
+
                     while($contador < count($aProductos)){
                     ?>
                         <tr>
@@ -68,13 +71,20 @@ $aProductos[] = array("nombre" => "Impresora HP 1102w",
                             <td><button class="btn btn-primary">Comprar</button></td>
                         </tr>
                  <?php 
+                    $sumatoria = $sumatoria + $aProductos[$contador]["precio"];
                     $contador++;
-                    break;
+              
                     } ?>
                    
                 </table>
             </div>
+         
         </div>
+           <div class="row">
+               <div class="col-12">
+                   <h2>Subtotal: $<?php echo $sumatoria; ?></h2>
+               </div>
+           </div>
     </div>
 </body>
 </html>
