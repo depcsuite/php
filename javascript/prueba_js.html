@@ -7,22 +7,16 @@
     <title>Document</title>
 </head>
 <script>
-    var nombre = "Pepe";
-   
-    function imprimir(){
-        let num = 0;
-        console.log("El nombre es " + nombre);
-        console.log(`El nombre es ${nombre}`);
-       
+    function a(funcionParametro){
+        setTimeout(function () {
+            console.log('a viene primero');
+            funcionParametro();
+        }, 3000);
     }
-
-    function entreDiez(num){
-        return (num >= 0 && num <= 10);
+    function b() {
+        console.log('b viene segundo');
     }
-
-
-    imprimir();
-   
+    a(b);
 
 
 </script>

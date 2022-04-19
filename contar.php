@@ -16,7 +16,7 @@ $aEmpleados[] = array("dni" => 75744545, "nombre" => "Victoria Luz", "bruto" => 
 
 function contar($aArray){
     $cont = 0;
-    foreach ($aArray as $item) {
+    foreach($aArray as $item){
         $cont++;
     }
     return $cont;

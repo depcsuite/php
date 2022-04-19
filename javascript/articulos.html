@@ -16,12 +16,20 @@
         ["Tallarines", 80],
         ["Leche", 40]
     );
+ 
+    //Ejemplo con forEach
+    /*function actualizarPrecios(aProductos, porcentaje) {
+        aProductos.forEach(function (valor, indice) {
+            valor[1] *= (1 + (porcentaje / 100));
+
+        });
+        return aProductos;
+    }*/
 
     function actualizarPrecios(aValores, porcentaje) {
-        return aValores.map(function (numero) {
-            return new Array(numero[0], numero[1] * ((porcentaje / 100) + 1));
+        return aValores.map(function (item) {
+            return new Array(item[0], item[1] * ((porcentaje / 100) + 1));
         });
-
     }
 
     function imprimirPoductos(aArticulos) {
