@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 $aEmpleados = array();
 $aEmpleados[] = array("dni" => 33300123, "nombre" => "David García", "bruto" => 85000.30);
