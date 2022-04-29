@@ -6,4 +6,5 @@ error_reporting(E_ALL);
 
 file_put_contents("datos.txt", json_encode($_REQUEST));
 
+Header("Location: http://localhost:3000/")
 ?>

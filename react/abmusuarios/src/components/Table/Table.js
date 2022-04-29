@@ -26,7 +26,7 @@ export default function TablaUsuarios() {
 
     const classes = useStyles();
 
-    const retrieve = async () => {
+    const actualizarTabla = async () => {
         const data = await getUsuarios();
         if (data.code === 200) {
             setUsuarios(data.data);
@@ -36,13 +36,13 @@ export default function TablaUsuarios() {
     const eliminarUsuario = async (usuario) => {
         const data = await deleteUser(usuario);
         if (data.code === 200) {
-            retrieve();
+            actualizarTabla();
         }
         alert(data.msg);
     }
 
     useEffect(() => {
-        retrieve();
+        actualizarTabla();
     }, []);
 
     return (
@@ -55,7 +55,7 @@ export default function TablaUsuarios() {
                 textAlign: 'center'
             }}
         >
-            <button onClick={() => { retrieve() }}>Actualizar tabla <FontAwesomeIcon icon={faArrowAltCircleRight} /></button>
+            <button onClick={() => { actualizarTabla() }}>Actualizar tabla <FontAwesomeIcon icon={faArrowAltCircleRight} /></button>
             <TableContainer component={Paper} style={{ maxWidth: 440, marginRight: 'auto', marginLeft: 'auto', marginTop: 20 }}>
                 <Table className={classes.table} size="small" aria-label="a dense table">
                     <TableHead>

@@ -23,7 +23,7 @@ function Formulario(props) {
         }
     }
 
-    const handleChange = (e) => {
+    const handleChangeName = (e) => {
         setNombre(e.target.value);
     }
 
@@ -41,7 +41,7 @@ function Formulario(props) {
             <div style={styles.form}>
                 <div style={styles.row}>
                     <label>Nombre *</label>
-                    <input type="text" onChange={handleChange} value={nombre}></input>
+                    <input type="text" onChange={handleChangeName} value={nombre}></input>
                 </div>
                 <div className={Estilos.px3} style={styles.row}>
                     <label>Usuario *</label>
