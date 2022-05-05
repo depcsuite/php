@@ -31,7 +31,7 @@
                     </div>
                     <div class="pb-3">
                         <label for="">Edad:*</label>
-                        <input type="text" name="txtEdad" id="txtEdad" class="form-control" required>
+                        <input type="number" name="txtEdad" id="txtEdad" class="form-control" required>
                     </div>
                     <div class="pb-3">
                         <button type="submit" class="btn btn-primary float-end">ENVIAR</button>
