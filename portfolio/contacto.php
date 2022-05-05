@@ -22,14 +22,14 @@ if($_POST){
 
     // Para enviar un correo HTML, debe establecerse la cabecera Content-type
     $cabeceras  = 'MIME-Version: 1.0' . "\r\n";
-    $cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+    $cabeceras .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 
     // Cabeceras adicionales
     $cabeceras .= 'To: nelson.tarche@gmail.com' . "\r\n";
     $cabeceras .= 'From: contacto@nelsontarche.com.ar' . "\r\n";
 
     // Enviarlo
-    mail($para, $titulo, $cuerpo, $cabeceras);
+    //mail($para, $titulo, $cuerpo, $cabeceras);
     header("Location: confirmacion-envio.php");
 }
 ?>
