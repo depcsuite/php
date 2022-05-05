@@ -26,12 +26,12 @@ $pg = "contacto";
         <div class="container">
             <div class="row">
                 <div class="col-12 mt-sm-5">
-                    <h1>Gracias por contactarte,</h1>
+                    <h1>¡Gracias por contactarte!</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6 col-12 mt-4">
-                    <p>te estaré respondiendo a la brevedad.</p>
+                    <p>Te estaré respondiendo a la brevedad.</p>
                 </div>
             </div>
 
