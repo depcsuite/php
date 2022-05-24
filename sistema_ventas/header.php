@@ -1,16 +1,5 @@
 <?php
-session_start();
 
-if(!isset($_SESSION["nombre"])){
-    header("Location: login.php");
-}
-
-if($_POST){
-    if(isset($_POST["btnCerrar"])){ /* Analizamos si es la accion del boton cerrar */
-        session_destroy();
-        header("location:login.php");
-    }
-}
 ?>
 
 <!DOCTYPE html>
