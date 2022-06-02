@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+html {
+    scroll-behavior: smooth;
+}
 body{
     font-family: 'Montserrat', sans-serif;
 }
@@ -7,16 +10,32 @@ h1{
     color: red;
     text-align: center;
 }
+h2{
+    font-size: 24px;
+    color:gray;
+}
 p{
-    font-size: 14px;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 22px;
-}
-.rojo{
     font-size: 16px;
-    color: red;
+    font-style: italic;
 }
+.producto h3{
+    color: red;
+    text-decoration: underline;
+}
+.producto span{
+    color: green;
+    font-weight: 800;
+}
+.producto img{
+    height: 130px;
+}
+/*.producto li{
+    color:gray;
+}*/
 .negrita{
     font-weight: 800;
+}
+#video{
+    background-color: #eee;
+    width: 100%;
 }

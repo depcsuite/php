@@ -9,50 +9,63 @@
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 
-<body>
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="nosotros.html">Nosotros</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-    </nav>
+<body id="inicio">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
     <!-- Esto es un comentario -->
     <h1>Tienda de electro</h1>
     <h2>Acerca de la tienda</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium distinctio ex praesentium commodi ullam vitae
+    <p>Lorem ipsum dolor sit amet <strong>consectetur adipisicing elit</strong>. Laudantium distinctio ex praesentium
+        commodi ullam vitae
         iste esse, voluptatum explicabo molestiae dicta, reiciendis repellat numquam quo quaerat quidem? Perferendis,
         laborum tempore!</p>
     <h2>Catálogo</h2>
-    <div>
+    <div class="producto">
         <h3>Smart TV 43" Full HD</h3>
         <img src="imagenes/televisor.jpeg" alt="Smart TV 43 Full HD">
         <ul>
-            <li>Precio: $49.999</li>
-            <li>Modelo: UN43J5290AGCZB</li>
-            <li>Marca: Samsung</li>
+            <li><span>Precio:</span> <mark>$49.999</mark></li>
+            <li><span>Modelo:</span> UN43J5290AGCZB</li>
+            <li><span>Marca:</span> Samsung</li>
         </ul>
     </div>
-    <div>
+    <div class="producto">
         <h3>Cafetera Oster</h3>
         <img src="imagenes/cafetera.jpg" alt="Cafetera Oster">
         <ul>
-            <li>Precio: $51.000</li>
-            <li>Modelo: Bvstem6603b</li>
-            <li>Marca: Oster</li>
+            <li><span>Precio:</span> $51.000</li>
+            <li><span>Modelo:</span> Bvstem6603b</li>
+            <li><span>Marca:</span> Oster</li>
         </ul>
     </div>
-    <div>
+    <div class="producto">
         <h3>Heladera Whirlpool</h3>
         <img src="imagenes/heladera.jpg" alt="Heladera Whirlpool">
         <ul>
-            <li>Precio: $251.000</li>
-            <li>Modelo: WRE57K2</li>
-            <li>Marca: Whirlpool</li>
+            <li><span>Precio:</span> $251.000</li>
+            <li><span>Modelo:</span> WRE57K2</li>
+            <li><span>Marca:</span> Whirlpool</li>
         </ul>
     </div>
-
-
+    <div id="video">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/onz6lA94VA4" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+    </div>
+    <a href="#inicio">Volver al inicio</a>
+    </main>
+    <footer>
+        Redes sociales
+    </footer>
 </body>
 
 </html>
