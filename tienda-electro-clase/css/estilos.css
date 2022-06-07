@@ -4,6 +4,10 @@ html {
 }
 body{
     font-family: 'Montserrat', sans-serif;
+    margin: 0px;
+}
+main {
+    margin: 20px 10%;
 }
 h1{
     font-size: 36px;
@@ -18,9 +22,34 @@ p{
     font-size: 16px;
     font-style: italic;
 }
+textarea {
+    resize: none;
+}
+input:focus, textarea:focus {
+    background-color: #eee;
+}
+button{
+    background-color: red;
+    color: white;
+    font-size: 16px;
+}
+button:hover{
+    background-color: white;
+    color: red;
+    cursor:pointer;
+}
+.producto {
+    background-color: #eee;
+    width: 280px;
+    display: inline-block;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px;
+}
 .producto h3{
     color: red;
     text-decoration: underline;
+    text-align: center;
 }
 .producto span{
     color: green;
@@ -28,6 +57,8 @@ p{
 }
 .producto img{
     height: 130px;
+    margin: auto;
+    display: block;
 }
 /*.producto li{
     color:gray;
@@ -35,7 +66,55 @@ p{
 .negrita{
     font-weight: 800;
 }
-#video{
+#video {
     background-color: #eee;
+    border-radius: 8px;
+    padding: 20px;
+} 
+nav {
+    display: block;
+    text-align: center;
+    background-color: red;
+}
+nav ul{
+    list-style-type: none;
+    margin: 0px;
+    padding: 14px 0px;
+}
+nav li {
+    display: inline;
+}
+nav a{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    padding: 0 50px;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+form{
+    margin: auto;
+    display: block;
+    width: 600px;
+}
+form input[type=text], form input[type=date], form input[type=tel], form input[type=email], form select, form textarea{
     width: 100%;
+    border: 1px solid red;
+    height: 22px;
+    display: block;
+    border-radius: 8px;
+}
+form textarea{
+    height: 100px;
+}
+form div{
+    margin-bottom: 7px;
+}
+form button{
+    padding: 10px 20px;
+    border: 1px solid red;
+    margin: auto;
+    display: block;
+    margin-top: 30px;
 }

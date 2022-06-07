@@ -32,7 +32,7 @@
             </div>
             <div>
                 <label for="txtTelefono">Teléfono:</label>
-                <input type="tel" name="txtTelefono" id="txtTelefono">
+                <input type="tel" name="txtTelefono" id="txtTelefono" placeholder="(cod) 11 9999-9999">
             </div>
             <div>
                 <label for="txtFechaNac">Fecha de nacimiento:</label>
@@ -66,12 +66,26 @@
                 <label for="txtMensaje">Mensaje:</label>
                 <textarea name="txtMensaje" id="txtMensaje"></textarea>
             </div>
-
-
-           
-
-
-
+            <div>
+                <input type="checkbox" name="chkNewsletter" id="chkNewsletter" checked>
+                <label for="chkNewsletter">Deseo recibir mensajes sobre novedades</label>
+            </div>
+            <div>
+                <input type="checkbox" name="chkCondiciones" id="chkCondiciones">
+                <label for="chkCondiciones">Acepto términos y condiciones</label>
+            </div>
+            <div class="opciones">
+                <label>¿Sos mayor de edad?</label>
+            
+                <label for="optMayorSi">Sí </label>
+                <input type="radio" name="optMayorEdad" id="optMayorSi">
+            
+                <label for="optMayorNo">No </label>
+                <input type="radio" name="optMayorEdad" id="optMayorNo">
+            </div>
+            <div>
+                <button type="submit" name="btnEnviar" id="btnEnviar">ENVIAR</button>
+            </div>
         </form>
     </main>
     <footer>
