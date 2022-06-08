@@ -127,6 +127,10 @@ form div{
 footer{ /* Centramos los elementos dentro del footer*/
     width: max-content;
     margin: auto;
+    margin-bottom: 30px;
+}
+footer a {
+    text-decoration: none;
 }
 footer i{
     font-size: 35px;

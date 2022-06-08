@@ -118,3 +118,23 @@ form button{
     display: block;
     margin-top: 30px;
 }
+footer {
+    /* Centramos los elementos dentro del footer*/
+    width: max-content;
+    margin: auto;
+    margin-bottom: 30px;
+}
+footer a{
+    text-decoration: none;
+}
+footer i {
+    font-size: 35px;
+    border: 1px solid;
+    height: 48px;
+    width: 58px;
+    text-align: center;
+    padding: 10px 0 0 0;
+    border-radius: 80px;
+    margin: 0 15px;
+    color: red;
+}
