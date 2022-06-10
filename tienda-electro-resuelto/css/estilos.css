@@ -145,7 +145,7 @@ footer i{
 }
 @media (max-width: 460px){ /*aplica cuando el ancho del dispositivo es hasta 460px*/
     h1{
-        font-size: 16px;
+        font-size: 20px;
     }
     h2{
         font-size: 14px;
@@ -156,7 +156,7 @@ footer i{
     main{
         margin: 10px 2%;
     }
-    .video-promocional iframe{
+    #video iframe{
         width: 100%;
         height: 300px;
     }
