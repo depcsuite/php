@@ -67,7 +67,7 @@ class Cliente
                     $this->fk_idlocalidad,
                     '$this->domicilio'
                 );";
-        // print_r($sql);exit;
+         //print_r($sql);exit;
         //Ejecuta la query
         if (!$mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
