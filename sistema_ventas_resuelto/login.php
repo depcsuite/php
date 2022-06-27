@@ -7,6 +7,7 @@ if($_POST){
 	$usuario = trim($_POST["txtUsuario"]); //trim elimina espacios de los laterales
 	$clave = trim($_POST["txtClave"]);
 
+  //Buscamos en la BBDD si existe el usuario que ingresó la persona
   $entidadUsuario = new Usuario();
   $entidadUsuario->obtenerPorUsuario($usuario); //a desarrollar
   

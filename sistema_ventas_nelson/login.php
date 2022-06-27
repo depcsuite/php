@@ -5,11 +5,19 @@ error_reporting(E_ALL);
 
 session_start();
 
+include_once "entidades/usuario.php";
+
 if($_POST){
     $usuario = trim($_REQUEST["txtUsuario"]);
     $clave = trim($_REQUEST["txtClave"]);
 
-    if($usuario == "admin" && $clave == "admin123"){
+    //Buscamos en la BBDD si existe el usuario que ingresó la persona
+    //obtenerPorUsuario
+    $entidadUsuario = new Usuario();
+    $entidadUsuario->obtenerPorUsuario($usuario);
+
+    //Si existe con ese nombre y la clave se verifica con la del usuario de la BBDD
+    if($entidadUsuario->nombre != "" && password_verify($clave, $entidadUsuario->clave)){
         $_SESSION["nombre"] = "Nelson";
         header("Location: index.php");
     } else {
