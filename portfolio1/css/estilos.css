@@ -131,9 +131,55 @@ p{
     height: 300px;
 }
 #stack-tecnologico {
-    background-color: #E20000;
+    background: linear-gradient(to right, rgba(184, 37, 20, 1) 0%, rgba(214, 52, 30, 1) 47%, rgba(240, 47, 23, 1) 70%, rgba(240, 47, 23, 1) 100%);
+}
+#stack-tecnologico h2{
+    font-size: 24px;
+    color: white;
+}
+#stack-tecnologico h3{
+    font-size: 14px;
+    color: black;
+    font-weight: 300;
+}
+#stack-tecnologico .tecnologia{
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    height: 182px;
+}
+#stack-tecnologico .tecnologia img{
+    height: 60px;
+}
+#experiencia h2{
+    font-size: 24px;
+    color:#370a6d;
+    font-weight: 400;
+}
+#experiencia h3{
+    color: #6A6A6A;
+    font-size: 18px;
+    font-weight: 600;
+}
+#experiencia h4{
+    font-size: 17px;
+    color:#370a6d;
+}
+#experiencia h5{
+    color: #6A6A6A;
+    font-size: 14px;
+}
+.gris {
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
 }
 
+.gris:hover {
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+}
 @media (max-width: 750px) {
     #contacto, #inicio {
         background-image: url("../images/fondo-proyectos.png");
