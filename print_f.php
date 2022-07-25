@@ -7,18 +7,22 @@ error_reporting(E_ALL);
 function print_f1($variable)
 {
     if (is_array($variable)) {
+        $archivo = fopen('datos.txt', 'a+');
+
         //Si es un array, lo recorro y guardo el contenido en el archivo “datos.txt”
-        file_put_contents("datos.txt", "");
-        $archivo1 = fopen("datos.txt", "a");
+        fwrite($archivo, "\n\nDatos del array ==>\n");
+
         foreach ($variable as $item) {
-            fwrite($archivo1, $item . "\n");
+            fwrite($archivo, $item . "\n");
         }
-        fclose($archivo1);
+        fclose($archivo);
+
     } else {
         //Entonces es string, guardo el contenido en el archivo “datos.txt”
-        file_put_contents("datos.txt", $variable);
+        $contenido = "Datos de la variable ==>\n" . $variable;
+        file_put_contents("datos.txt", $contenido);
     }
-    echo "Archivo actualizado.";
+    echo "Archivo generado.";
 }
 
 function print_f2($variable)
