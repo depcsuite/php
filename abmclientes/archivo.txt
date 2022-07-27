@@ -1,1 +1,1 @@
-[{"dni":"20333000122","nombre":"Nelson Daniel","telefono":"1162423341","correo":"nelson.tarche@gmail.com","imagen":"20220518010531121044.png"},{"dni":"23403218","nombre":"Ana Valle","telefono":"1167848536","correo":"ana@correo.com","imagen":""}]
+[{"documento":"39222738","nombre":"Nelson Daniel","telefono":"1162423341","correo":"nelson.tarche@gmail.com"},{"documento":"42204336","nombre":"Ana Valle","telefono":"1167848536","correo":"sarah@gmail.com"}]
