@@ -1,1 +1,1 @@
-[{"fecha":"20\/05\/2022","prioridad":"Alta","usuario":"Ana","estado":"En proceso","titulo":"Actividad 1","descripcion":"Esto es una tarea"},{"fecha":"02\/08\/2022","prioridad":"Media","usuario":"Daniela","estado":"Terminado","titulo":"Resolver bug del sistema","descripcion":"test"}]
+[{"fecha":"04\/08\/2022","prioridad":"Alta","usuario":"Bernabe","estado":"Asignado","titulo":"Actividad 1","descripcion":"test"}]

@@ -12,11 +12,12 @@ if (file_exists("archivo.txt")) {
     $aTareas = array();
 }
 
-if (isset($_GET["id"])) {
+if (isset($_GET["id"]) && $_GET["id"] >= 0)  {
     $id = $_GET["id"];
 } else {
     $id = "";
 }
+//$id = isset($_GET["id"]) && $_GET["id"] >= 0 ? $_GET["id"] : "";
 
 if($_POST){
     $titulo = $_POST["txtTitulo"];
@@ -48,10 +49,8 @@ if($_POST){
         );
 
     }
-
     //Convertir el array de aTareas en json
     $strJson = json_encode($aTareas);
-
     //Almacenar en un archivo.txt el json con file_put_contents
     file_put_contents("archivo.txt", $strJson);
 }
@@ -167,7 +166,7 @@ if (isset($_GET["do"]) && $_GET["do"] == "eliminar") {
                             <td><?php echo $tarea["usuario"]; ?></td>
                             <td><?php echo $tarea["estado"]; ?></td>
                             <td>
-                                <a href="?id=<?php echo $pos ?>" class="btn btn-secondary"><i class="fa-solid fa-pencil"></i></a>
+                                <a href="?id=<?php echo $pos ?>&do=editar" class="btn btn-secondary"><i class="fa-solid fa-pencil"></i></a>
                                 <a href="?id=<?php echo $pos ?>&do=eliminar" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
