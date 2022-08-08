@@ -7,22 +7,34 @@ ini_set('error_reporting', E_ALL);
 
 //Si existe el archivo invitados lo abrimos y cargamos en una variable del tipo array
 //los DNIs permitidos
-
-//Sino el array queda como un array vacio
-
+if(file_exists("invitados.txt")){
+    $archivo = fopen("invitados.txt", "r");
+    $aDocumentos = fgetcsv($archivo, 0, ",");
+} else {
+    //Sino el array queda como un array vacio
+    $aDocumentos = array();
+}
 
 if($_POST){
-
     if(isset($_POST["btnProcesar"])){
-        //Si el DNI ingresado se encuentra en la lista se mostrará un mensaje de bienvenido
+        $documento = $_REQUEST["txtDocumento"];
 
-        //Sino un mensaje de No se encuentra en la lista de invitados.
+        //Si el DNI ingresado se encuentra en la lista se mostrará un mensaje de bienvenido
+        if(in_array($documento, $aDocumentos)){
+            $mensaje = "Bienvenido.";
+        } else {
+            $menaje = "No se encuentra en la lista de invitados.";
+        }
     }
 
     if(isset($_POST["btnVip"])){
-        //Si el codigo es verde entonces mostrará Su código de acceso es ....
-
-        //Sino Ud. no tiene pase VIP
+        $codigo = $_REQUEST["txtCodigo"];
+        //Si el codigo es "verde" entonces mostrará Su código de acceso es ....
+        if($codigo == "verde"){
+            $mensaje = "Su código de acceso es " . rand(1000, 9999);
+        } else {
+            $mensaje = "Sino Ud. no tiene pase VIP";
+        }
     }
 
 }
@@ -52,10 +64,10 @@ if($_POST){
         <div class="col-12 py-3">
             <h1>Lista de invitados</h1>
         </div>
-        <?php if (isset($aMensaje)): ?>
+        <?php if (isset($mensaje)): ?>
         <div class="col-12">
-            <div class="alert alert-<?php echo $aMensaje["estado"]; ?>" role="alert">
-                <?php echo $aMensaje["texto"]; ?>
+            <div class="alert alert-info" role="alert">
+                <?php echo $mensaje; ?>
             </div>
         </div>
         <?php endif;?>
@@ -66,14 +78,14 @@ if($_POST){
             <form method="POST" action="">
                 <div class="row">
                     <div class="col-12">
-                        <p>Ingrese el DNI:<p><input type="text" name="txtNombre" class="form-control">
+                        <p>Ingrese el DNI:<p><input type="text" name="txtDocumento" class="form-control">
                         <input type="submit" name="btnProcesar" value="Verificar invitado" class="btn-primary">
                     </div>
                 </div>
                 <div class="row">
                     <div class="12-col bm-3">
                         <p>Ingresa el código secreto para el pase VIP:<p>
-                        <input type="text" name="txtPregunta" class="form-control">
+                        <input type="text" name="txtCodigo" class="form-control">
                         <input type="submit" name="btnVip" value="Verificar código" class="btn-primary">
                     </div>
                 </div>
