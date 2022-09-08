@@ -23,19 +23,52 @@ nav .active {
     border-radius: 30px;
     padding: 7px 20px !important;
 }
-
-#contacto {
+#inicio .div-cohete{
+    height: 410px;
+}
+#inicio .cohete{
+    height: 400px;
+}
+#inicio .cohete:hover{
+    height: 410px;
+}
+#inicio .parrafo{
+    color: white;
+    border-radius: 15px;
+    border: 1px solid white;
+    font-weight: 600;
+}
+#contacto, #inicio {
     background-image: url("../images/fondo-contacto.png");
     background-size: cover;
 }
+
 #proyectos {
     background-image: url("../images/fondo-proyectos.png");
     background-size: cover;
 }
-.bloque-proyecto h2{
+
+.bloque-proyecto {
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.bloque-proyecto img {
+    width: 100%;
+    height: 215px;
+}
+
+.bloque-proyecto h2 {
     color: white;
     font-size: 16px;
-    background-color: #E20000;
+    background: rgb(185, 25, 35);
+    background: linear-gradient(90deg, rgba(185, 25, 35, 1) 0%, rgba(217, 49, 49, 1) 37%);
+}
+
+.bloque-proyecto p {
+    font-size: 14px;
+    height: 130px;
 }
 
 #contacto textarea {
@@ -52,11 +85,14 @@ nav .active {
     border: none;
     padding: 7px 30px;
     border-radius: 15px;
+    text-decoration: none;
 }
+
 .btn-blanco:hover {
     background-color: #370a6d;
     color: white;
 }
+
 .btn-rojo {
     background-color: #E20000;
     color: white;
@@ -66,32 +102,43 @@ nav .active {
     text-decoration: none;
     font-weight: 100;
 }
+
 .btn-rojo:hover {
     background-color: #370a6d;
     color: white;
 }
-.link-rojo{
-    color:#E20000;
+
+.link-rojo {
+    color: #E20000;
     text-decoration: none;
 }
-.link-rojo:hover{
-    color:#E20000;
+
+.link-rojo:hover {
+    color: #E20000;
 }
+
 footer,
 footer a {
-    color: white;
     font-weight: 100;
 }
 
+#contacto footer, #contacto footer a,#inicio footer, #inicio footer a {
+    color: white;
+}
+#proyectos footer, #proyectos footer a {
+    color: #E20000;
+}
 footer .fa-github {
     font-size: 31px;
     text-decoration: none;
 }
-
-footer .fa-github:hover {
+#contacto footer .fa-github:hover {
     color: white !important;
 }
 
+#proyectos footer .fa-github:hover {
+    color: #E20000 !important;
+}
 footer .fa-linkedin-in {
     color: #E20000;
     background-color: white;
@@ -104,21 +151,27 @@ footer .fa-linkedin-in {
     border-radius: 80px;
     margin: 0 8px;
 }
-.mx-auto{
+
+.mx-auto {
     display: block;
     margin: auto;
 }
+
 @media (max-width: 750px) {
-    #contacto, #proyectos {
+    #contacto,
+    #proyectos, #inicio {
         background-image: url("../images/fondo-proyectos.png");
         background-size: contain;
         background-repeat: no-repeat;
     }
+
     #contacto .btn-blanco {
         background-color: #370a6d;
         color: white;
     }
-    footer, footer a {
+
+    #contacto footer,
+    #contacto footer a {
         color: #E20000;
         font-weight: 400;
     }
