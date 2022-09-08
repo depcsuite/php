@@ -37,10 +37,6 @@ if($_POST){
     }
 } 
 
-if(isset($_GET["id"]) && $_GET["id"] > 0){
-    $venta->obtenerPorId();
-}
-
 if(isset($_GET["do"]) && $_GET["do"] == "buscarProducto"){
     $aResultado = array();
     $idProducto = $_GET["id"];
@@ -51,6 +47,10 @@ if(isset($_GET["do"]) && $_GET["do"] == "buscarProducto"){
     $aResultado["cantidad"] = $producto->cantidad;
     echo json_encode($aResultado);
     exit;
+}
+
+if(isset($_GET["id"]) && $_GET["id"] > 0){
+    $venta->obtenerPorId();
 }
 
 $cliente = new Cliente();
@@ -175,7 +175,7 @@ function fBuscarPrecio(){
             async: true,
             dataType: "json",
             success: function (respuesta) {
-                strResultado = Intl.NumberFormat("es-AR", {style: 'currency', currency: 'ARS'}).format(respuesta.precio);
+                let strResultado = Intl.NumberFormat("es-AR", {style: 'currency', currency: 'ARS'}).format(respuesta.precio);
                 $("#txtPrecioUniCurrency").val(strResultado);
                 $("#txtPrecioUni").val(respuesta.precio);
             }

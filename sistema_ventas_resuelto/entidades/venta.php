@@ -37,7 +37,7 @@ class Venta {
         }
         $this->cantidad = isset($request["txtCantidad"])? $request["txtCantidad"] : 0;
         $this->preciounitario = isset($request["txtPrecioUni"])? $request["txtPrecioUni"] : 0.0;
-        $this->total = isset($request["txtTotal"])? $request["txtTotal"] : 0.0;
+        $this->total = $this->preciounitario * $this->cantidad;
     }
 
     public function insertar(){

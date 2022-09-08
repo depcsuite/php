@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/*@font-face {
+    font-family: 'oswald';
+    src: url('../fonts/oswald.regular.ttf');
+}*/
+html {
+    scroll-behavior: smooth;
+}
+body{
+    font-family: 'Montserrat', sans-serif;
+    margin: 0px;
+}
+main{
+    margin: 20px 10%;
+}
+h1{
+    color:red;
+    font-size: 36px; /* tamaño de fuente */
+    text-align: center;
+}
+h2{
+    font-size: 24px;
+    color: gray;
+}
+p{
+    font-size: 16px;
+    font-style: italic;
+}
+input:focus, textarea:focus,select:focus {
+    background-color: #eee;
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+nav {
+    display: block;
+    text-align: center;
+    background-color: red;
+}
+nav ul{
+    list-style-type: none;
+    margin: 0px;
+    padding: 14px 0px;
+}
+nav li{
+    display: inline;
+}
+nav a{
+    color: white;
+    padding: 0px 50px;
+}
+.producto{
+    background-color: #eee;
+    width: 280px;
+    border-radius: 8px;
+    display: inline-block;
+    padding: 15px;
+    margin: 10px;
+}
+.producto span{
+    color: green;
+    font-weight: 600;
+}
+.producto h3 {
+    color: red;
+    text-decoration: underline;
+}
+.producto img {
+    height: 120px;
+    margin: auto;
+    display: block;
+}
+.texto-destacado{
+    text-decoration: underline;
+    font-style: italic;
+}
+.rojo{
+    color: red;
+}
+.video{
+    background-color: #eee;
+    width: 100%;
+    padding: 18px;
+    border-radius: 8px;
+}
+form{
+    width: 600px;
+    margin: auto;
+    display: block;
+    border: 1px solid #f0dfdf;
+    padding: 15px;
+    border-radius: 8px;
+}
+form input[type=text], form input[type=email],form input[type=tel],form input[type=date], form select, form textarea { /* esto es un comentario */
+    border: 1px solid red;
+    border-radius: 8px;
+    display: block;
+    width: 100%;
+    height: 22px;
+}
+form textarea{
+    height: 100px;
+}
+.form-group{
+    margin: 10px 0px;
+}
+.btn{
+    padding: 10px 25px;
+    border: 0px;
+    margin: auto;
+    display: block;
+    margin-top: 20px;
+    border-radius: 8px;
+    border: 1px solid red;
+    background-color: red;
+    color: white;
+    text-transform: uppercase;
+}
+.btn:hover {
+    background-color: white;
+    color: red;
+    cursor: pointer;
+}
+footer {
+    /* Centramos los elementos dentro del footer*/
+    width: max-content;
+    margin: auto;
+    margin-bottom: 30px;
+}
+footer a {
+    text-decoration: none;
+}
+footer i {
+    font-size: 35px;
+    border: 1px solid;
+    height: 48px;
+    width: 58px;
+    text-align: center;
+    padding: 10px 0 0 0;
+    border-radius: 80px;
+    margin: 0 15px;
+    color: red;
+}
+@media (max-width: 460px) {
+    /*aplica cuando el ancho del dispositivo es hasta 460px*/
+    h1 {
+        font-size: 20px;
+    }
+    h2 {
+        font-size: 14px;
+    }
+    p {
+        font-size: 12px;
+    }
+    main {
+        margin: 10px 2%;
+    }
+    form{
+        width: 91%;
+        margin: 0px;
+    }
+    #video iframe {
+        width: 100%;
+        height: 300px;
+    }
+}
