@@ -28,6 +28,10 @@ nav .active {
     background-image: url("../images/fondo-contacto.png");
     background-size: cover;
 }
+#proyectos {
+    background-image: url("../images/fondo-proyectos.png");
+    background-size: cover;
+}
 
 #contacto textarea {
     height: 150px;
@@ -62,6 +66,13 @@ nav .active {
     background-color: #370a6d;
     color: white;
 }
+.link-rojo{
+    color:#E20000;
+    text-decoration: none;
+}
+.link-rojo:hover{
+    color:#E20000;
+}
 footer,
 footer a {
     color: white;
@@ -94,7 +105,7 @@ footer .fa-linkedin-in {
     margin: auto;
 }
 @media (max-width: 750px) {
-    #contacto {
+    #contacto, #proyectos {
         background-image: url("../images/fondo-proyectos.png");
         background-size: contain;
         background-repeat: no-repeat;
