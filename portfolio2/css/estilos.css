@@ -22,6 +22,12 @@ nav .active {
     border: 1px solid #E20000;
     border-radius: 30px;
     padding: 7px 20px !important;
+    
+}
+nav li {
+    width: 155px;
+    text-align: center;
+
 }
 #inicio .div-cohete{
     height: 410px;
@@ -37,6 +43,57 @@ nav .active {
     border-radius: 15px;
     border: 1px solid white;
     font-weight: 600;
+}
+.img-rounded{
+    width: 250px;
+    border-radius: 200px;
+}
+#stack .tecnologia{
+    background-color: white;
+}
+#stack{
+    background: rgb(185, 25, 35);
+    background: linear-gradient(90deg, rgba(185, 25, 35, 1) 0%, rgba(217, 49, 49, 1) 37%);
+}
+#stack h2{
+    color: white;
+    font-size: 24px;
+}
+#stack h3{
+    font-size: 14px;
+    color: #282828;
+    font-weight: 300;
+}
+#stack img{
+    height: 60px;
+}
+#experiencia h2{
+    font-weight: 400;
+    font-size: 24px;
+    color:#370a6d;
+}
+#experiencia h3{
+    color: #6A6A6A;
+    font-size: 18px;
+    font-weight: 600;
+}
+#experiencia h4{
+    color:#370a6d;
+    font-size: 17px;
+}
+#experiencia h5{
+    color: #6A6A6A;
+    font-size: 14px;
+}
+#experiencia img{
+    width: 130px;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+#experiencia img:hover{
+    width: 130px;
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
 }
 #contacto, #inicio {
     background-image: url("../images/fondo-contacto.png");
