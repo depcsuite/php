@@ -15,7 +15,7 @@ if ($_POST) {
         } else {
             $tipoProducto->insertar();
             $msg["texto"] = "Insertado correctamente";
-             $msg["codigo"] = "alert-danger";
+             $msg["codigo"] = "alert-success";
         }
 
     } else if (isset($_POST["btnBorrar"])) {
