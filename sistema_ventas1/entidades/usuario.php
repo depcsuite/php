@@ -25,7 +25,7 @@ class Usuario {
     public function cargarFormulario($request){
         $this->idusuario = isset($request["id"])? $request["id"] : "";
         $this->usuario = isset($request["txtUsuario"])? $request["txtUsuario"] : "";
-        $this->clave = isset($request["txtClave"]) && $request["txtClave"] != "" ? $this->encriptarClave($request["txtClave"]) : "";
+        $this->clave = isset($request["txtClave"]) && $request["txtClave"] != "" ? password_hash($request["txtClave"], PASSWORD_DEFAULT) : "";
         $this->nombre = isset($request["txtNombre"])? $request["txtNombre"] : "";
         $this->apellido = isset($request["txtApellido"])? $request["txtApellido"]: "";
         $this->correo = isset($request["txtCorreo"])? $request["txtCorreo"]: "";
@@ -115,7 +115,7 @@ class Usuario {
         $mysqli->close();
     }
 
-    public function obtenerPorUsuario($usuario){
+    public function obtenerPorUsuario($nombreUsuario){
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
         $sql = "SELECT idusuario, 
                         usuario, 
@@ -124,7 +124,8 @@ class Usuario {
                         apellido, 
                         correo
                 FROM usuarios 
-                WHERE usuario = '$usuario'";
+                WHERE usuario = '$nombreUsuario'";
+
         if (!$resultado = $mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
         }

@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 //Iniciamos la session
 session_start();
 
+date_default_timezone_set('America/Argentina/Buenos_Aires');
 class Config {
     const BBDD_HOST = "167.114.86.211"; //127.0.0.1
     const BBDD_PORT= "3310"; //3306

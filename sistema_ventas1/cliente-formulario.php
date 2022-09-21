@@ -3,6 +3,7 @@
 
 include_once "config.php";
 include_once "entidades/cliente.php";
+include_once "entidades/venta.php";
 include_once "entidades/provincia.php";
 include_once "entidades/localidad.php";
 
@@ -11,11 +12,11 @@ $cliente->cargarFormulario($_REQUEST);
 
 $pg = "Listado de clientes";
 
-if($_POST){
-    if(isset($_POST["btnGuardar"])){
-        if(isset($_GET["id"]) && $_GET["id"] > 0){
-              //Actualizo un cliente existente
-              $cliente->actualizar();
+if ($_POST) {
+    if (isset($_POST["btnGuardar"])) {
+        if (isset($_GET["id"]) && $_GET["id"] > 0) {
+            //Actualizo un cliente existente
+            $cliente->actualizar();
         } else {
             //Es nuevo
             $cliente->insertar();
@@ -23,35 +24,41 @@ if($_POST){
         $msg["texto"] = "Guardado correctamente";
         $msg["codigo"] = "alert-success";
 
-    } else if(isset($_POST["btnBorrar"])){
-        $cliente->eliminar();
-        header("Location: cliente-listado.php");
+    } else if (isset($_POST["btnBorrar"])) {
+        //Si existen ventas asociadas al cliente que se intenta eliminar, muestra mensaje de alerta
+        $venta = new Venta();
+        if ($venta->obtenerVentasPorCliente($cliente->idcliente)) {
+            $msg["texto"] = "No se puede eliminar un cliente con ventas asociadas.";
+            $msg["codigo"] = "alert-danger";
+        } else {
+            $cliente->eliminar();
+            header("Location: cliente-listado.php");
+        }
     }
-} 
+}
 
-if(isset($_GET["do"]) && $_GET["do"] == "buscarLocalidad" && $_GET["id"] && $_GET["id"] > 0){
+if (isset($_GET["do"]) && $_GET["do"] == "buscarLocalidad" && $_GET["id"] && $_GET["id"] > 0) {
     $idProvincia = $_GET["id"];
     $localidad = new Localidad();
     $aLocalidad = $localidad->obtenerPorProvincia($idProvincia);
     echo json_encode($aLocalidad);
     exit;
-} 
-if(isset($_GET["id"]) && $_GET["id"] > 0){
+}
+if (isset($_GET["id"]) && $_GET["id"] > 0) {
     $cliente->obtenerPorId();
 }
-
 
 $provincia = new Provincia();
 $aProvincias = $provincia->obtenerTodos();
 
-include_once("header.php"); 
+include_once "header.php";
 ?>
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">Cliente</h1>
-          <?php if(isset($msg)): ?>
+          <?php if (isset($msg)): ?>
             <div class="row">
                 <div class="col-12">
                     <div class="alert <?php echo $msg["codigo"]; ?>" role="alert">
@@ -59,7 +66,7 @@ include_once("header.php");
                     </div>
                 </div>
             </div>
-            <?php endif; ?>
+            <?php endif;?>
             <div class="row">
                 <div class="col-12 mb-3">
                     <a href="cliente-listado.php" class="btn btn-primary mr-2">Listado</a>
@@ -89,33 +96,33 @@ include_once("header.php");
                     <label for="txtFechaNac" class="d-block">Fecha de nacimiento:</label>
                     <select class="form-control d-inline"  name="txtDiaNac" id="txtDiaNac" style="width: 80px">
                         <option selected="" disabled="">DD</option>
-                        <?php for($i=1; $i <= 31; $i++): ?>
-                            <?php if($cliente->fecha_nac != "" && $i == date_format(date_create($cliente->fecha_nac), "d")): ?>
+                        <?php for ($i = 1; $i <= 31; $i++): ?>
+                            <?php if ($cliente->fecha_nac != "" && $i == date_format(date_create($cliente->fecha_nac), "d")): ?>
                             <option selected><?php echo $i; ?></option>
                             <?php else: ?>
                             <option><?php echo $i; ?></option>
-                            <?php endif; ?>
-                        <?php endfor; ?>
+                            <?php endif;?>
+                        <?php endfor;?>
                     </select>
                     <select class="form-control d-inline"  name="txtMesNac" id="txtMesNac" style="width: 80px">
                         <option selected="" disabled="">MM</option>
-                        <?php for($i=1; $i <= 12; $i++): ?>
-                            <?php if($cliente->fecha_nac != "" && $i == date_format(date_create($cliente->fecha_nac), "m")): ?>
+                        <?php for ($i = 1; $i <= 12; $i++): ?>
+                            <?php if ($cliente->fecha_nac != "" && $i == date_format(date_create($cliente->fecha_nac), "m")): ?>
                             <option selected><?php echo $i; ?></option>
                             <?php else: ?>
                             <option><?php echo $i; ?></option>
-                            <?php endif; ?>
-                        <?php endfor; ?>
+                            <?php endif;?>
+                        <?php endfor;?>
                     </select>
                     <select class="form-control d-inline"  name="txtAnioNac" id="txtAnioNac" style="width: 100px">
                         <option selected="" disabled="">YYYY</option>
-                        <?php for($i=1900; $i <= date("Y"); $i++): ?>
-                         <?php if($cliente->fecha_nac != "" && $i == date_format(date_create($cliente->fecha_nac), "Y")): ?>
+                        <?php for ($i = 1900; $i <= date("Y"); $i++): ?>
+                         <?php if ($cliente->fecha_nac != "" && $i == date_format(date_create($cliente->fecha_nac), "Y")): ?>
                             <option selected><?php echo $i; ?></option>
                             <?php else: ?>
                             <option><?php echo $i; ?></option>
-                            <?php endif; ?>
-                        <?php endfor; ?> ?>
+                            <?php endif;?>
+                        <?php endfor;?> ?>
                     </select>
                 </div>
             </div>
@@ -130,13 +137,13 @@ include_once("header.php");
                             <label for="txtTelefono">Provincia:</label>
                             <select class="form-control" name="lstProvincia" id="lstProvincia" onchange="fBuscarLocalidad()" required>
                                 <option value="" disabled selected>Seleccionar</option>
-                                <?php foreach($aProvincias as $provincia): ?>
-                                    <?php if($cliente->fk_idprovincia == $provincia->idprovincia): ?>
+                                <?php foreach ($aProvincias as $provincia): ?>
+                                    <?php if ($cliente->fk_idprovincia == $provincia->idprovincia): ?>
                                         <option selected value="<?php echo $provincia->idprovincia; ?>"><?php echo $provincia->nombre; ?></option>
                                     <?php else: ?>
                                         <option value="<?php echo $provincia->idprovincia; ?>"><?php echo $provincia->nombre; ?></option>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
+                                    <?php endif;?>
+                                <?php endforeach;?>
                             </select>
                         </div>
                         <div class="col-6 form-group">
@@ -162,7 +169,7 @@ include_once("header.php");
       <!-- End of Main Content -->
 <script>
 $(document).ready( function () {
-    var idCliente = '<?php echo isset($cliente) && $cliente->idcliente > 0? $cliente->idcliente : 0 ?>';
+    var idCliente = '<?php echo isset($cliente) && $cliente->idcliente > 0 ? $cliente->idcliente : 0 ?>';
 
 } );
 
@@ -185,4 +192,4 @@ $(document).ready( function () {
         }
 
 </script>
-<?php include_once("footer.php"); ?>
+<?php include_once "footer.php";?>

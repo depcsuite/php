@@ -10,6 +10,7 @@ if ($_POST) {
     if (isset($_POST["btnGuardar"])) {
         $producto->cargarFormulario($_REQUEST);
 
+        //Estoy actualizando
         if (isset($_GET["id"]) && $_GET["id"] > 0) {
 
             if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {
@@ -20,6 +21,14 @@ if ($_POST) {
                 $nombreImagen = "$nombreAleatorio.$extension";
 
                 if ($extension == "png" || $extension == "jpg" || $extension == "jpeg") {
+                    //Elimino la imagen anterior
+                    $productoAnt = new Producto();
+                    $productoAnt->idproducto = $_GET["id"];
+                    $productoAnt->obtenerPorId();
+                    if (file_exists("files/$productoAnt->imagen")) {
+                        unlink("files/$productoAnt->imagen");
+                    }
+                    //Subo la imagen nueva
                     move_uploaded_file($archivo_tmp, "files/$nombreImagen");
                 }
                 $producto->imagen = $nombreImagen;
@@ -53,7 +62,12 @@ if ($_POST) {
         }
 
     } else if (isset($_POST["btnBorrar"])) {
+        $producto = new Producto();
         $producto->cargarFormulario($_REQUEST);
+        $producto->obtenerPorId();
+        if(file_exists("files/$producto->imagen")){
+            unlink("files/$producto->imagen");
+        }
         $producto->eliminar();
         header("Location: producto-listado.php");
     }

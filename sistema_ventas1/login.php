@@ -3,15 +3,19 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-session_start();
+include_once "config.php";
+include_once "entidades/usuario.php";
 
 if($_POST){
-  $usuario = trim($_REQUEST["txtUsuario"]);
+  $nombreUsuario = trim($_REQUEST["txtUsuario"]);
   $clave = trim($_REQUEST["txtClave"]);
 
   //Si el usuario es admin y la clave es admin123
-  if($usuario == "admin" && $clave == "admin123"){
-    $_SESSION["nombre"] = "Nelson";
+  $entidadUsuario = new Usuario();
+  $entidadUsuario->obtenerPorUsuario($nombreUsuario);
+
+  if($entidadUsuario->usuario == $nombreUsuario && password_verify($clave, $entidadUsuario->clave)){
+    $_SESSION["nombre"] = $entidadUsuario->nombre . " " . $entidadUsuario->apellido;
     header("Location: index.php");
   } else {
     $msg = "Usuario o clave incorrecto";
