@@ -39,6 +39,7 @@ $aClientes = $cliente->obtenerTodos();
 $producto = new Producto();
 $aProductos = $producto->obtenerTodos();
 
+$pg = "Edición de ventas";
 include_once("header.php"); 
 ?>
 

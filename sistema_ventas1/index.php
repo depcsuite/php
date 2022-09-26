@@ -7,6 +7,8 @@ $venta = new Venta();
 $facturacionMes = $venta->obtenerFacturacionMensual(date('m'));
 $facturacionAnual = $venta->obtenerFacturacionAnual(date('Y'));
 
+$pg = "Inicio";
+
 include_once("header.php"); 
 
 ?>
