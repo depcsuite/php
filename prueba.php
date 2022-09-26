@@ -16,9 +16,9 @@ if($valor == 1 || $valor == 3 || $valor == 5){
 echo $valor == 1 || $valor == 3 || $valor == 5 ? "El número $valor es impar" : "El número $valor es par";
 
 if($valor %2  ==  0){ //Analiza el resto de dividir por 2, todo numero divisible por 2 es par
-	echo "El numero $valor es par";
+	echo "El número $valor es par";
 } else {
-	echo "El numero $valor es impar";
+	echo "El número $valor es impar";
 }
 
 // Un =, es el operador de asignacion
