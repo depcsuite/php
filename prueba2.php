@@ -3,7 +3,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
 $aProductos = array();
 $aProductos[] = array("nombre" => "Smart TV 55\" 4K UHD",
     "marca" => "Hitachi",
@@ -23,12 +22,11 @@ $aProductos[] = array("nombre" => "Aire Acondicionado Split Inverter Frío/Calor
     "stock" => 5,
     "precio" => 45000,
 );
-
-$aProductos[] = array("nombre" => "Taza blanca",
-    "marca" => "Circa",
-    "modelo" => "3486",
+$aProductos[] = array("nombre" => "Pizarra",
+    "marca" => "LG",
+    "modelo" => "553AIQ1201E",
     "stock" => 50,
-    "precio" => 100,
+    "precio" => 450000,
 );
 
 ?>
@@ -58,28 +56,29 @@ $aProductos[] = array("nombre" => "Taza blanca",
                         <th>Precio</th>
                         <th>Acción</th>
                     </tr>
-            
-                      <?php
-                        $subtotal = 0;
-                        for($i = 0; $i < count($aProductos); $i++){
-                            echo "<tr>";
-                            echo "<td>" . $aProductos[$i]["nombre"] . "</td>";
-                            echo "<td>" . $aProductos[$i]["marca"] . "</td>";
-                            echo "<td>" . $aProductos[$i]["modelo"] . "</td>";
-                            echo "<td>" . $aProductos[$i]["stock"] . "</td>";
-                            echo "<td> $" . $aProductos[$i]["precio"] . "</td>";
-                            echo "<td><button class=\"btn btn-primary\">Comprar</button></td>";
-                            echo "</tr>";
-                            $subtotal += $aProductos[$i]["precio"];
-                        }
-                        ?>
+                    <?php
+                    $contador = 0;
+                    //count() me devuelve la cantidad de elementos de un array
+                    while ($contador < count($aProductos)) {
+                        echo "<tr>";
+                            echo "<td>" . $aProductos[$contador]["nombre"] . "</td>";
+                            echo "<td>" . $aProductos[$contador]["marca"] . "</td>";
+                            echo "<td>" . $aProductos[$contador]["modelo"] . "</td>";
+                            echo "<td>";
+                            echo $aProductos[$contador]["stock"] == 0 ? "No hay stock" : ($aProductos[$contador]["stock"] > 10 ? "Hay stock" : "Poco stock");
+                            echo "</td>";
+                            echo "<td>$" . $aProductos[$contador]["precio"] . "</td>";
+                            echo "<td><button class='btn btn-primary'>Comprar</button></td>";
+                        echo "</tr>";
+                        $contador++;
+                    }
+                    ?>
                 </table>
-          
             </div>
         </div>
         <div class="row">
-            <div class="coll-12">
-                <h3>El subtotal es $ <?php echo $subtotal; ?></h3>
+            <div class="col-12">
+                Total de productos: <?php echo count($aProductos); ?>
             </div>
         </div>
     </div>
