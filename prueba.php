@@ -1,90 +1,55 @@
 <?php
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$aProductos = array();
-$aProductos[] = array("nombre" => "Smart TV 55\" 4K UHD",
-    "marca" => "Hitachi",
-    "modelo" => "554KS20",
-    "stock" => 60,
-    "precio" => 58000,
-);
-$aProductos[] = array("nombre" => "Samsung Galaxy A30 Blanco",
-    "marca" => "Samsung",
-    "modelo" => "Galaxy A30",
-    "stock" => 0,
-    "precio" => 22000,
-);
-$aProductos[] = array("nombre" => "Aire Acondicionado Split Inverter Frío/Calor Surrey 2900F",
-    "marca" => "Surrey",
-    "modelo" => "553AIQ1201E",
-    "stock" => 5,
-    "precio" => 45000,
-);
-$aProductos[] = array("nombre" => "Impresora HP Laser",
-    "marca" => "HP",
-    "modelo" => "P1102w",
-    "stock" => 12,
-    "precio" => 20000,
-);
+//Definición
+function print_f1($variable)
+{
+    if (is_array($variable)) {
+        $contenido = "";
+        foreach ($variable as $item) {
+            $contenido .= $item . "\n";
+        }
+        file_put_contents("datos.txt", $contenido);
+    } else {
+        file_put_contents("datos.txt", $variable);
+    }
+};
+function print_f2($variable)
+{
+    if (is_array($variable)) {
+        $datos = fopen('datos.txt', 'a+');
 
+        foreach ($variable as $linea) {
+            fwrite($datos, $linea . "\n");
+        }
+        fclose($datos);
+    } else {
+        file_put_contents("datos.txt", $variable);
+    }
+};
 
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de productos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center p-5">
-                <h1>Listado de productos</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <table class="table table-hover border">
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Stock</th>
-                        <th>Precio</th>
-                        <th>Acción</th>
-                    </tr>
-                    <?php
-                    $subtotal = 0;
-                    
-                    for ($contador = 0; $contador < count($aProductos); $contador++) {
-                        ?>
-                    <tr>
-                        <td><?php echo $aProductos[$contador]["nombre"]; ?></td>
-                        <td><?php echo $aProductos[$contador]["marca"]; ?></td>
-                        <td><?php echo $aProductos[$contador]["modelo"]; ?></td>
-                        <td><?php echo $aProductos[$contador]["stock"] == 0 ? "No hay stock" : ($aProductos[0]["stock"] > 10 ? "Hay stock" : "Poco stock"); ?></td>
-                        <td>$ <?php echo $aProductos[$contador]["precio"]; ?></td>
-                        <td><button class="btn btn-primary">Comprar</button></td>
-                    </tr>
-                    <?php
-                    $subtotal = $subtotal + $aProductos[$contador]["precio"];
-                    //$subtotal += $aProductos[$contador]["precio"];
-                    
+function print_f3($variable)
+{
+    if (is_array($variable)) {
+        $contenido = "";
+        $archivo = fopen('datos.txt', 'a+');
+        fwrite($archivo, "\n\nDatos del array ==>\n");
 
-                    }
-                    ?>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                El subtotal es: <?php echo $subtotal; ?>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+        foreach ($variable as $item) {
+            fwrite($archivo, $item . "\n");
+        }
+        fclose($archivo);
+
+    } else {
+        $contenido = "Datos de la variable ==>\n" . $variable;
+        file_put_contents("datos.txt", $contenido);
+    }
+}
+
+//Uso
+$aNotas = array(8, 5, 7, 9, 10);
+$msg = "Este es un mensaje";
+print_f($aNotas);

@@ -3,84 +3,80 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$aProductos = array();
-$aProductos[] = array("nombre" => "Smart TV 55\" 4K UHD",
-    "marca" => "Hitachi",
-    "modelo" => "554KS20",
-    "stock" => 60,
-    "precio" => 58000,
+//Definicion de pacientes
+$aPacientes = array();
+$aPacientes[] = array(
+    "dni" => "33.765.012",
+    "nombre" => "Ana Acuña",
+    "edad" => 45,
+    "peso" => 81.50,
 );
-$aProductos[] = array("nombre" => "Samsung Galaxy A30 Blanco",
-    "marca" => "Samsung",
-    "modelo" => "Galaxy A30",
-    "stock" => 0,
-    "precio" => 22000,
+$aPacientes[] = array(
+    "dni" => "23.684.385",
+    "nombre" => "Gonzalo Bustamante",
+    "edad" => 66,
+    "peso" => 79,
 );
-$aProductos[] = array("nombre" => "Aire Acondicionado Split Inverter Frío/Calor Surrey 2900F",
-    "marca" => "Surrey",
-    "modelo" => "553AIQ1201E",
-    "stock" => 5,
-    "precio" => 45000,
+$aPacientes[] = array(
+    "dni" => "11.456.327",
+    "nombre" => "Mariano Perez",
+    "edad" => 56,
+    "peso" => 83,
 );
-$aProductos[] = array("nombre" => "Pizarra",
-    "marca" => "LG",
-    "modelo" => "553AIQ1201E",
-    "stock" => 50,
-    "precio" => 450000,
+$aPacientes[] = array(
+    "dni" => "23.198.563",
+    "nombre" => "Victoria Ledesma",
+    "edad" => 68,
+    "peso" => 85,
 );
+
 
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de productos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Clinica</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
+    <main class="container">
         <div class="row">
-            <div class="col-12 text-center p-5">
-                <h1>Listado de productos</h1>
+            <div class="col-12 py-5 text-center">
+                <h1>Listado de pacientes</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <table class="table table-hover border">
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Stock</th>
-                        <th>Precio</th>
-                        <th>Acción</th>
-                    </tr>
-                    <?php
-                    $contador = 0;
-                    //count() me devuelve la cantidad de elementos de un array
-                    while ($contador < count($aProductos)) {
-                        echo "<tr>";
-                            echo "<td>" . $aProductos[$contador]["nombre"] . "</td>";
-                            echo "<td>" . $aProductos[$contador]["marca"] . "</td>";
-                            echo "<td>" . $aProductos[$contador]["modelo"] . "</td>";
-                            echo "<td>";
-                            echo $aProductos[$contador]["stock"] == 0 ? "No hay stock" : ($aProductos[$contador]["stock"] > 10 ? "Hay stock" : "Poco stock");
-                            echo "</td>";
-                            echo "<td>$" . $aProductos[$contador]["precio"] . "</td>";
-                            echo "<td><button class='btn btn-primary'>Comprar</button></td>";
-                        echo "</tr>";
-                        $contador++;
-                    }
+                    <thead>
+                        <tr>
+                            <th>DNI</th>
+                            <th>Nombre y apellido</th>
+                            <th>Edad</th>
+                            <th>Peso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                        foreach ($aPacientes as $paciente) { ?>
+                        <tr>
+                            <td><?php echo $paciente["dni"]; ?></td>
+                            <td><?php echo $paciente["nombre"]; ?></td>
+                            <td><?php echo $paciente["edad"]; ?></td>
+                            <td><?php echo $paciente["peso"]; ?></td>
+                        </tr>
+                    <?php  
+                        }
                     ?>
+                    </tbody>
+
                 </table>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                Total de productos: <?php echo count($aProductos); ?>
-            </div>
-        </div>
-    </div>
+    </main>
 </body>
 </html>
