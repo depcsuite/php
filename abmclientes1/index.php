@@ -45,6 +45,17 @@ if($_POST){
 
     if(isset($_GET["pos"]) && $_GET["pos"] >= 0){
         $pos = $_GET["pos"];
+
+        if($_FILES["archivo"]["error"] !== UPLOAD_ERR_OK){
+            //Si no se adjunta una imagen, recuperar el nombre de la imagen del cliente almacenado
+            $nombreImagen = $aClientes[$pos]["imagen"];
+        } else {
+            //Eliminar la imagen anterior
+            if($aClientes[$pos]["imagen"] != ""){
+                unlink("imagenes/". $aClientes[$pos]["imagen"]);
+            }
+        }
+
         //Actualizando
         $aClientes[$pos] = array("dni" => $dni,
                                 "nombre" => $nombre,
@@ -76,6 +87,9 @@ if(isset($_GET["pos"]) && $_GET["pos"] >= 0){
 if(isset($_GET["eliminar"]) && $_GET["eliminar"] >= 0){
     //Eliminar de aClientes la posición indicada en la url, es decir en get
     $pos = $_GET["eliminar"];
+
+    //Eliminar la imagen del cliente siempre y cuando exista
+    //
     unset($aClientes[$pos]);
 
     //Convertir el array de clientes en json
@@ -152,7 +166,11 @@ if(isset($_GET["eliminar"]) && $_GET["eliminar"] >= 0){
                     <tbody>
                         <?php foreach($aClientes as $pos => $cliente): ?>
                             <tr>
+                                <?php if($cliente["imagen"] == ""): ?>
+                                <td><img src="imagenes/sin-imagen.jpeg" class="img-thumbnail"></td>
+                                <?php else: ?>
                                 <td><img src="imagenes/<?php echo $cliente["imagen"]; ?>" class="img-thumbnail"></td>
+                                <?php endif; ?>
                                 <td><?php echo $cliente["dni"]; ?></td>
                                 <td><?php echo $cliente["nombre"]; ?></td>
                                 <td><?php echo $cliente["correo"]; ?></td>
