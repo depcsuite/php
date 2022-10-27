@@ -21,6 +21,7 @@ if(file_exists("archivo.txt")){
 */
 
 if($_POST){
+
     //Almacenar los valores del formulario enviado en variables
     $dni = trim($_REQUEST["txtDni"]);
     $nombre = trim($_REQUEST["txtNombre"]);
@@ -32,7 +33,7 @@ if($_POST){
     if($_FILES["archivo"]["error"] === UPLOAD_ERR_OK){
         $nombreAleatorio = date("Ymdhmsi"); //2021010420453710
         $archivo_tmp = $_FILES["archivo"]["tmp_name"];
-        $extension = strtolower(pathinfo($_FILES["archivo"]["name"]), PATHINFO_EXTENSION);
+        $extension = strtolower(pathinfo($_FILES["archivo"]["name"], PATHINFO_EXTENSION));
       
         if($extension == "jpg" || $extension == "jpeg" || $extension == "png"){
             $nombreImagen = "$nombreAleatorio.$extension";
@@ -151,7 +152,7 @@ if(isset($_GET["eliminar"]) && $_GET["eliminar"] >= 0){
                     <tbody>
                         <?php foreach($aClientes as $pos => $cliente): ?>
                             <tr>
-                                <td></td>
+                                <td><img src="imagenes/<?php echo $cliente["imagen"]; ?>" class="img-thumbnail"></td>
                                 <td><?php echo $cliente["dni"]; ?></td>
                                 <td><?php echo $cliente["nombre"]; ?></td>
                                 <td><?php echo $cliente["correo"]; ?></td>
