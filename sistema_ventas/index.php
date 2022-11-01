@@ -1,11 +1,9 @@
 <?php
 
 include_once("config.php");
-include_once("entidades/venta.php");
 
-$venta = new Venta();
-$facturacionMes = $venta->obtenerFacturacionMensual(date('m'));
-$facturacionAnual = $venta->obtenerFacturacionAnual(date('Y'));
+$facturacionMes = 0;
+$facturacionAnual = 0;
 
 $pg = "Inicio";
 
