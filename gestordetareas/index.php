@@ -113,8 +113,8 @@ if (isset($_GET["do"]) && $_GET["do"] == "eliminar") {
                             <label for="lstEstado">Estado</label>
                             <select name="lstEstado" id="lstEstado" class="form-control" required>
                                 <option value="" disabled selected>Seleccionar</option>
-                                <option value="Sin asignar" <?php echo isset($aTareas[$id]) && $aTareas[$id]["estado"] == "Sin asignar" ? "selected" : "";?> >Sin asignar</option>
                                 <option value="Asignado" <?php echo isset($aTareas[$id]) && $aTareas[$id]["estado"] == "Asignado" ? "selected" : ""; ?>>Asignado</option>
+                                <option value="Sin asignar" <?php echo isset($aTareas[$id]) && $aTareas[$id]["estado"] == "Sin asignar" ? "selected" : "";?> >Sin asignar</option>  
                                 <option value="En proceso" <?php echo isset($aTareas[$id]) && $aTareas[$id]["estado"] == "En proceso" ? "selected" : ""; ?>>En proceso</option>
                                 <option value="Terminado" <?php echo isset($aTareas[$id]) && $aTareas[$id]["estado"] == "Terminado" ? "selected" : ""; ?>>Terminado</option>
                             </select>

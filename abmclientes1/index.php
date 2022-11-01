@@ -15,11 +15,6 @@ if(file_exists("archivo.txt")){
     $aClientes = array();
 }
 
-/*Tarea:
-    Si actualizo el apellido que mantenga la imagen anterior y no se borre
-    Si actualizo una imagen que se elimine fisicamente el archivo correspondiente a la imagen anterior
-*/
-
 if($_POST){
 
     //Almacenar los valores del formulario enviado en variables
@@ -50,7 +45,7 @@ if($_POST){
             //Si no se adjunta una imagen, recuperar el nombre de la imagen del cliente almacenado
             $nombreImagen = $aClientes[$pos]["imagen"];
         } else {
-            //Eliminar la imagen anterior
+            //Si se adjunta una imagen nueva, hay que eliminar la imagen anterior
             if($aClientes[$pos]["imagen"] != ""){
                 unlink("imagenes/". $aClientes[$pos]["imagen"]);
             }
@@ -89,7 +84,11 @@ if(isset($_GET["eliminar"]) && $_GET["eliminar"] >= 0){
     $pos = $_GET["eliminar"];
 
     //Eliminar la imagen del cliente siempre y cuando exista
-    //
+    $nombreImagen = $aClientes[$pos]["imagen"];
+    if($nombreImagen != "" && file_exists("imagenes/$nombreImagen")){
+        unlink("imagenes/$nombreImagen");
+    }
+
     unset($aClientes[$pos]);
 
     //Convertir el array de clientes en json

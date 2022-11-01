@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 function promediar($aNumeros){
     $sumatoria = 0;
     foreach ($aNumeros as $numero) {
-        $sumatoria = $sumatoria + $numero;
+        $sumatoria += $numero;
     }
     return $sumatoria / count($aNumeros);
 }
