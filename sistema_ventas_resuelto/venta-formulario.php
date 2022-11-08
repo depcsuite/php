@@ -185,7 +185,6 @@ function fBuscarPrecio(){
 
 function fCalcularTotal(){
     var idProducto = $("#lstProducto option:selected").val();
-    var precio = parseFloat($('#txtPrecioUni').val());
     var cantidad = parseInt($('#txtCantidad').val());
 
      $.ajax({
@@ -197,7 +196,7 @@ function fCalcularTotal(){
         success: function (respuesta) {
             let resultado = 0;
             if(cantidad <= parseInt(respuesta.cantidad)){
-                resultado = precio * cantidad;
+                resultado = respuesta.precio * cantidad;
                  $("#msgStock").hide();
             } else {
                 $("#msgStock").show();

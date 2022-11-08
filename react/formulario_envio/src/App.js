@@ -1,7 +1,5 @@
 import React from 'react';
-import './App.css';
 import Formulario from './Formulario.js';
-
 
 function App() {
   
