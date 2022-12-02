@@ -5,7 +5,8 @@ include_once "entidades/venta.php";
 $pg = "Listado de ventas";
 
 $venta = new Venta();
-$aVenta = $venta->obtenerTodos();
+$aVentas = $venta->obtenerTodos();
+
 
 include_once "header.php";
 ?>
@@ -33,16 +34,16 @@ include_once "header.php";
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($aVentas as $venta): ?>
+                            <?php foreach ($aVentas as $venta): ?>
                                 <tr>
-                                    <td><?php echo $venta->fecha; ?></td>
+                                    <td><?php echo date_format(date_create($venta->fecha), "d/m/Y H:i"); ?></td>
                                     <td><?php echo $venta->cantidad; ?></td>
-                                    <td><?php echo $venta->fk_idproducto; ?></td>
-                                    <td><?php echo $venta->fk_idcliente; ?></td>
-                                    <td><?php echo $venta->total; ?></td>
+                                    <td><?php echo $venta->nombre_producto; ?></td>
+                                    <td><?php echo $venta->nombre_cliente; ?></td>
+                                    <td><?php echo "$" . number_format($venta->total, 2, ",", "."); ?></td>
                                     <td><a href="venta-formulario.php?id=<?php echo $venta->idventa; ?>">Editar</a></td>
                                 </tr>
-                            <?php endforeach; ?>
+                            <?php endforeach;?>
                         </tbody>
                     </table>
                 </div>

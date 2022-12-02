@@ -1,5 +1,11 @@
 <?php
 
+if($_POST){
+    if(isset($_REQUEST["btnCerrar"])){
+        session_destroy();
+        header("Location: login.php");
+    }
+}
 
 ?>
 

@@ -29,6 +29,7 @@ class Usuario {
         $this->nombre = isset($request["txtNombre"])? $request["txtNombre"] : "";
         $this->apellido = isset($request["txtApellido"])? $request["txtApellido"]: "";
         $this->correo = isset($request["txtCorreo"])? $request["txtCorreo"]: "";
+        $this->clave = isset($request["txtClave"])? password_hash($request["txtClave"], PASSWORD_DEFAULT): "";
     }
 
     public function insertar(){
@@ -37,16 +38,16 @@ class Usuario {
         //Arma la query
         $sql = "INSERT INTO usuarios (
                     usuario, 
-                    clave, 
                     nombre,
                     apellido, 
-                    correo
+                    correo,
+                    clave
                 ) VALUES (
                     '" . $this->usuario ."', 
-                    '" . $this->clave ."', 
                     '" . $this->nombre ."',
                     '" . $this->apellido ."',
-                    '" . $this->correo ."'
+                    '" . $this->correo ."',
+                    '" . $this->clave ."'
                 );";
         //Ejecuta la query
         if (!$mysqli->query($sql)) {

@@ -36,8 +36,8 @@ class Venta
         $this->idventa = isset($request["id"]) ? $request["id"] : "";
         $this->fk_idcliente = isset($request["lstCliente"]) ? $request["lstCliente"] : "";
         $this->fk_idproducto = isset($request["lstProducto"]) ? $request["lstProducto"] : "";
-        if (isset($request["txtAnio"]) && isset($request["txtMes"]) && isset($request["txtDia"])) {
-            $this->fecha = $request["txtAnio"] . "-" . $request["txtMes"] . "-" . $request["txtDia"] . " " . $request["txtHora"];
+        if (isset($request["lstAnio"]) && isset($request["lstMes"]) && isset($request["lstDia"])) {
+            $this->fecha = $request["lstAnio"] . "-" . $request["lstMes"] . "-" . $request["lstDia"] . " " . $request["txtHora"];
         }
         $this->cantidad = isset($request["txtCantidad"]) ? $request["txtCantidad"] : 0;
         $this->preciounitario = isset($request["txtPrecioUni"]) ? $request["txtPrecioUni"] : 0.0;
@@ -173,14 +173,19 @@ class Venta
     public function obtenerTodos()
     {
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
-        $sql = "SELECT idventa,
-                        fk_idcliente,
-                        fk_idproducto,
-                        fecha,
-                        cantidad,
-                        preciounitario,
-                        total
-                FROM ventas";
+        $sql = "SELECT
+                A.idventa,
+                A.fecha,
+                A.cantidad,
+                A.fk_idproducto,
+                B.nombre AS nombre_producto,
+                A.fk_idcliente,
+                C.nombre AS nombre_cliente,
+                A.total
+                FROM ventas A
+                INNER JOIN productos B ON A.fk_idproducto = B.idproducto
+                INNER JOIN clientes C ON C.idcliente = A.fk_idcliente
+                ";
         if (!$resultado = $mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
         }
@@ -192,10 +197,11 @@ class Venta
                 $entidadAux = new Venta();
                 $entidadAux->idventa = $fila["idventa"];
                 $entidadAux->fk_idcliente = $fila["fk_idcliente"];
+                $entidadAux->nombre_cliente = $fila["nombre_cliente"];
                 $entidadAux->fk_idproducto = $fila["fk_idproducto"];
+                $entidadAux->nombre_producto = $fila["nombre_producto"];
                 $entidadAux->fecha = $fila["fecha"];
                 $entidadAux->cantidad = $fila["cantidad"];
-                $entidadAux->preciounitario = $fila["preciounitario"];
                 $entidadAux->total = $fila["total"];
                 $aResultado[] = $entidadAux;
             }

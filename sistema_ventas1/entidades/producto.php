@@ -138,7 +138,7 @@ class Producto
                                 descripcion,
                                 imagen
                         FROM productos
-                        WHERE fk_idtipoproducto = " . $idTipoProducto;
+                        WHERE fk_idtipoproducto = $idTipoProducto";
         if (!$resultado = $mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
         }

@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto</title>
+    <title>Proyectos</title>
     <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
     <script src="css/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="css/estilos.css">
 </head>
-<body id="contacto" class="d-flex flex-column h-100">
+<body id="proyectos" class="d-flex flex-column h-100">
     <header>
         <nav class="navbar navbar-expand-md ">
             <div class="container">
@@ -23,16 +23,16 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link  px-4" href="index.html">Inicio</a>
+                            <a class="nav-link  px-4" href="index.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link px-4" href="sobre-mi.html">Sobre mí</a>
+                            <a class="nav-link px-4" href="sobre-mi.php">Sobre mí</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link px-4" href="proyectos.html">Proyectos</a>
+                            <a class="nav-link px-4 active" href="proyectos.php">Proyectos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active px-4" href="contacto.html">Contacto</a>
+                            <a class="nav-link px-4" href="contacto.php">Contacto</a>
                         </li>
                     </ul>
                     <div>
@@ -45,32 +45,45 @@
     <main class="container">
         <div class="row">
             <div class="col-12 py-5">
-                <h1>Contacto</h1>
+                <h1>Proyectos</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-sm-6">
-                <p>Te invito a que te contactes enviándome un mensaje o bien por whatsapp.</p>
+            <div class="col-12">
+                <p>Los siguientes son algunos de los trabajos que he realizado:</p>
             </div>
-            <div class="col-12 col-sm-6">
-                <form action="" method="POST">
-                    <div class="pb-3">
-                        <input type="text" name="txtNombre" id="txtNombre" placeholder="Nombre" class="form-control" required>
-                    </div>
-                    <div class="pb-3">
-                        <input type="email" name="txtCorreo" id="txtCorreo" placeholder="Correo" class="form-control" required>
-                    </div>
-                    <div class="pb-3">
-                        <input type="text" name="txtTelefono" id="txtTelefono" placeholder="Teléfono/Whatsapp" class="form-control" required>
-                    </div>
-                    <div class="pb-3">
-                        <textarea name="txtMensaje" id="txtMensaje" placeholder="Mensaje" class="form-control" required></textarea>
-                    </div>
-                    <div class="pb-3">
-                        <button type="submit" id="btnEnviar" name="btnEnviar" class="btn px-4">ENVIAR</button>
-                    </div>
-                </form>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-4 p-3">
+               <div class="border proyecto pb-5">
+                    <img src="images/abmclientes.png" alt="ABM Clientes" class="img-fluid">
+                    <h2 class="p-3">ABM CLIENTES</h2>
+                    <p class="p-2">Alta, baja y modificación de un registro de clientes. Realizado en HTML, CSS, PHP, Bootstrap y Json.</p>
+                    <a href="http://" class="float-start btn-rojo py-1 px-3 mx-2">Ver online</a>
+                    <a href="http://" class="float-end btn-blanco me-5">Código fuente</a>
+                </div>
             </div>
+            <div class="col-12 col-sm-4 p-3">
+               <div class="border proyecto pb-5">
+                    <img src="images/abmventas.png" alt="ABM Ventas" class="img-fluid">
+                    <h2 class="p-3">SISTEMA DE GESTIÓN DE VENTAS</h2>
+                    <p class="p-2">Sistema de gestión de clientes, productos y ventas. Realizado en HTML, CSS, PHP, MVC, Bootstrap, Js, Ajax, jQuery y
+                    MySQL de base de datos.</p>
+                    <a href="http://" class="float-start btn-rojo py-1 px-3 mx-2">Ver online</a>
+                    <a href="http://" class="float-end btn-blanco me-5">Código fuente</a>
+               </div>
+            </div>
+            <div class="col-12 col-sm-4 p-3">
+               <div class="border proyecto pb-5">
+                    <img src="images/proyecto-integrador.png" alt="Proyecto integrador" class="img-fluid">
+                    <h2 class="p-3">PROYECTO INTEGRADOR</h2>
+                    <p class="p-2">Proyecto Full Stack desarrollado en PHP, Laravel, Javascript, jQuery, AJAX, HTML, CSS, Mercadopago con panel
+                    administrador, gestor de usuarios, módulo de permisos y funcionalidades a fines.</p>
+                    <a href="http://" class="float-start btn-rojo py-1 px-3 mx-2">Ver online</a>
+                    <a href="http://" class="float-end btn-blanco me-5">Código fuente</a>
+               </div>
+            </div>
+          
         </div>
     </main>
     <footer class="container mt-auto pb-4">

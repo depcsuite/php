@@ -63,3 +63,4 @@ function print_f3($variable)
 $aNotas = array(8, 5, 7, 9, 10, 11, 12);
 $msg = "Esto es una prueba";
 print_f3($aNotas);
+?>

@@ -1,7 +1,11 @@
 <?php
 
 include_once "config.php";
+include_once "entidades/usuario.php";
 $pg = "Listado de usuarios";
+
+$usuario = new Usuario();
+$aUsuarios = $usuario->obtenerTodos();
 
 include_once "header.php";
 ?>
@@ -27,6 +31,17 @@ include_once "header.php";
                                 <th>Acciones</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            <?php foreach ($aUsuarios as $usuario): ?>
+                                <tr>
+                                    <td><?php echo $usuario->usuario; ?></td>
+                                    <td><?php echo $usuario->nombre; ?></td>
+                                    <td><?php echo $usuario->apellido; ?></td>
+                                    <td><?php echo $usuario->correo; ?></td>
+                                    <td><a href="usuario-formulario.php?id=<?php echo $usuario->idusuario; ?>">Editar</a></td>
+                                </tr>
+                            <?php endforeach;?>
+                        </tbody>
                     </table>
                 </div>
             </div>

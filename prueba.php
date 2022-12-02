@@ -1,146 +1,90 @@
 <?php
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-class Persona
-{
-    protected $documento;
-    protected $nombre;
-    protected $correo;
-    protected $celular;
+$aProductos = array();
+$aProductos[] = array("nombre" => "Smart TV 55\" 4K UHD",
+    "marca" => "Hitachi",
+    "modelo" => "554KS20",
+    "stock" => 60,
+    "precio" => 58000,
+);
+$aProductos[] = array("nombre" => "Samsung Galaxy A30 Blanco",
+    "marca" => "Samsung",
+    "modelo" => "Galaxy A30",
+    "stock" => 0,
+    "precio" => 22000,
+);
+$aProductos[] = array("nombre" => "Aire Acondicionado Split Inverter Frío/Calor Surrey 2900F",
+    "marca" => "Surrey",
+    "modelo" => "553AIQ1201E",
+    "stock" => 5,
+    "precio" => 45000,
+);
+$aProductos[] = array("nombre" => "Impresora HP 1102w",
+    "marca" => "HP",
+    "modelo" => "1102w",
+    "stock" => 20,
+    "precio" => 25000,
+);
 
-    public function __get($propiedad)
-    {
-        return $this->$propiedad;
-    }
-
-    public function __set($propiedad, $valor)
-    {
-        $this->$propiedad = $valor;
-    }
-}
-
-class Alumno extends Persona
-{
-    private $fecNacimiento;
-    private $peso;
-    private $altura;
-    private $aptoFisico;
-    private $presentismo;
-
-    public function __construct($dni, $nombre, $correo, $celular)
-    {
-        $this->dni = $dni;
-        $this->nombre = $nombre;
-        $this->correo = $correo;
-        $this->celular = $celular;
-        $this->peso = 0.0;
-        $this->altura = 0.0;
-        $this->aptoFisico = false;
-        $this->presentismo = 0.0;
-    }
-
-    public function __get($propiedad)
-    {
-        return $this->$propiedad;
-    }
-
-    public function __set($propiedad, $valor)
-    {
-        $this->$propiedad = $valor;
-    }
-
-    public function setFichaMedica($peso, $altura, $aptoFisico) {
-        $this->peso = $peso;
-        $this->altura = $altura;
-        $this->aptoFisico = $aptoFisico;
-    }
-}
-
-class Entrenador extends Persona
-{
-    private $aClases;
-
-    public function __construct($documento, $nombre, $correo, $telefono)
-    {
-        $this->documento = $documento;
-        $this->nombre = $nombre;
-        $this->correo = $correo;
-        $this->telefono = $telefono;
-        $this->aClases = array();
-    }
-
-    public function __get($propiedad)
-    {
-        return $this->$propiedad;
-    }
-
-    public function __set($propiedad, $valor)
-    {
-        $this->$propiedad = $valor;
-    }
-
-    public function asignarClase()
-    {
-
-    }
-}
-
-class Clase
-{
-    private $nombre;
-    private $entrenador;
-    private $aAlumnos;
-
-    public function __construct()
-    {
-        $this->aAlumnos = array();
-    }
-
-    public function __get($propiedad)
-    {
-        return $this->$propiedad;
-    }
-
-    public function __set($propiedad, $valor)
-    {
-        $this->$propiedad = $valor;
-    }
-
-    public function asignarEntrenador()
-    {
-
-    }
-
-    public function inscribirAlumnos()
-    {
-
-    }
-
-    public function imprimirListado()
-    {
-
-    }
-}
-
-//Desarrollo del programa
-$entrenador1 = new Entrenador("34987789", "Miguel Ocampo", "miguel@mail.com", "11678634");
-$entrenador2 = new Entrenador("28987589", "Andrea Zarate", "andrea@mail.com", "11768654");
-
-$alumno1 = new Alumno("40787657", "Dante Montera", "dante@mail.com", "1145632457", "1997-08-28");
-$alumno1->setFichaMedica(90, 178, true);
-$alumno1->presentismo = 78;
-
-$alumno2 = new Alumno("46766547", "Darío Turchi", "dante@mail.com", "1145632457", "1986-11-21");
-$alumno2->setFichaMedica(73, 168, false);
-$alumno2->presentismo = 68;
-
-$alumno3 = new Alumno("39765454", "Facundo Fagnano", "facundo@mail.com", "1145632457", "1993-02-06");
-$alumno3->setFichaMedica(90, 187, true);
-$alumno3->presentismo = 88;
-
-$alumno4 = new Alumno("41687536", "Gastón Aguilar", "gaston@mail.com", "1145632457", "1999-11-02");
-$alumno4->setFichaMedica(70, 169, false);
-$alumno4->presentismo = 98;
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de productos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center p-5">
+                <h1>Listado de productos</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover border">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Stock</th>
+                        <th>Precio</th>
+                        <th>Acción</th>
+                    </tr>
+                    <?php 
+                    $contador = 0; 
+                    $sumatoria = 0;
+    
+                    while($contador < count($aProductos)){
+                    ?>
+                        <tr>
+                            <td><?php echo $aProductos[$contador]["nombre"]; ?></td>
+                            <td><?php echo $aProductos[$contador]["marca"]; ?></td>
+                            <td><?php echo $aProductos[$contador]["modelo"]; ?></td>
+                            <td><?php echo $aProductos[$contador]["stock"] == 0 ? "No hay stock" : ($aProductos[0]["stock"] > 10 ? "Hay stock" : "Poco stock"); ?></td>
+                            <td>$ <?php echo $aProductos[$contador]["precio"]; ?></td>
+                            <td><button class="btn btn-primary">Comprar</button></td>
+                        </tr>
+                 <?php 
+                    $sumatoria = $sumatoria + $aProductos[$contador]["precio"];
+                    $contador++;
+              
+                    } ?>
+                   
+                </table>
+            </div>
+         
+        </div>
+           <div class="row">
+               <div class="col-12">
+                   <h2>Subtotal: $<?php echo $sumatoria; ?></h2>
+               </div>
+           </div>
+    </div>
+</body>
+</html>
