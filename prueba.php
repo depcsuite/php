@@ -3,6 +3,21 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+//Definición
+function contar($aArray){
+    $contador = 0;
+
+    foreach($aArray as $item){
+
+
+    }
+
+    return $contador;
+}
+
+//Uso
+$aNotas = array(9, 8, 9.50, 4, 7, 8);
+
 $aProductos = array();
 $aProductos[] = array("nombre" => "Smart TV 55\" 4K UHD",
     "marca" => "Hitachi",
@@ -22,69 +37,38 @@ $aProductos[] = array("nombre" => "Aire Acondicionado Split Inverter Frío/Calor
     "stock" => 5,
     "precio" => 45000,
 );
-$aProductos[] = array("nombre" => "Impresora HP 1102w",
+$aProductos[] = array("nombre" => "Impresora HP Laser",
     "marca" => "HP",
-    "modelo" => "1102w",
-    "stock" => 20,
-    "precio" => 25000,
+    "modelo" => "P1102w",
+    "stock" => 12,
+    "precio" => 20000,
 );
 
-?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado de productos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center p-5">
-                <h1>Listado de productos</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <table class="table table-hover border">
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Stock</th>
-                        <th>Precio</th>
-                        <th>Acción</th>
-                    </tr>
-                    <?php 
-                    $contador = 0; 
-                    $sumatoria = 0;
-    
-                    while($contador < count($aProductos)){
-                    ?>
-                        <tr>
-                            <td><?php echo $aProductos[$contador]["nombre"]; ?></td>
-                            <td><?php echo $aProductos[$contador]["marca"]; ?></td>
-                            <td><?php echo $aProductos[$contador]["modelo"]; ?></td>
-                            <td><?php echo $aProductos[$contador]["stock"] == 0 ? "No hay stock" : ($aProductos[0]["stock"] > 10 ? "Hay stock" : "Poco stock"); ?></td>
-                            <td>$ <?php echo $aProductos[$contador]["precio"]; ?></td>
-                            <td><button class="btn btn-primary">Comprar</button></td>
-                        </tr>
-                 <?php 
-                    $sumatoria = $sumatoria + $aProductos[$contador]["precio"];
-                    $contador++;
-              
-                    } ?>
-                   
-                </table>
-            </div>
-         
-        </div>
-           <div class="row">
-               <div class="col-12">
-                   <h2>Subtotal: $<?php echo $sumatoria; ?></h2>
-               </div>
-           </div>
-    </div>
-</body>
-</html>
+//Definicion de pacientes
+$aPacientes = array();
+$aPacientes[] = array(
+    "dni" => "33.765.012",
+    "nombre" => "Ana Acuña",
+    "edad" => 45,
+    "peso" => 81.50,
+);
+$aPacientes[] = array(
+    "dni" => "23.684.385",
+    "nombre" => "Gonzalo Bustamante",
+    "edad" => 66,
+    "peso" => 79,
+);
+$aPacientes[] = array(
+    "dni" => "11.568.778",
+    "nombre" => "Martín Perez",
+    "edad" => 26,
+    "peso" => 77,
+);
+
+echo "Cantidad de productos: " . contar($aProductos);
+echo "Cantidad de pacientes: " . contar($aPacientes);
+echo "Cantidad de notas: " . contar($aNotas);
+
+f(2);
+f(5);
+f(8);

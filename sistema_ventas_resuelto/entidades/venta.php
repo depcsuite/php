@@ -202,28 +202,39 @@ class Venta {
         return $aResultado;
     }
 
-    public function obtenerFacturacionMensual($mes){
-        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE,  Config::BBDD_PORT);
-        $sql = "SELECT SUM(total) AS total FROM ventas WHERE MONTH(fecha) = $mes";
-        if (!$resultado = $mysqli->query($sql)) {
-            printf("Error en query: %s\n", $mysqli->error . " " . $sql);
-        }
-        $fila = $resultado->fetch_assoc();
-        $mysqli->close();
-        return $fila["total"];
-    }
-
-    public function obtenerFacturacionAnual($anio){
+    public function obtenerFacturacionMensual($mesActual, $anioActual){
         $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
-        $sql = "SELECT SUM(total) AS total FROM ventas WHERE YEAR(fecha) = $anio";
+        $sql = "SELECT SUM(total) AS sumarizacion FROM ventas WHERE MONTH(fecha) = '$mesActual' AND YEAR(fecha) = '$anioActual';";
+
         if (!$resultado = $mysqli->query($sql)) {
             printf("Error en query: %s\n", $mysqli->error . " " . $sql);
         }
-        $fila = $resultado->fetch_assoc();
+        $sumarizacion = 0;
+        //Convierte el resultado en un array asociativo
+        if ($fila = $resultado->fetch_assoc()) {
+            $sumarizacion = $fila["sumarizacion"] > 0 ? $fila["sumarizacion"] : 0;
+
+        }
         $mysqli->close();
-        return $fila["total"];
+        return $sumarizacion;
     }
 
+    public function obtenerFacturacionPorPeriodo($fechaDesde, $fechaHasta){
+        $mysqli = new mysqli(Config::BBDD_HOST, Config::BBDD_USUARIO, Config::BBDD_CLAVE, Config::BBDD_NOMBRE, Config::BBDD_PORT);
+        $sql = "SELECT SUM(total) AS sumarizacion FROM ventas WHERE fecha >= '$fechaDesde' AND fecha <= '$fechaHasta 23:59:59';";
+
+        if (!$resultado = $mysqli->query($sql)) {
+            printf("Error en query: %s\n", $mysqli->error . " " . $sql);
+        }
+        $sumarizacion = 0;
+        //Convierte el resultado en un array asociativo
+        if ($fila = $resultado->fetch_assoc()) {
+            $sumarizacion = $fila["sumarizacion"] > 0 ? $fila["sumarizacion"] : 0;
+
+        }
+        $mysqli->close();
+        return $sumarizacion;
+    }
 }
 
 

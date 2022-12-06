@@ -5,8 +5,12 @@ include_once "entidades/venta.php";
 $pg = "Inicio";
 
 $venta = new Venta();
-$facturacionMes = $venta->obtenerFacturacionMensual(date('m'));
-$facturacionAnual = $venta->obtenerFacturacionAnual(date('Y'));
+$facturacionMes = $venta->obtenerFacturacionMensual(date("m"), date("Y"));
+
+$fechaHasta = date("Y-m-d");
+$date = new DateTime($fechaHasta);
+$fechaDesde = date_format($date->modify("-12 months"), "Y-m-d");
+$facturacionAnual = $venta->obtenerFacturacionPorPeriodo($fechaDesde, $fechaHasta);
 
 include_once("header.php"); 
 
