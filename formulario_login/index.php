@@ -3,18 +3,21 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-if($_POST){ /* es postback ? */
-
+if($_POST){
+    //Recuperar el usuario y clave y almacenarlo en variables
     $usuario = $_REQUEST["txtUsuario"];
     $clave = $_REQUEST["txtClave"];
 
     //Si usuario es distinto de vacio Y clave es distinto de vacio, entonces:
     if($usuario != "" && $clave != ""){
+        //Redireccionar a acceso confirmado
         header("Location: acceso-confirmado.php");
     } else {
-        $mensaje = "Válido para usuarios registrados.";
+        //Mostrar un mensaje de error: Válido para usuarios registrados
+        $error = 'Solo válido para usuarios registrados';
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,11 +37,11 @@ if($_POST){ /* es postback ? */
         </div>
         <div class="row">
             <div class="col-12"> 
-                <?php if (isset($mensaje)): ?>
-                    <div class="alert alert-danger" role="alert">
-                        <?php echo $mensaje; ?>
-                    </div>
-                <?php endif; ?>
+           <?php if(isset($error)): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $error; ?>
+                </div>
+            <?php endif; ?>
                 <form method="POST" action="">
                     <div class="my-3">
                         <label for="">Usuario: <input type="text" id="txtUsuario" name="txtUsuario" class="form-control"></label>

@@ -10,7 +10,7 @@ if($_POST){
 
     // Varios destinatarios
     $para = "nelson.tarche@gmail.com";
-    $titulo = 'Recibiste un mensaje desde tu Web';
+    $asunto = 'Recibiste un mensaje desde tu Web';
 
     // mensaje
     $cuerpo = "
@@ -29,7 +29,7 @@ if($_POST){
     $cabeceras .= 'From: contacto@nelsontarche.com.ar' . "\r\n";
 
     // Enviarlo
-    //mail($para, $titulo, $cuerpo, $cabeceras);
+    //mail($para, $asunto, $cuerpo, $cabeceras);
     header("Location: confirmacion-envio.php");
 }
 ?>
@@ -81,7 +81,7 @@ if($_POST){
                             class="form-control shadow"></textarea>
                     </div>
                     <div class="me-auto text-right">
-                        <button id="btnEnviar" name="btnEnviar" class="btn px-4">ENVIAR</button>
+                        <button id="btnEnviar" name="btnEnviar" type="submit" class="btn px-4">ENVIAR</button>
                     </div>
                 </form>
             </div>
