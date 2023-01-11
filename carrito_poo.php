@@ -158,6 +158,8 @@ $carrito->cliente = $cliente1;
 $carrito->cargarProducto($producto1);
 $carrito->cargarProducto($producto2);
 
+print_r($carrito);
+exit;
 ?>
 <!DOCTYPE html>
 <html lang="es">

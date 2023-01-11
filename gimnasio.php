@@ -61,9 +61,11 @@ class Alumno extends Persona
         $this->$propiedad = $valor;
     }
 
-    public function setFichaMedica()
+    public function setFichaMedica($peso, $altura, $aptoFisico)
     {
-
+        $this->peso = $peso;
+        $this->altura = $altura;
+        $this->aptoFisico = $aptoFisico;
     }
 
 }
@@ -192,7 +194,7 @@ $clase2->inscribirAlumno($alumno3);
 <body>
     <main class="container">
         <div class="row">
-            <div class="col-12 py-5 text-center">
+            <div class="col-12 pt-5 text-center">
                 <h1>Gimansio</h1>
             </div>
         </div>
