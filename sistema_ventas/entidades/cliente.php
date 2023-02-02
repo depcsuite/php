@@ -8,7 +8,6 @@ class Cliente
     private $telefono;
     private $correo;
     private $fecha_nac;
-    private $fk_idprovincia;
     private $fk_idlocalidad;
     private $domicilio;
 
