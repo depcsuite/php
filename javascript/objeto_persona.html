@@ -6,23 +6,24 @@
     <title>Ejercicio</title>
 </head>
 <script>
-    let persona = {
+    let personaAna = {
         nombre: "Ana Gonzalez",
         edad: 30,
         sexo: "F",
         estado_civil: "Casada",
-        peliculas: ["Titanic", "Toy Story", "Dracula"],
+        aPeliculas: ["Titanic", "Toy Story", "Dracula"],
         comer: function (comida) {
             console.log("Está comiendo " + comida);
         },
         cumplirAnios: function () {
-            persona.edad++;
+            console.log("He cumplido años");
+            personaAna.edad++;
         }
     };
-    console.log(persona);
-    persona.comer("Fideos");
-    persona.cumplirAnios();
-    console.log(persona);
+    console.log(personaAna);
+    personaAna.comer("Fideos");
+    personaAna.cumplirAnios();
+    console.log(personaAna);
 </script>
 <body>
     Este es un programa js.

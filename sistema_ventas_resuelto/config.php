@@ -10,10 +10,10 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 //date_default_timezone_set("America/Bogota");
 
 class Config {
-    const BBDD_HOST = "167.114.86.211"; //127.0.0.1
-    const BBDD_PORT= "3310"; //3306
-    const BBDD_USUARIO = "abmventas"; //root
-    const BBDD_CLAVE = "C8R50.6988";
+    const BBDD_HOST = "127.0.0.1";
+    const BBDD_PORT= "3306";
+    const BBDD_USUARIO = "root";
+    const BBDD_CLAVE = "";
     const BBDD_NOMBRE = "abmventas";
 }
 

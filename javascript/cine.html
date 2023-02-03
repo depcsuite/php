@@ -12,23 +12,23 @@
 <script>
     let espectador1 = {
         nombre: "Ana Gonzalez",
-        dni: 33300012,
+        dni: "33300012"
     };
     let espectador2 = {
         nombre: "Daniel Paz",
-        dni: 12345789,
+        dni: "12345789"
     };
     let espectador3 = {
         nombre: "Manuel Gomez",
-        dni: 54678245,
+        dni: "54678245"
     };
     let pelicula1 = {
         nombre: "Volver al futuro",
-        importeEntrada: 500,
+        importeEntrada: 500
     };
     let pelicula2 = {
         nombre: "Cruela",
-        importeEntrada: 550,
+        importeEntrada: 550
     };
     let sala1 = {
         nombre: "Sala I",
@@ -55,7 +55,7 @@
             <div class="col-12">
                 <table class="table table-hover border">
                     <tr><th>Sala</th><th>Película</th><th>Espectadores</th><th>Ganancia</th></tr>`);
-                cine.aSalas.forEach(function (sala, index) {
+                cine.aSalas.forEach(function (sala, posicion) {
                     document.write(`<tr><td>${sala.nombre}</td><td>${sala.pelicula.nombre}</td><td>${sala.aEspectadores.length}</td><td>$${sala.aEspectadores.length * sala.pelicula.importeEntrada}</td></tr>`);
                 });
                 document.write(`
@@ -63,7 +63,7 @@
             </div>
         </div>
     </main>`);
-        },
+        }
     }
 
     cine.imprimirEstadisticas();

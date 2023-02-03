@@ -6,7 +6,7 @@
     <title>Ejercicio</title>
 </head>
 <script>
-    window.onload = function () {
+    window.onload = function () { //Al terminar de cargarse la pagina se ejecuta
         document.getElementById("btnIngresarDatos").onclick = function () {
             do{
                 var num1 = prompt("Ingrese el número 1");
@@ -17,19 +17,6 @@
         };
     };
     
-    /*window.onload = function () {
-        document.getElementById("btnIngresarDatos").onclick = function () {
-            var num1 = prompt("Ingrese el número 1");
-            var num2 = prompt("Ingrese el número 2");
-            var confirmacion = confirm("¿Desea confirmar los números ingresados?"); 
-            while (!confirmacion); {
-                var num1 = prompt("Ingrese el número 1");
-                var num2 = prompt("Ingrese el número 2");
-                var confirmacion = confirm("¿Desea confirmar los números ingresados?");
-            }       
-            document.write("Los números ingresados son: " + num1 + " y " + num2);
-        };
-    };*/
 </script>
 <body>
     <button id="btnIngresarDatos">Ingresar datos</button>
