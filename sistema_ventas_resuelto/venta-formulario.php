@@ -176,11 +176,12 @@ function fBuscarPrecio(){
             dataType: "json",
             success: function (respuesta) {
                 let strResultado = Intl.NumberFormat("es-AR", {style: 'currency', currency: 'ARS'}).format(respuesta.precio);
+                //let strResultado = Intl.NumberFormat("es-CO", {style: 'currency', currency: 'COP'}).format(respuesta.precio);
+                //let strResultado = Intl.NumberFormat("es-ES", {style: 'currency', currency: 'EUR'}).format(respuesta.precio);
                 $("#txtPrecioUniCurrency").val(strResultado);
                 $("#txtPrecioUni").val(respuesta.precio);
             }
         });
-
 }
 
 function fCalcularTotal(){

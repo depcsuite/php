@@ -1,5 +1,5 @@
 export const obtenerAsuntos = async() => {
-    const response = await fetch("http://127.0.0.1:8000/obtenerAsuntos");
+    const response = await fetch("http://localhost/php/api/formulario_envio/obtenerAsuntos.php");
     const data = await response.json();
     return data;
 }

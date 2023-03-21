@@ -22,11 +22,11 @@ function Formulario() {
                     <h1 class='text-center py-5'>Formulario de contacto</h1>
                 </div>
             </div>
-            <form method="POST" action="http://192.168.64.4/php/api/formulario_envio/guardarFormulario.php">
+            <form method="POST" action="http://localhost/php/api/formulario_envio/guardarFormulario.php">
 
                 <div class="row">
                     <InputText id="txtNombre" titulo="Nombre completo" tipo="text" clase="col-6 mt-3" />
-                    <InputText id="txtTelefono" titulo="Telefono" tipo="text" clase="col-6 mt-3" />
+                    <InputText id="txtTelefono" titulo="Teléfono" tipo="text" clase="col-6 mt-3" />
                     <InputText id="txtCorreo" titulo="Correo" tipo="email" clase="col-6 mt-3" />
                     <Desplegable id="lstAsunto" titulo="Asunto" fuente={asuntos} clase="col-6 mt-3" />
                     <TextArea id="txtMensaje" titulo="Mensaje" clase="col-6 my-3" />

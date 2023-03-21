@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0px;
+}
+
+main {
+    margin: 20px 10%;
+}
+
+h1 {
+    font-size: 36px;
+    color: red;
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+    color: gray;
+}
+
+p {
+    font-style: italic;
+    font-size: 16px;
+}
+
+.producto h3 {
+    color: red;
+    text-decoration: underline;
+}
+
+.producto span {
+    font-weight: bold;
+    color: green;
+}
+
+.producto {
+    background-color: #eee;
+    width: 280px;
+    display: inline-block;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+.producto img {
+    height: 150px;
+    margin: auto;
+    display: block;
+}
+
+.producto h3 {
+    text-align: center;
+}
+
+ul {
+    list-style-type: square;
+}
+
+.parrafo-principal {
+    color: black;
+}
+
+.cursiva {
+    font-style: italic;
+    color: white;
+    background-color: green;
+}
+
+#inicio .video {
+    background-color: #eee;
+}
+
+#inicio .video iframe {
+    width: 560px;
+    height: 315px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    background-color: #eee;
+}
+
+/* Inicio menú */
+nav {
+    display: block;
+    text-align: center;
+    background-color: red;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 14px 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 0px 50px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav li {
+    display: inline;
+}
+
+/* Fin menú */
+.video {
+    background-color: #eee;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+form {
+    width: 600px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin: auto;
+    padding: 20px;
+}
+
+form input[type=text],
+form input[type=email],
+form input[type=tel],
+form input[type=date],
+form select,
+form textarea {
+    display: block;
+    width: 100%;
+    border: 1px solid red;
+    border-radius: 8px;
+    height: 20px;
+}
+
+form div {
+    padding-bottom: 10px;
+}
+
+form select {
+    height: 25px;
+}
+
+form textarea {
+    height: 150px;
+}
+
+form button {
+    background-color: red;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    padding: 10px 25px;
+    margin: auto;
+    display: block;
+    border: 1px solid red;
+}
+
+form button:hover {
+    background-color: white;
+    color: red;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+footer i {
+    font-size: 35px;
+    border: 1px solid;
+    height: 48px;
+    width: 58px;
+    text-align: center;
+    padding: 10px 0 0 0;
+    border-radius: 80px;
+    margin: 0 15px;
+    color: red;
+}
+@media (max-width: 460px) {
+    h1 {
+        font-size: 22px;
+        padding: 15px 0;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 13px;
+    }
+
+    #inicio .video iframe {
+        width: 100%;
+        height: 200px;
+    }
+
+    nav a {
+        padding: 0px 25px;
+    }
+
+    #contacto form {
+        width: 88%;
+    }
+}
