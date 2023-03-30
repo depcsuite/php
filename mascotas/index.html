@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papel Plegable - Esculturas de Animales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .product-card {
+            background-color: white;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            margin: 1rem;
+            padding: 1rem;
+            width: 300px;
+            text-align: center;
+        }
+
+        .product-card img {
+            max-width: 100%;
+        }
+
+        .product-card button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-top: 1rem;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        .product-card button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Papel Plegable - Esculturas de Animales</h1>
+    </header>
+
+    <main>
+        <div class="product-card">
+            <img src="img/elefante.jpg" alt="Elefante de papel plegable">
+            <h2>Elefante</h2>
+            <p>Precio: $25</p>
+            <button>Agregar al carrito</button>
+        </div>
+        <div class="product-card">
+            <img src="img/lobo.jpg" alt="Lobo de papel plegable">
+            <h2>Lobo</h2>
+            <p>Precio: $30</p>
+            <button>Agregar al carrito</button>
+        </div>
+        <div class="product-card">
+            <img src="img/oso.jpg" alt="Oso de papel plegable">
+            <h2>Oso</h2>
+            <p>Precio: $28</p>
+            <button>Agregar al carrito</button>
+        </div>
+    </main>
+
+    <script>
+        document.querySelectorAll('.product-card button').forEach(function (button) {
+            button.addEventListener('click', function () {
+                alert('¡Producto agregado al carrito!');
+            });
+        });
+    </script>
+</body>
+
+</html>
