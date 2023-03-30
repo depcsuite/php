@@ -9,12 +9,28 @@ nav .active {
     border-radius: 20px;
     border: 1px solid #E20000;
 }
+#inicio img{
+    height: 400px;
+}
+#inicio img:hover{
+    height: 410px;
+}
+#inicio p{
+    color: white;
+    border: 1px solid white;
+    font-weight: 600;
+    border-radius: 20px;
+    font-size: 17px;
+}
+.div-cohete{
+    height: 410px;
+}
 #proyectos{
     background-image: url('../images/fondo-proyectos.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
-#contacto{
+#inicio, #contacto {
     background-image: url('../images/fondo-contacto.png');
     background-repeat: no-repeat;
     background-size: cover;
