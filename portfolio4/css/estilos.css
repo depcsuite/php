@@ -34,6 +34,154 @@ nav .active {
     background-image: url('../images/fondo-contacto.png');
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
+    background-position: bottom;
+}
+#bio img{
+    border-radius: 50%;
+}
+#stack{
+    background: rgb(125, 7, 7);
+    background: linear-gradient(90deg, rgba(125, 7, 7, 1) 0%, rgba(215, 11, 11, 1) 100%);
+}
+#stack h2{
+    color: white;
+    font-size: 24px;
+}
+#stack h3{
+    font-size: 14px;
+    color: #282828;
+    font-weight: 300;
+}
+#stack .tecnologia{
+    background-color: white;
+    text-align: center;
+    border-radius: 5px;
+}
+#stack .tecnologia i{
+    font-size: 60px;
+    color:#6A6A6A;
+}
+#experiencia i, #formacion i{
+    font-size: 50px;
+    color: #6A6A6A;
+}
+#experiencia i:hover {
+    color: #282828;
+}
+#experiencia img,#formacion img {
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+}
+#experiencia img:hover, #formacion img:hover {
+    -webkit-filter: grayscale(100%);
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+}
+#experiencia h2{
+    color: #370a6d;
+    font-size: 24px;
+}
+#experiencia h3{
+    color: #6A6A6A;
+    font-size: 18px;
+    font-weight: 600;
+}
+#experiencia h4{
+    font-size: 17px;
+    color: #370A6D;
+}
+#experiencia h5{
+    color: #6A6A6A;
+    font-size: 14px;
+}
+#experiencia p{
+    color: #6a6a6a;
+    font-size: 16px;
+}
+#sobre-mi .card{
+    height: 182px;
+}
+#idiomas .card-idioma{
+    border-radius: 15px;
+}
+#idiomas .card{
+    background-color: #370A6D;
+    border-radius: 15px;
+    padding: 40px 0;
+}
+#idiomas{
+    background-color: #eee;
+}
+#idiomas h2{
+    font-size: 16px;
+    font-weight: 600px;
+}
+#idiomas ul{
+    padding: 0px;
+    font-size: 14px;
+    color: #282828;
+    list-style-type: none;
+}
+#idiomas .fas{
+    font-size: 80px;
+    color: white;
+}
+#experiencia h2, #experiencia h4, #formacion h2, #formacion h4 {
+   color: #370A6D;
+}
+#experiencia h2, #formacion h2 {
+    font-weight: 400;
+    font-size: 24px
+}
+#experiencia h3, #formacion h3{
+    color: #6A6A6A;
+    font-size: 18px;
+    font-weight: 600;
+
+}
+#experiencia h4, #formacion h4{
+    font-size: 17px;
+    
+}
+#experiencia h5, #formacion h5{
+    color: #6A6A6A;
+    font-size: 14px;
+}
+#sobre-mi .card {
+    height: 182px;
+}
+
+#idiomas .card-idioma {
+    border-radius: 15px;
+}
+
+#idiomas .card {
+    background-color: #370A6D;
+    border-radius: 15px;
+    padding: 40px 0;
+}
+
+#idiomas {
+    background-color: #eee;
+}
+
+#idiomas h2 {
+    font-size: 16px;
+    font-weight: 600px;
+}
+
+#idiomas ul {
+    padding: 0px;
+    font-size: 14px;
+    color: #282828;
+    list-style-type: none;
+}
+
+#idiomas .fas {
+    font-size: 80px;
+    color: white;
 }
 .proyecto{
     background-color: white;
@@ -45,7 +193,8 @@ nav .active {
     font-size: 16px;
     font-weight: 400;
     background: rgb(125, 7, 7);
-    background: linear-gradient(90deg, rgba(125, 7, 7, 1) 0%, rgba(215, 11, 11, 1) 100%);}
+    background: linear-gradient(90deg, rgba(125, 7, 7, 1) 0%, rgba(215, 11, 11, 1) 100%);
+}
 .proyecto img{
     height: 217px;
 }
@@ -54,15 +203,17 @@ nav .active {
     color: #6a6a6a;
     height: 100px;
 }
-#proyectos footer, #proyectos footer a, #proyectos .fa-linkedin-in {
+#proyectos footer, #proyectos footer a, #proyectos .fa-linkedin-in,
+#sobre-mi footer, #sobre-mi footer a, #sobre-mi .fa-linkedin-in {
     color: #E20000;
     font-weight: 100;
 }
-#contacto footer, #contacto footer a,  #contacto .fa-linkedin-in{
+#contacto footer, #contacto footer a,  #contacto .fa-linkedin-in,
+#inicio footer, #inicio footer a,  #inicio .fa-linkedin-in {
     color: white;
     font-weight: 100;
 }
-#contacto .fa-linkedin-in{
+#contacto .fa-linkedin-in, #inicio .fa-linkedin-in{
     color: #E20000;
 }
 footer .fa-linkedin-in{
@@ -120,4 +271,23 @@ p{
 .link-rojo{
     color:#E20000;
     
+}
+@media (max-width: 750px) {
+
+    /* Para mobile */
+    #inicio, #contacto {
+        background-size: cover;
+    }
+    #proyectos {
+        background-size: contain;
+    }
+
+    #inicio .input-home p {
+        color: #E20000;
+        border: 1px solid #E20000;
+    }
+
+    footer a {
+        color: #E20000;
+    }
 }
