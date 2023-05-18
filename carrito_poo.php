@@ -5,7 +5,6 @@ error_reporting(E_ALL);
 date_default_timezone_set("America/Argentina/Buenos_Aires");
 //date_default_timezone_set("America/Bogota");
 
-
 class Cliente
 {
     private $dni;
