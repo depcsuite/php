@@ -119,7 +119,7 @@ $alumno1->setNacionalidad("Argentino");
 $alumno1->notaPhp = 5;
 $alumno1->notaPortfolio = 7;
 $alumno1->notaProyecto = 9;
-echo "El nombre es " . $alumno1->getNombre();;
+echo "El nombre es " . $alumno1->getNombre();
 $alumno1->imprimir();
 
 $alumno2 = new Alumno();
