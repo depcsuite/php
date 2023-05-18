@@ -1,16 +1,18 @@
 <?php
+
 //Definicion
-function maximo($aVector){
-    $maximo = 0;
-    foreach ($aVector as $item) {
-        if($maximo < $item){
-            $maximo = $item;
-        }
+function promedio($aVector){
+    $suma = 0;
+    foreach($aVector as $item){
+        $suma = $suma + $item;
     }
-    return $maximo;
+    $resultado  = $suma / count($aVector);
+    return $resultado;
 }
+
 //Uso
 $aNotas = array(8, 4, 5, 3, 9, 1);
 $aSueldos = array(800, 400, 500, 3000, 900, 10000);
-echo "El máximo es: " . maximo($aNotas) . "<br>";
-echo "El máximo es: " . maximo($aSueldos) . "<br>";
+echo "El máximo es: " . promedio($aNotas) . "<br>";
+echo "El máximo es: " . promedio($aSueldos) . "<br>";
+

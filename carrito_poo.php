@@ -3,6 +3,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 date_default_timezone_set("America/Argentina/Buenos_Aires");
+//date_default_timezone_set("America/Bogota");
+
 
 class Cliente
 {
@@ -90,6 +92,7 @@ class Carrito{
     }
 
     public function imprimirTicket() {
+
         echo "<table class='table table-hover border' style='width:400px'>";
         echo "<tr><th colspan='2' class='text-center'>ECO MARKET</th></tr>
               <tr>
@@ -115,7 +118,8 @@ class Carrito{
                 $this->subTotal += $producto->precio;
                 $this->total += $producto->precio * (($producto->iva / 100)+1);
               }
-             
+              $this->subTotal -= $this->subTotal * $this->cliente->descuento;
+              $this->total -= $this->total * $this->cliente->descuento;
         echo "<tr>
                 <th>Subtotal s/IVA:</th>
                 <td>$ " . number_format($this->subTotal, 2, ",", ".") . "</td>
@@ -158,8 +162,7 @@ $carrito->cliente = $cliente1;
 $carrito->cargarProducto($producto1);
 $carrito->cargarProducto($producto2);
 
-print_r($carrito);
-exit;
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

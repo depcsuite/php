@@ -10,20 +10,24 @@ $precioConIva = 0;
 $ivaCantidad = 0;
 
 if ($_POST) {
+  
+    //Capturar los datos del formulario
     $iva = $_POST["lstIva"];
-    $precioSinIva = ($_POST["txtPrecioSinIva"]) > 0 ? $_POST["txtPrecioSinIva"] : 0;
-    $precioConIva = ($_POST["txtPrecioConIva"]) > 0 ? $_POST["txtPrecioConIva"] : 0;
+    $precioSinIva = $_POST["txtPrecioSinIva"];
+    $precioConIva = $_POST["txtPrecioConIva"];
 
     //Dado un importe sin IVA, Precio con IVA = importe * (21/100+1)
-    if ($precioSinIva > 0) {
-        $precioConIva = $precioSinIva * ($iva / 100 + 1);
+    if($precioSinIva != ""){
+        $precioConIva = $precioSinIva * ($iva/100+1);
+        $ivaCantidad = $precioConIva - $precioSinIva;
     }
+   
     //Dado un importe con IVA, Precio sin IVA = importe / (21/100+1)
-    if ($precioConIva > 0) {
-        $precioSinIva = $precioConIva / ($iva / 100 + 1);
+    if($precioConIva != ""){
+        $precioSinIva = $precioConIva / ($iva/100+1);
+        $ivaCantidad = $precioConIva - $precioSinIva;
     }
 
-    $ivaCantidad = $precioConIva - $precioSinIva;
 }
 
 ?>
@@ -77,15 +81,15 @@ if ($_POST) {
                     </tr>
                     <tr>
                         <th>Precio sin IVA:</th>
-                        <td><?php echo number_format($precioSinIva, 2, ",", "."); ?></td>
+                        <td>$ <?php echo number_format($precioSinIva, 2, ",", "."); ?></td>
                     </tr>
                     <tr>
                         <th>Precio con IVA:</th>
-                        <td><?php echo number_format($precioConIva, 2, ",", "."); ?></td>
+                        <td>$ <?php echo number_format($precioConIva, 2, ",", "."); ?></td>
                     </tr>
                     <tr>
                         <th>IVA cantidad:</th>
-                        <td><?php echo number_format($ivaCantidad, 2, ",", "."); ?></td>
+                        <td>$ <?php echo number_format($ivaCantidad, 2, ",", "."); ?></td>
                     </tr>
                 </table>
             </div>

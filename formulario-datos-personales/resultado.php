@@ -4,10 +4,10 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 if($_POST){
-    $nombre = $_POST["txtNombre"];
-    $dni = $_POST["txtDni"];
-    $telefono = $_POST["txtTelefono"];
-    $edad = $_POST["txtEdad"];
+    $nombre = trim($_POST["txtNombre"]);
+    $dni = trim($_POST["txtDni"]);
+    $telefono = trim($_POST["txtTelefono"]);
+    $edad = trim($_POST["txtEdad"]);
 }
 
 ?>

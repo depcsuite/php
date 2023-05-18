@@ -4,6 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 if($_POST){
+
     //Recuperar el usuario y clave y almacenarlo en variables
     $usuario = $_REQUEST["txtUsuario"];
     $clave = $_REQUEST["txtClave"];

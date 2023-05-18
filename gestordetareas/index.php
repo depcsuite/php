@@ -27,7 +27,7 @@ if ($_POST) {
     //sobreescribo la posición correspondiente en el aTareas
     if ($id >= 0) {
         $aTareas[$id] = array(
-            "fecha" => $aTareas[$id]["fecha"],
+            "fecha" => $aTareas[$id]["fecha"], //Recupera la fecha anterior
             "prioridad" => $prioridad,
             "usuario" => $usuario,
             "estado" => $estado,
@@ -98,8 +98,8 @@ if (isset($_GET["eliminar"]) && $_GET["eliminar"] >= 0) {
                 <select name="lstPrioridad" id="lstPrioridad" class="form-control">
                     <option value="" disabled selected>Seleccionar</option>
                     <option <?php echo $id >= 0 && $aTareas[$id]["prioridad"] == "Alta" ? "selected" : ""; ?> value="Alta">Alta</option>
-                    <option <?php echo $id >= 0 && $aTareas[$id]["prioridad"] == "Media" ? "selected" : ""; ?>value="Media">Media</option>
-                    <option <?php echo $id >= 0 && $aTareas[$id]["prioridad"] == "Baja" ? "selected" : ""; ?>value="Baja">Baja</option>
+                    <option <?php echo $id >= 0 && $aTareas[$id]["prioridad"] == "Media" ? "selected" : ""; ?> value="Media">Media</option>
+                    <option <?php echo $id >= 0 && $aTareas[$id]["prioridad"] == "Baja" ? "selected" : ""; ?> value="Baja">Baja</option>
                 </select>
             </div>
             <div class="col-4">

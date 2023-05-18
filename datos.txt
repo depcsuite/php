@@ -1,1 +1,1 @@
-Este es un mensaje
+[{"nombre":"Juan Perez","aNotas":[9,8]},{"nombre":"Ana Valle","aNotas":[4,9]},{"nombre":"Gonzalo Rold\u00e1n","aNotas":[7,6]}]
