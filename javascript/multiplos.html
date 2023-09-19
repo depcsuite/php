@@ -12,16 +12,20 @@
     //Ejercicio a)
     let aValores = ["150.00", "200.30", 500, 99.80];
     document.write("<br><strong>Sumatoria:</strong><br>");
+   
     function sumatoria(aArray) {
         return aArray.reduce(function (total, value) {
             return (Number(total) + Number(value)).toFixed(2);
         })
     }
+
     document.write(sumatoria(aValores));
+
 
     //Ejercicio b)
     let aNumeros = new Array(10, 14, 21, 42, 7, 35, 42, 100);
     document.write("<br><br><strong>Listado de valores:</strong><br>");
+  
     function imprimirListado(aValores) {
         aValores.forEach(function (value, index) {
             document.write(value + "<br>");
@@ -30,12 +34,12 @@
     }
     imprimirListado(aNumeros);
 
+
     //Ejercicio c)
     document.write("<br><strong>Función filter:</strong><br>");
     aMultiplos = aNumeros.filter(function (value) {
         return (value % 7 == 0);
     });
-
     imprimirListado(aMultiplos);
 
     //Ejercicio d)

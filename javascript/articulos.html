@@ -16,6 +16,7 @@
         ["Tallarines", 80],
         ["Leche", 40]
     );
+
  
     //Ejemplo con forEach
     /*function actualizarPrecios(aProductos, porcentaje) {
@@ -43,8 +44,8 @@
             <div class="col-12">
                 <table class="table table-hover border">
                     <tr><th>Producto</th><th>Precio</th></tr>`);
-        aArticulos.forEach(function (value, index) {
-            document.write(`<tr><td>${value[0]}</td><td>${value[1].toFixed(2)}</td></tr>`);
+        aArticulos.forEach(function (item, index) {
+            document.write(`<tr><td>${item[0]}</td><td>${item[1].toFixed(2)}</td></tr>`);
         });
 
         document.write(`

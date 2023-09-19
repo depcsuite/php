@@ -3,7 +3,6 @@ $pagina = "proyectos";
 ?>
 <!DOCTYPE html>
 <html lang="es" class="h-100">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +14,6 @@ $pagina = "proyectos";
     <link rel="stylesheet" href="css/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="css/estilos.css">
 </head>
-
 <body id="proyectos" class="d-flex flex-column h-100">
     <header class="container">
         <?php include_once "menu.php"; ?>
