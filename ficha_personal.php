@@ -4,7 +4,7 @@ date_default_timezone_set("America/Argentina/Buenos_Aires");
 //date_default_timezone_set("America/Bogota");
 
 $nombre = "Nelson Daniel Tarche";
-$edad = 34;
+$edad = 35;
 //$aPeliculas = array("Volver al futuro", "Titanic", "El día después de mañana");
 
 $aPeliculas = ["Volver al futuro", "Titanic", "El día después de mañana"]; //Otra forma
