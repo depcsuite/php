@@ -16,18 +16,23 @@ if ($_POST) {
     $precioSinIva = $_POST["txtPrecioSinIva"];
     $precioConIva = $_POST["txtPrecioConIva"];
 
+    if(($precioConIva == "" && $precioSinIva == "")||($precioConIva != "" && $precioSinIva != "")){
+        $precioConIva = 0;
+        $precioSinIva = 0;
+    }
+
     //Dado un importe sin IVA, Precio con IVA = importe * (21/100+1)
-    if($precioSinIva != ""){
-        $precioConIva = $precioSinIva * ($iva/100+1);
+    if($precioSinIva != "" && $precioConIva == ""){
+        $precioConIva = $precioSinIva * ($iva/100+1); 
         $ivaCantidad = $precioConIva - $precioSinIva;
     }
    
     //Dado un importe con IVA, Precio sin IVA = importe / (21/100+1)
-    if($precioConIva != ""){
+    if($precioConIva != "" && $precioSinIva == ""){
         $precioSinIva = $precioConIva / ($iva/100+1);
         $ivaCantidad = $precioConIva - $precioSinIva;
-    }
 
+    }
 }
 
 ?>

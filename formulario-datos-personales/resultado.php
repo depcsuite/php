@@ -8,6 +8,8 @@ if($_POST){
     $dni = trim($_POST["txtDni"]);
     $telefono = trim($_POST["txtTelefono"]);
     $edad = trim($_POST["txtEdad"]);
+} else {
+    header("Location: index.php");
 }
 
 ?>

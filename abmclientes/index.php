@@ -4,86 +4,88 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-if(file_exists("archivo.txt")){
+//Si existe el archivo.txt
+if (file_exists("archivo.txt")) {
+    //Leer todo el contenido y almacenarlo en $strJson
     $strJson = file_get_contents("archivo.txt");
+
+    //Decodificar la variable $strJson y que se almacene en el array $aClientes
     $aClientes = json_decode($strJson, true);
 } else {
+    //Crear el array $aClientes vacio
     $aClientes = array();
 }
 
-if($_POST){
-    $dni = $_REQUEST["txtDni"];
-    $nombre = $_REQUEST["txtNombre"];
-    $telefono = $_REQUEST["txtTelefono"];
-    $correo = $_REQUEST["txtCorreo"];
+if ($_POST) {
+    $dni = $_POST["txtDni"];
+    $nombre = $_POST["txtNombre"];
+    $telefono = $_POST["txtTelefono"];
+    $correo = $_POST["txtCorreo"];
+    $nombreImagen = "";
 
-    if(isset($_GET["editar"]) && $_GET["editar"] >= 0){
+    if (isset($_GET["editar"]) && $_GET["editar"] >= 0) {
+        //Estoy editando
         $pos = $_GET["editar"];
-        $imagen = "";
+
         if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {
-            //Si subo una imagen, genero el nombre y la subo
             $nombreAleatorio = date("Ymdhmsi") . rand(1000, 2000); //202210202002371010
             $archivo_tmp = $_FILES["archivo"]["tmp_name"];
             $extension = strtolower(pathinfo($_FILES["archivo"]["name"], PATHINFO_EXTENSION));
             if ($extension == "jpg" || $extension == "jpeg" || $extension == "png") {
-                $imagen = "$nombreAleatorio.$extension";
-                move_uploaded_file($archivo_tmp, "imagenes/$imagen");
+                $nombreImagen = "$nombreAleatorio.$extension";
+                move_uploaded_file($archivo_tmp, "imagenes/$nombreImagen");
 
                 //Eliminar la imagen anterior
-                $imagenAnterior = $aClientes[$pos]["imagen"];
-                //si $imagen es distinto a "" y el archivo existe en la direccion entonces quiero
-                if ($imagenAnterior != "" && file_exists("imagenes/$imagenAnterior")) {
-                    //que me lo elimine
-                    unlink("imagenes/$imagenAnterior");
+                if (file_exists("imagenes/" . $aClientes[$pos]["imagen"])) {
+                    unlink("imagenes/" . $aClientes[$pos]["imagen"]);
                 }
             }
         } else {
-        //Sino recupero el nombre de la imagen anterior
-            $imagen = $aClientes[$pos]["imagen"];
-        }        
-        //Actualiza
-        $aClientes[$pos] = array("dni" => $dni, 
-                         "nombre" => $nombre,
-                         "telefono" => $telefono,
-                         "correo" => $correo,
-                         "imagen" => $imagen
-                    );
+            //Si no se sube ninuna imagen, recuperamos el nombre de la imagen actual
+            $nombreImagen = $aClientes[$pos]["imagen"];
+        }
+
+        //Edito uno existente
+        $aClientes[$pos] = array("dni" => $dni,
+            "nombre" => $nombre,
+            "telefono" => $telefono,
+            "correo" => $correo,
+            "imagen" => $nombreImagen,
+        );
     } else {
-        $imagen = "";
+
         if ($_FILES["archivo"]["error"] === UPLOAD_ERR_OK) {
             $nombreAleatorio = date("Ymdhmsi") . rand(1000, 2000); //202210202002371010
             $archivo_tmp = $_FILES["archivo"]["tmp_name"];
             $extension = strtolower(pathinfo($_FILES["archivo"]["name"], PATHINFO_EXTENSION));
             if ($extension == "jpg" || $extension == "jpeg" || $extension == "png") {
-                $imagen = "$nombreAleatorio.$extension";
-                move_uploaded_file($archivo_tmp, "imagenes/$imagen");
+                $nombreImagen = "$nombreAleatorio.$extension";
+                move_uploaded_file($archivo_tmp, "imagenes/$nombreImagen");
             }
         }
-        //Inserta
-        $aClientes[] = array("dni" => $dni,
-                             "nombre" => $nombre,
-                             "telefono" => $telefono,
-                             "correo" => $correo,
-                             "imagen" => $imagen,
-                        );
-    }
-   
 
-    //Convertir el array a json
+        //Inserto uno nuevo
+        $aClientes[] = array("dni" => $dni,
+            "nombre" => $nombre,
+            "telefono" => $telefono,
+            "correo" => $correo,
+            "imagen" => $nombreImagen,
+        );
+
+    }
+    //Convertir el array $aClientes a json $strJson
     $strJson = json_encode($aClientes);
 
-    //Almacenar el json en archivo.txt
+    //Almacenar $strJson en archivo.txt
     file_put_contents("archivo.txt", $strJson);
-
 }
 
-if(isset($_GET["eliminar"]) && $_GET["eliminar"] >= 0){
-    //iguale el pos, elimine, convierta, almacene y redireccione
+if (isset($_GET["eliminar"]) && $_GET["eliminar"] >= 0) {
+    //iguale el pos, elimine, converti, almacene y redireccione
 
-    //$pos es igual a $_GET["eliminar"], ya que es lo que se muestra en la url
     $pos = $_GET["eliminar"];
 
-    //eliminar la posicion
+    //elimina la posicion marcada
     unset($aClientes[$pos]);
 
     //Convertir el array de clientes en json
@@ -91,18 +93,8 @@ if(isset($_GET["eliminar"]) && $_GET["eliminar"] >= 0){
 
     //Almacenar el json en el archivo.txt
     file_put_contents("archivo.txt", $strJson);
-
-    //Eliminar la imagen
-    $imagen = $aClientes[$pos]["imagen"];
-    //si $imagen es distinto a "" y el archivo existe en la direccion entonces quiero
-    if ($imagen != "" && file_exists("imagenes/$imagen")) {
-        //que me lo elimine
-        unlink("imagenes/$imagen");
-    }
-
     //redirecciono a la pantalla principal
     header("Location: index.php");
-
 }
 
 ?>
@@ -128,23 +120,23 @@ if(isset($_GET["eliminar"]) && $_GET["eliminar"] >= 0){
             <div class="col-6">
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div>
-                        <label for="txtDni">DNI: *</label>
-                        <input type="text" name="txtDni" id="txtDni" class="form-control" required value="<?php echo isset($_GET["editar"]) && $_GET["editar"] >= 0? $aClientes[$_GET["editar"]]["dni"] : ""; ?>">
+                        <label for="">DNI: *</label>
+                        <input type="text" name="txtDni" id="txtDni" class="form-control" required value="<?php echo isset($_GET["editar"]) && $_GET["editar"] >= 0 ? $aClientes[$_GET["editar"]]["dni"] : ""; ?>">
                     </div>
                     <div>
-                        <label for="txtNombre">Nombre: *</label>
-                        <input type="text" name="txtNombre" id="txtNombre" class="form-control" required value="<?php echo isset($_GET["editar"]) && $_GET["editar"] >= 0? $aClientes[$_GET["editar"]]["nombre"] : ""; ?>">
+                        <label for="">Nombre: *</label>
+                        <input type="text" name="txtNombre" id="txtNombre" class="form-control" required value="<?php echo isset($_GET["editar"]) && $_GET["editar"] >= 0 ? $aClientes[$_GET["editar"]]["nombre"] : ""; ?>">
                     </div>
                     <div>
-                        <label for="txtTelefono">Teléfono:</label>
-                        <input type="text" name="txtTelefono" id="txtTelefono" class="form-control" value="<?php echo isset($_GET["editar"]) && $_GET["editar"] >= 0? $aClientes[$_GET["editar"]]["telefono"] : ""; ?>">
+                        <label for="">Teléfono:</label>
+                        <input type="text" name="txtTelefono" id="txtTelefono" class="form-control" value="<?php echo isset($_GET["editar"]) && $_GET["editar"] >= 0 ? $aClientes[$_GET["editar"]]["telefono"] : ""; ?>">
                     </div>
                     <div>
-                        <label for="txtCorreo">Correo: *</label>
-                        <input type="text" name="txtCorreo" id="txtCorreo" class="form-control" required value="<?php echo isset($_GET["editar"]) && $_GET["editar"] >= 0? $aClientes[$_GET["editar"]]["correo"] : ""; ?>">
+                        <label for="">Correo: *</label>
+                        <input type="text" name="txtCorreo" id="txtCorreo" class="form-control" required value="<?php echo isset($_GET["editar"]) && $_GET["editar"] >= 0 ? $aClientes[$_GET["editar"]]["correo"] : ""; ?>">
                     </div>
                     <div>
-                        <label for="archivo">Archivo adjunto</label>
+                        <label for="">Archivo adjunto</label>
                         <input type="file" name="archivo" id="archivo" accept=".jpg, .jpeg, .png">
                         <small class="d-block">Archivos admitidos: .jpg, .jpeg, .png</small>
                     </div>
@@ -166,7 +158,7 @@ if(isset($_GET["eliminar"]) && $_GET["eliminar"] >= 0){
                     </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($aClientes as $pos => $cliente): ?>
+                        <?php foreach ($aClientes as $pos => $cliente): ?>
                             <tr>
                                 <td><img src="imagenes/<?php echo $cliente["imagen"]; ?>" alt="" class="img-thumbnail"></td>
                                 <td><?php echo $cliente["dni"]; ?></td>
@@ -177,7 +169,7 @@ if(isset($_GET["eliminar"]) && $_GET["eliminar"] >= 0){
                                     <a href="?eliminar=<?php echo $pos; ?>" class="btn btn-secnodary">Eliminar</a>
                                 </td>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php endforeach;?>
                     </tbody>
                 </table>
             </div>
