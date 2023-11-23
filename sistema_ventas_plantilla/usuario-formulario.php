@@ -64,7 +64,7 @@ include_once "header.php";
                 </div>
                 <div class="col-6 form-group">
                     <label for="txtCorreo">Clave:</label>
-                    <input type="password" class="form-control" name="txtClave" id="txtClave" value="">
+                    <input type="text" class="form-control" name="txtClave" id="txtClave" value="">
                     <small>Completar únicamente para cambiar la clave</small>
                 </div>
             </div>
