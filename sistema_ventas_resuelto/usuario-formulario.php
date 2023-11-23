@@ -10,25 +10,34 @@ $usuario = new Usuario();
 $usuario->cargarFormulario($_REQUEST);
 
 if ($_POST) {
+    $usuarioAux = new Usuario();
+    if ($usuarioAux->obtenerPorUsuario($usuario->usuario, $usuario->idusuario)) {
+        //Ya existe un usuario con ese nombre de usuario mostrar mensaje
+        $msg = "El usuario ya existe";
+    } else if ($usuarioAux->obtenerPorCorreo($usuario->correo, $usuario->idusuario)) {
+        //Ya existe un usuario con ese correo mostrar mensaje
+        $msg = "El correo ya existe";
+    } else {
 
-    if (isset($_POST["btnGuardar"])) {
-        if (isset($_GET["id"]) && $_GET["id"] > 0) {
-            //Actualizo un usuario existente
-            $usuario->actualizar();
-        } else {
-            //Es nuevo
-            $usuario->insertar();
+        if (isset($_POST["btnGuardar"])) {
+            if (isset($_GET["id"]) && $_GET["id"] > 0) {
+                //Actualizo un usuario existente
+                $usuario->actualizar();
+            } else {
+                //Es nuevo
+                $usuario->insertar();
+            }
+            header("Location: usuario-listado.php");
+        } else if (isset($_POST["btnBorrar"])) {
+            $usuario->eliminar();
+            header("Location: usuario-listado.php");
         }
-    } else if (isset($_POST["btnBorrar"])) {
-        $usuario->eliminar();
-        header("Location: usuario-listado.php");
     }
 }
 
 if (isset($_GET["id"]) && $_GET["id"] > 0) {
     $usuario->obtenerPorId();
 }
-
 
 include_once "header.php";
 ?>
@@ -45,6 +54,15 @@ include_once "header.php";
                     <button type="submit" class="btn btn-danger" id="btnBorrar" name="btnBorrar">Borrar</button>
                 </div>
             </div>
+             <?php if (isset($msg)): ?>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo $msg; ?>
+                        </div>
+                    </div>
+                </div>
+			<?php endif;?>
             <div class="row">
                 <div class="col-6 form-group">
                     <label for="txtNombre">Usuario:</label>

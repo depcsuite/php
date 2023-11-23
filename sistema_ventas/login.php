@@ -4,28 +4,22 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 include_once "config.php";
-
-$claveEncriptada = password_hash("admin123", PASSWORD_DEFAULT);
-
-//Es postback?
-  //Si el usuario es admin y la clave es $claveEncriptada:
-    //Crear una variable de session llamada nombre y con tu nombre"
-    //y redireccior a index.php
-  //Si no es correcto la clave o el usuario mostrar en pantalla "Usuario o clave incorrecto"
+include_once "entidades/usuario.php";
 
 if ($_POST) {
-    $usuario = $_POST["txtUsuario"];
-    $clave = $_POST["txtClave"];
+    $txtUsuario = $_POST["txtUsuario"];
+    $txtClave = $_POST["txtClave"];
 
-    if ($usuario == "admin" && password_verify($clave, $claveEncriptada)) {
-        $_SESSION["nombre"] = "Lucas";
+    $entidadUsuario = new Usuario();
+    $entidadUsuario->obtenerPorUsuario($txtUsuario);
+
+    if ($txtUsuario == $entidadUsuario->usuario && password_verify($txtClave, $entidadUsuario->clave )) {
+        $_SESSION["nombre"] = $entidadUsuario->nombre . " " . $entidadUsuario->apellido;
         header("Location: index.php");
     } else {
         $msg = "Usuario o clave incorrecto";
     }
 }
-
-
 
 ?>
 <!DOCTYPE html>
