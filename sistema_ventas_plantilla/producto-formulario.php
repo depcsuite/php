@@ -18,6 +18,11 @@ if($_POST){
               //Actualizo un  registro existente
               $producto->actualizar();
         } else {
+
+
+
+
+
             //Es nuevo
             $producto->insertar();
             header("Location: producto-listado.php?msg=ok");

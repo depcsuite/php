@@ -1,18 +1,15 @@
 <?php
 $dia = date("d");
 $mes = date("m");
-$anio = date("y");
-//header("Content-Type: text/csv; charset=utf-8");
-//header("Content-Disposition: attachment; filename=reporte-$anio-$mes-$dia.csv");
+$anio = date("Y");
+header("Content-Type: text/csv; charset=utf-8");
+header("Content-Disposition: attachment; filename=reporte-$anio-$mes-$dia.csv");
 
 include_once "config.php";
 include_once "entidades/venta.php";
 
 $ventaEntidad = new Venta();
 $aVentas = $ventaEntidad->cargarGrilla();
-
-print_r($aVentas);
-exit;
 
 $fp = fopen('php://output', 'w');
 fputs($fp, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
@@ -27,7 +24,6 @@ foreach ($aVentas as $venta) {
 		$venta->cantidad,
 		$venta->total
 	);
-
    	fputcsv($fp, $aFila, ";");
 }
 
